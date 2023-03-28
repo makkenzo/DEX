@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.Configuration;
 using System.Data;
 using System.Drawing;
 using System.IO;
@@ -22,34 +23,19 @@ namespace DEX
 
         private void Form1_Load(object sender, EventArgs e)
         {
-            var settings = MongoClientSettings.FromConnectionString("mongodb+srv://root:buhwNMyMOqnGUIlE@dexcluster.mx0indr.mongodb.net/?retryWrites=true&w=majority");
+            var settings = MongoClientSettings.FromConnectionString($"mongodb+srv://root:{ConfigurationManager.AppSettings.Get("MyPass")}@dexcluster.mx0indr.mongodb.net/?retryWrites=true&w=majority");
             settings.ServerApi = new ServerApi(ServerApiVersion.V1);
             var client = new MongoClient(settings);
             var database = client.GetDatabase("DEXDB");
 
-            var collection = database.GetCollection<BsonDocument>("Operations");
+            var collection = database.GetCollection<BsonDocument>("test1");
             var document = new BsonDocument
             {
-                { "amount", 0.01295 },
-                { "buyerUsername", "makkenzo" },
-                { "sellerUsername", "alishka" },
-                { "coinName", "Bitcoin" },
-                { "coinAbbr", "BTC" },
-                { "price", 27943 },
-                { "date", DateTime.Now },
-                { "status", "done" },
-                { "totalPrice", 27943.0 * 0.01295 },
-                { "commission", 5 }
+                { "amount", 0 },
             };
-             
+
 
             collection.InsertOne(document);
-
-            /*var document = collection.Find(new BsonDocument()).FirstOrDefault();
-
-            var price = document["price"].AsInt32;
-
-            label1.Text = Convert.ToString(price);*/
         }
     }
 }
