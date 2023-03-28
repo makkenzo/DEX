@@ -28,8 +28,7 @@ namespace DEX
             var database = client.GetDatabase("DEXDB");
 
             var collection = database.GetCollection<BsonDocument>("Operations");
-            var amount = 1;
-            /*var document = new BsonDocument
+            var document = new BsonDocument
             {
                 { "amount", 0.01295 },
                 { "buyerUsername", "makkenzo" },
@@ -43,8 +42,8 @@ namespace DEX
                 { "commission", 5 }
             };
              
-            
-            collection.InsertOne(document);*/
+
+            collection.InsertOne(document);
 
             /*var document = collection.Find(new BsonDocument()).FirstOrDefault();
 
