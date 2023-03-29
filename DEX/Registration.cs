@@ -10,6 +10,7 @@ using System.Windows.Forms;
 using MongoDB.Driver;
 using MongoDB.Bson;
 using System.Configuration;
+using System.Runtime.InteropServices;
 
 namespace DEX
 {
@@ -29,8 +30,8 @@ namespace DEX
 
             var collection = database.GetCollection<BsonDocument>("Users");
 
-            string username = textBox1.Text;
-            string pass = textBox2.Text;
+            string username = tbLogin.Text;
+            string pass = tbPass.Text;
 
             var document = new BsonDocument
             {
@@ -42,6 +43,63 @@ namespace DEX
 
             Authorization loginForm = new Authorization();
             loginForm.Show();
+            this.Close();
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            Application.Exit();
+        }
+
+        [DllImport("user32.DLL", EntryPoint = "ReleaseCapture")]
+        private extern static void ReleaseCapture();
+        [DllImport("user32.DLL", EntryPoint = "SendMessage")]
+        private extern static void SendMessage(System.IntPtr hWnd, int wMsg, int wParam, int lParam);
+
+        private void panel1_MouseDown(object sender, MouseEventArgs e)
+        {
+            ReleaseCapture();
+            SendMessage(this.Handle, 0x112, 0xf012, 0);
+        }
+
+        private void textBox1_TextChanged(object sender, EventArgs e)
+        {
+            try
+            {
+                tbLogin.ForeColor = Color.White;
+            }
+            catch (Exception ex)
+            {
+
+            }
+        }
+        private void tbPass_TextChanged(object sender, EventArgs e)
+        {
+            try
+            {
+                tbPass.ForeColor = Color.White;
+                tbPass.PasswordChar = '•';
+            }
+            catch (Exception ex)
+            {
+
+            }
+        }
+
+        private void tbLogin_Click(object sender, EventArgs e)
+        {
+            tbLogin.SelectAll();
+        }
+
+        private void tbPass_Click(object sender, EventArgs e)
+        {
+            tbPass.SelectAll();
+        }
+
+        private void linkLabel1_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            Authorization authForm = new Authorization();
+            authForm.Show();
             this.Close();
         }
     }

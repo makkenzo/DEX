@@ -219,6 +219,10 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="mongocrypt.dll" />
+    <None Include="Resources\browser.png" />
+    <None Include="Resources\register.png" />
+    <None Include="Resources\registration.png" />
+    <None Include="Resources\close-button.png" />
     <None Include="Resources\logo.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
