@@ -16,7 +16,9 @@ namespace DEX
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new Form1());
+
+            Begin begin = new Begin();
+            Application.Run(begin);
         }
     }
 }
