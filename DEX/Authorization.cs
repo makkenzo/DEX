@@ -57,6 +57,10 @@ namespace DEX
                     menu.Show();
                     this.Close();
                 }
+                else
+                {
+                    labelErr.Visible = true;
+                }
             }
             else
             {
@@ -82,26 +86,12 @@ namespace DEX
 
         private void textBox1_TextChanged(object sender, EventArgs e)
         {
-            try
-            {
-                tbLogin.ForeColor = Color.White;
-            }
-            catch (Exception ex)
-            {
-
-            }
+            tbLogin.ForeColor = Color.White;
         }
         private void tbPass_TextChanged(object sender, EventArgs e)
         {
-            try
-            {
-                tbPass.ForeColor = Color.White;
-                tbPass.PasswordChar = '•';
-            }
-            catch (Exception ex)
-            {
-
-            }
+            tbPass.ForeColor = Color.White;
+            tbPass.PasswordChar = '•';
         }
 
         private void tbLogin_Click(object sender, EventArgs e)

@@ -11,6 +11,7 @@ using MongoDB.Driver;
 using MongoDB.Bson;
 using System.Configuration;
 using System.Runtime.InteropServices;
+using System.IO;
 
 namespace DEX
 {
@@ -33,13 +34,22 @@ namespace DEX
             string username = tbLogin.Text;
             string pass = tbPass.Text;
 
+            var photoBytes = File.ReadAllBytes("profile.jpg");
+
             var document = new BsonDocument
             {
                 { "username", username },
-                { "password", pass },
                 { "fName", "" },
                 { "lName", "" },
                 { "registrationDate", DateTime.Now.ToString() },
+                { "birthDate", "" },
+                { "email", "" },
+                { "photo", new BsonBinaryData(photoBytes) },
+                { "userID", "" },
+                { "activity", 0 },
+                { "phone", "" },
+                { "password", pass },
+                { "role", "user" }
             };
 
             collection.InsertOne(document);
