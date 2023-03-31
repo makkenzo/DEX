@@ -30,6 +30,7 @@ namespace DEX
         private void InitializeComponent()
         {
             this.panel1 = new System.Windows.Forms.Panel();
+            this.button1 = new System.Windows.Forms.Button();
             this.panel3 = new System.Windows.Forms.Panel();
             this.panel2 = new System.Windows.Forms.Panel();
             this.linkLabel1 = new System.Windows.Forms.LinkLabel();
@@ -38,10 +39,9 @@ namespace DEX
             this.tbPass = new System.Windows.Forms.TextBox();
             this.tbLogin = new System.Windows.Forms.TextBox();
             this.button2 = new System.Windows.Forms.Button();
-            this.labelErr = new System.Windows.Forms.Label();
+            this.labelUsername = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            this.button1 = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
@@ -57,6 +57,21 @@ namespace DEX
             this.panel1.Size = new System.Drawing.Size(349, 46);
             this.panel1.TabIndex = 10;
             this.panel1.MouseDown += new System.Windows.Forms.MouseEventHandler(this.panel1_MouseDown);
+            // 
+            // button1
+            // 
+            this.button1.BackgroundImage = global::DEX.Properties.Resources.close_button__1_;
+            this.button1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+            this.button1.Dock = System.Windows.Forms.DockStyle.Right;
+            this.button1.FlatAppearance.BorderSize = 0;
+            this.button1.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Red;
+            this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button1.Location = new System.Drawing.Point(308, 5);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(36, 36);
+            this.button1.TabIndex = 0;
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // panel3
             // 
@@ -91,11 +106,11 @@ namespace DEX
             // 
             this.label3.AutoSize = true;
             this.label3.BackColor = System.Drawing.Color.Transparent;
-            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.label3.Font = new System.Drawing.Font("Roboto", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.label3.ForeColor = System.Drawing.SystemColors.Control;
             this.label3.Location = new System.Drawing.Point(25, 315);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(67, 20);
+            this.label3.Size = new System.Drawing.Size(65, 19);
             this.label3.TabIndex = 15;
             this.label3.Text = "Пароль";
             // 
@@ -103,11 +118,11 @@ namespace DEX
             // 
             this.label4.AutoSize = true;
             this.label4.BackColor = System.Drawing.Color.Transparent;
-            this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.label4.Font = new System.Drawing.Font("Roboto", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.label4.ForeColor = System.Drawing.SystemColors.Control;
             this.label4.Location = new System.Drawing.Point(37, 259);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(55, 20);
+            this.label4.Size = new System.Drawing.Size(54, 19);
             this.label4.TabIndex = 14;
             this.label4.Text = "Логин";
             // 
@@ -115,11 +130,11 @@ namespace DEX
             // 
             this.tbPass.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(30)))), ((int)(((byte)(30)))));
             this.tbPass.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.tbPass.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.tbPass.Font = new System.Drawing.Font("Roboto", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.tbPass.ForeColor = System.Drawing.Color.Gray;
             this.tbPass.Location = new System.Drawing.Point(98, 314);
             this.tbPass.Name = "tbPass";
-            this.tbPass.Size = new System.Drawing.Size(214, 22);
+            this.tbPass.Size = new System.Drawing.Size(214, 23);
             this.tbPass.TabIndex = 13;
             this.tbPass.Text = "Введите пароль";
             this.tbPass.Click += new System.EventHandler(this.tbPass_Click);
@@ -129,12 +144,12 @@ namespace DEX
             // 
             this.tbLogin.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(30)))), ((int)(((byte)(30)))));
             this.tbLogin.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.tbLogin.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.tbLogin.Font = new System.Drawing.Font("Roboto", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.tbLogin.ForeColor = System.Drawing.Color.Gray;
             this.tbLogin.Location = new System.Drawing.Point(98, 258);
             this.tbLogin.MaxLength = 32;
             this.tbLogin.Name = "tbLogin";
-            this.tbLogin.Size = new System.Drawing.Size(214, 22);
+            this.tbLogin.Size = new System.Drawing.Size(214, 23);
             this.tbLogin.TabIndex = 12;
             this.tbLogin.Text = "Введите логин";
             this.tbLogin.Click += new System.EventHandler(this.tbLogin_Click);
@@ -147,7 +162,7 @@ namespace DEX
             this.button2.FlatAppearance.BorderSize = 2;
             this.button2.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.button2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.button2.Font = new System.Drawing.Font("Roboto", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.button2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(69)))), ((int)(((byte)(123)))), ((int)(((byte)(157)))));
             this.button2.Location = new System.Drawing.Point(67, 379);
             this.button2.Name = "button2";
@@ -157,17 +172,17 @@ namespace DEX
             this.button2.UseVisualStyleBackColor = false;
             this.button2.Click += new System.EventHandler(this.buttonLogin_Click);
             // 
-            // labelErr
+            // labelUsername
             // 
-            this.labelErr.AutoSize = true;
-            this.labelErr.Font = new System.Drawing.Font("Roboto", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.labelErr.ForeColor = System.Drawing.Color.IndianRed;
-            this.labelErr.Location = new System.Drawing.Point(161, 290);
-            this.labelErr.Name = "labelErr";
-            this.labelErr.Size = new System.Drawing.Size(151, 17);
-            this.labelErr.TabIndex = 19;
-            this.labelErr.Text = "Error: Invalid username";
-            this.labelErr.Visible = false;
+            this.labelUsername.AutoSize = true;
+            this.labelUsername.Font = new System.Drawing.Font("Roboto", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.labelUsername.ForeColor = System.Drawing.Color.IndianRed;
+            this.labelUsername.Location = new System.Drawing.Point(161, 290);
+            this.labelUsername.Name = "labelUsername";
+            this.labelUsername.Size = new System.Drawing.Size(151, 17);
+            this.labelUsername.TabIndex = 19;
+            this.labelUsername.Text = "Error: Invalid username";
+            this.labelUsername.Visible = false;
             // 
             // label1
             // 
@@ -191,21 +206,6 @@ namespace DEX
             this.pictureBox1.TabIndex = 21;
             this.pictureBox1.TabStop = false;
             // 
-            // button1
-            // 
-            this.button1.BackgroundImage = global::DEX.Properties.Resources.close_button__1_;
-            this.button1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
-            this.button1.Dock = System.Windows.Forms.DockStyle.Right;
-            this.button1.FlatAppearance.BorderSize = 0;
-            this.button1.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Red;
-            this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button1.Location = new System.Drawing.Point(308, 5);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(36, 36);
-            this.button1.TabIndex = 0;
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
-            // 
             // Registration
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -214,7 +214,7 @@ namespace DEX
             this.ClientSize = new System.Drawing.Size(349, 474);
             this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.label1);
-            this.Controls.Add(this.labelErr);
+            this.Controls.Add(this.labelUsername);
             this.Controls.Add(this.panel3);
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.linkLabel1);
@@ -248,7 +248,7 @@ namespace DEX
         private System.Windows.Forms.TextBox tbPass;
         private System.Windows.Forms.TextBox tbLogin;
         private System.Windows.Forms.Button button2;
-        private System.Windows.Forms.Label labelErr;
+        private System.Windows.Forms.Label labelUsername;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.PictureBox pictureBox1;
     }

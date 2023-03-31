@@ -46,7 +46,7 @@ namespace DEX
             this.buttonBeginNext.FlatAppearance.BorderSize = 2;
             this.buttonBeginNext.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.buttonBeginNext.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.buttonBeginNext.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.buttonBeginNext.Font = new System.Drawing.Font("Roboto", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.buttonBeginNext.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(69)))), ((int)(((byte)(123)))), ((int)(((byte)(157)))));
             this.buttonBeginNext.Location = new System.Drawing.Point(35, 271);
             this.buttonBeginNext.Name = "buttonBeginNext";

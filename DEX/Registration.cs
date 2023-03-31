@@ -24,6 +24,8 @@ namespace DEX
 
         private void buttonLogin_Click(object sender, EventArgs e)
         {
+            // this.Cursor = Cursors.WaitCursor;
+
             var settings = MongoClientSettings.FromConnectionString($"mongodb+srv://root:{ConfigurationManager.AppSettings.Get("MyPass")}@dexcluster.mx0indr.mongodb.net/?retryWrites=true&w=majority");
             settings.ServerApi = new ServerApi(ServerApiVersion.V1);
             var client = new MongoClient(settings);
@@ -35,28 +37,42 @@ namespace DEX
             string pass = tbPass.Text;
 
             var photoBytes = File.ReadAllBytes("profile.jpg");
+            var filter = Builders<BsonDocument>.Filter.Eq("username", username);
 
-            var document = new BsonDocument
+            var result = collection.Find(filter).FirstOrDefault();
+
+            if (result != null)
             {
-                { "username", username },
-                { "fName", "" },
-                { "lName", "" },
-                { "registrationDate", DateTime.Now.ToString() },
-                { "birthDate", "" },
-                { "email", "" },
-                { "photo", new BsonBinaryData(photoBytes) },
-                { "userID", "" },
-                { "activity", 0 },
-                { "phone", "" },
-                { "password", pass },
-                { "role", "user" }
-            };
+                labelUsername.Visible = true;
 
-            collection.InsertOne(document);
+                // this.Cursor = Cursors.Default;
+            }
+            else
+            {
+                var document = new BsonDocument
+                {
+                    { "username", username },
+                    { "fName", "" },
+                    { "lName", "" },
+                    { "registrationDate", DateTime.Now.ToString() },
+                    { "birthDate", "" },
+                    { "email", "" },
+                    { "photo", new BsonBinaryData(photoBytes) },
+                    { "userID", "" },
+                    { "activity", 0 },
+                    { "phone", "" },
+                    { "password", pass },
+                    { "role", "user" }
+                };
 
-            Authorization loginForm = new Authorization();
-            loginForm.Show();
-            this.Close();
+                collection.InsertOne(document);
+
+                // this.Cursor = Cursors.Default;
+
+                Authorization loginForm = new Authorization();
+                loginForm.Show();
+                this.Close();
+            }
         }
 
         private void button1_Click(object sender, EventArgs e)
