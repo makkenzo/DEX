@@ -53,7 +53,7 @@ namespace DEX
 
                 if (pass == tbPass.Text)
                 {
-                    MainMenu menu = new MainMenu();
+                    MenuAdmin menu = new MenuAdmin();
                     menu.Show();
                     this.Close();
                 }

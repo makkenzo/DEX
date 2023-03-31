@@ -12,6 +12,7 @@ using MongoDB.Bson;
 using System.Configuration;
 using System.Runtime.InteropServices;
 using System.IO;
+using System.Threading;
 
 namespace DEX
 {
@@ -24,8 +25,6 @@ namespace DEX
 
         private void buttonLogin_Click(object sender, EventArgs e)
         {
-            // this.Cursor = Cursors.WaitCursor;
-
             var settings = MongoClientSettings.FromConnectionString($"mongodb+srv://root:{ConfigurationManager.AppSettings.Get("MyPass")}@dexcluster.mx0indr.mongodb.net/?retryWrites=true&w=majority");
             settings.ServerApi = new ServerApi(ServerApiVersion.V1);
             var client = new MongoClient(settings);
@@ -44,30 +43,26 @@ namespace DEX
             if (result != null)
             {
                 labelUsername.Visible = true;
-
-                // this.Cursor = Cursors.Default;
             }
             else
             {
                 var document = new BsonDocument
-                {
-                    { "username", username },
-                    { "fName", "" },
-                    { "lName", "" },
-                    { "registrationDate", DateTime.Now.ToString() },
-                    { "birthDate", "" },
-                    { "email", "" },
-                    { "photo", new BsonBinaryData(photoBytes) },
-                    { "userID", "" },
-                    { "activity", 0 },
-                    { "phone", "" },
-                    { "password", pass },
-                    { "role", "user" }
-                };
+            {
+                { "username", username },
+                { "fName", "" },
+                { "lName", "" },
+                { "registrationDate", DateTime.Now.ToString() },
+                { "birthDate", "" },
+                { "email", "" },
+                { "photo", new BsonBinaryData(photoBytes) },
+                { "userID", "" },
+                { "activity", 0 },
+                { "phone", "" },
+                { "password", pass },
+                { "role", "user" }
+            };
 
                 collection.InsertOne(document);
-
-                // this.Cursor = Cursors.Default;
 
                 Authorization loginForm = new Authorization();
                 loginForm.Show();
