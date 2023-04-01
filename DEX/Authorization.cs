@@ -50,12 +50,22 @@ namespace DEX
             if (result != null)
             {
                 var pass = result.GetValue("password").AsString;
+                var role = result.GetValue("role").AsString;
 
                 if (pass == tbPass.Text)
                 {
-                    MenuUser menu = new MenuUser();
-                    menu.Show();
-                    this.Close();
+                    if (role == "admin")
+                    {
+                        MenuAdmin menu = new MenuAdmin();
+                        menu.Show();
+                        this.Close();
+                    }
+                    else if (role == "user")
+                    {
+                        MenuUser menu = new MenuUser();
+                        menu.Show();
+                        this.Close();
+                    }
                 }
                 else
                 {
