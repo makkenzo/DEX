@@ -1,13 +1,7 @@
 ﻿using DEX.UserControls;
-using MongoDB.Bson;
-using MongoDB.Driver;
 using System;
-using System.Drawing;
-using System.Globalization;
 using System.IO;
 using System.Runtime.InteropServices;
-using System.Runtime.Serialization.Formatters.Binary;
-using System.Text.RegularExpressions;
 using System.Windows.Forms;
 using static DEX.Authorization;
 
@@ -31,13 +25,13 @@ namespace DEX
         {
             panelProfile.Visible = true;
 
-            buttonProfileLeft.Visible           = true;
-            buttonBalanceLeft.Visible           = false;
-            buttonRatingLeft.Visible            = false;
-            buttonLotsLeft.Visible              = false;
-            buttonHistoryLeft.Visible           = false;
-            buttonCryptocurrenciesLeft.Visible  = false;
-            buttonSettingsLeft.Visible          = false;
+            buttonProfileLeft.Visible = true;
+            buttonBalanceLeft.Visible = false;
+            buttonRatingLeft.Visible = false;
+            buttonLotsLeft.Visible = false;
+            buttonHistoryLeft.Visible = false;
+            buttonCryptocurrenciesLeft.Visible = false;
+            buttonSettingsLeft.Visible = false;
         }
 
         [DllImport("user32.DLL", EntryPoint = "ReleaseCapture")]
@@ -66,26 +60,26 @@ namespace DEX
         {
             panelProfile.Visible = true;
 
-            buttonProfileLeft.Visible           = true;
-            buttonBalanceLeft.Visible           = false;
-            buttonRatingLeft.Visible            = false;
-            buttonLotsLeft.Visible              = false;
-            buttonHistoryLeft.Visible           = false;
-            buttonCryptocurrenciesLeft.Visible  = false;
-            buttonSettingsLeft.Visible          = false;
+            buttonProfileLeft.Visible = true;
+            buttonBalanceLeft.Visible = false;
+            buttonRatingLeft.Visible = false;
+            buttonLotsLeft.Visible = false;
+            buttonHistoryLeft.Visible = false;
+            buttonCryptocurrenciesLeft.Visible = false;
+            buttonSettingsLeft.Visible = false;
 
             UC_Profile uc = new UC_Profile(_userCredentials);
             addUserControl(uc);
         }
         private void buttonBalance_Click(object sender, EventArgs e)
         {
-            buttonProfileLeft.Visible           = false;
-            buttonBalanceLeft.Visible           = true;
-            buttonRatingLeft.Visible            = false;
-            buttonLotsLeft.Visible              = false;
-            buttonHistoryLeft.Visible           = false;
-            buttonCryptocurrenciesLeft.Visible  = false;
-            buttonSettingsLeft.Visible          = false;
+            buttonProfileLeft.Visible = false;
+            buttonBalanceLeft.Visible = true;
+            buttonRatingLeft.Visible = false;
+            buttonLotsLeft.Visible = false;
+            buttonHistoryLeft.Visible = false;
+            buttonCryptocurrenciesLeft.Visible = false;
+            buttonSettingsLeft.Visible = false;
 
             UC_Balance uc = new UC_Balance();
             addUserControl(uc);
@@ -93,27 +87,27 @@ namespace DEX
 
         private void buttonRating_Click(object sender, EventArgs e)
         {
-            buttonProfileLeft.Visible           = false;
-            buttonBalanceLeft.Visible           = false;
-            buttonRatingLeft.Visible            = true;
-            buttonLotsLeft.Visible              = false;
-            buttonHistoryLeft.Visible           = false;
-            buttonCryptocurrenciesLeft.Visible  = false;
-            buttonSettingsLeft.Visible          = false;
+            buttonProfileLeft.Visible = false;
+            buttonBalanceLeft.Visible = false;
+            buttonRatingLeft.Visible = true;
+            buttonLotsLeft.Visible = false;
+            buttonHistoryLeft.Visible = false;
+            buttonCryptocurrenciesLeft.Visible = false;
+            buttonSettingsLeft.Visible = false;
 
             UC_Rating uc = new UC_Rating();
-            addUserControl(uc );
+            addUserControl(uc);
         }
 
         private void buttonLots_Click(object sender, EventArgs e)
         {
-            buttonProfileLeft.Visible           = false;
-            buttonBalanceLeft.Visible           = false;
-            buttonRatingLeft.Visible            = false;
-            buttonLotsLeft.Visible              = true;
-            buttonHistoryLeft.Visible           = false;
-            buttonCryptocurrenciesLeft.Visible  = false;
-            buttonSettingsLeft.Visible          = false;
+            buttonProfileLeft.Visible = false;
+            buttonBalanceLeft.Visible = false;
+            buttonRatingLeft.Visible = false;
+            buttonLotsLeft.Visible = true;
+            buttonHistoryLeft.Visible = false;
+            buttonCryptocurrenciesLeft.Visible = false;
+            buttonSettingsLeft.Visible = false;
 
             UC_Lots uc = new UC_Lots();
             addUserControl(uc);
@@ -121,13 +115,13 @@ namespace DEX
 
         private void buttonHistory_Click(object sender, EventArgs e)
         {
-            buttonProfileLeft.Visible           = false;
-            buttonBalanceLeft.Visible           = false;
-            buttonRatingLeft.Visible            = false;
-            buttonLotsLeft.Visible              = false;
-            buttonHistoryLeft.Visible           = true;
-            buttonCryptocurrenciesLeft.Visible  = false;
-            buttonSettingsLeft.Visible          = false;
+            buttonProfileLeft.Visible = false;
+            buttonBalanceLeft.Visible = false;
+            buttonRatingLeft.Visible = false;
+            buttonLotsLeft.Visible = false;
+            buttonHistoryLeft.Visible = true;
+            buttonCryptocurrenciesLeft.Visible = false;
+            buttonSettingsLeft.Visible = false;
 
             UC_Operations uc = new UC_Operations();
             addUserControl(uc);
@@ -135,13 +129,13 @@ namespace DEX
 
         private void buttonCryptocurrencies_Click(object sender, EventArgs e)
         {
-            buttonProfileLeft.Visible           = false;
-            buttonBalanceLeft.Visible           = false;
-            buttonRatingLeft.Visible            = false;
-            buttonLotsLeft.Visible              = false;
-            buttonHistoryLeft.Visible           = false;
-            buttonCryptocurrenciesLeft.Visible  = true;
-            buttonSettingsLeft.Visible          = false;
+            buttonProfileLeft.Visible = false;
+            buttonBalanceLeft.Visible = false;
+            buttonRatingLeft.Visible = false;
+            buttonLotsLeft.Visible = false;
+            buttonHistoryLeft.Visible = false;
+            buttonCryptocurrenciesLeft.Visible = true;
+            buttonSettingsLeft.Visible = false;
 
             UC_Cryptocurrencies uc = new UC_Cryptocurrencies();
             addUserControl(uc);
@@ -149,13 +143,13 @@ namespace DEX
 
         private void buttonSettings_Click(object sender, EventArgs e)
         {
-            buttonProfileLeft.Visible           = false;
-            buttonBalanceLeft.Visible           = false;
-            buttonRatingLeft.Visible            = false;
-            buttonLotsLeft.Visible              = false;
-            buttonHistoryLeft.Visible           = false;
-            buttonCryptocurrenciesLeft.Visible  = false;
-            buttonSettingsLeft.Visible          = true;
+            buttonProfileLeft.Visible = false;
+            buttonBalanceLeft.Visible = false;
+            buttonRatingLeft.Visible = false;
+            buttonLotsLeft.Visible = false;
+            buttonHistoryLeft.Visible = false;
+            buttonCryptocurrenciesLeft.Visible = false;
+            buttonSettingsLeft.Visible = true;
 
             UC_Settings uc = new UC_Settings();
             addUserControl(uc);
