@@ -17,8 +17,11 @@ namespace DEX
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
 
-            Begin begin = new Begin();
-            Application.Run(begin);
+            /*Begin begin = new Begin();
+            Application.Run(begin);*/
+
+            MenuUser menuUser = new MenuUser();
+            Application.Run(menuUser);
         }
     }
 }

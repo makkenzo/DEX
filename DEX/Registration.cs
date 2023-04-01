@@ -47,20 +47,20 @@ namespace DEX
             else
             {
                 var document = new BsonDocument
-            {
-                { "username", username },
-                { "fName", "" },
-                { "lName", "" },
-                { "registrationDate", DateTime.Now.ToString() },
-                { "birthDate", "" },
-                { "email", "" },
-                { "photo", new BsonBinaryData(photoBytes) },
-                { "userID", "" },
-                { "activity", 0 },
-                { "phone", "" },
-                { "password", pass },
-                { "role", "user" }
-            };
+                {
+                    { "username", username },
+                    { "fName", "" },
+                    { "lName", "" },
+                    { "registrationDate", DateTime.Now.ToString() },
+                    { "birthDate", "" },
+                    { "email", "" },
+                    { "photo", new BsonBinaryData(photoBytes) },
+                    { "userID", "" },
+                    { "activity", 0 },
+                    { "phone", "" },
+                    { "password", pass },
+                    { "role", "user" }
+                };
 
                 collection.InsertOne(document);
 
