@@ -18,6 +18,9 @@ namespace DEX
 
         private void buttonLogin_Click(object sender, EventArgs e)
         {
+            labelPassErr.Visible = false;
+            labelUsernameErr.Visible = false;
+
             var database = DBManager.GetDatabase();
 
             var collection = database.GetCollection<BsonDocument>("Users");
@@ -25,38 +28,52 @@ namespace DEX
             string username = tbLogin.Text;
             string pass = tbPass.Text;
 
-            var photoBytes = File.ReadAllBytes("profile.jpg");
-            var filter = Builders<BsonDocument>.Filter.Eq("username", username);
-
-            var result = collection.Find(filter).FirstOrDefault();
-
-            if (result != null)
+            if (username == "Введите логин" || pass == "Введите пароль")
             {
-                labelUsername.Visible = true;
+                MessageBox.Show("Вы оставили пустым одно или несколько полей");
             }
             else
             {
-                var document = new BsonDocument
+                if (pass.Length < 8)
                 {
-                    { "username", username },
-                    { "fName", "" },
-                    { "lName", "" },
-                    { "registrationDate", DateTime.Now.ToString() },
-                    { "birthDate", "" },
-                    { "email", "" },
-                    { "photo", new BsonBinaryData(photoBytes) },
-                    { "userID", "" },
-                    { "activity", 0 },
-                    { "phone", "" },
-                    { "password", pass },
-                    { "role", "user" }
-                };
+                    labelPassErr.Visible = true;
+                }
+                else
+                {
+                    var photoBytes = File.ReadAllBytes("profile.jpg");
+                    var filter = Builders<BsonDocument>.Filter.Eq("username", username);
 
-                collection.InsertOne(document);
+                    var result = collection.Find(filter).FirstOrDefault();
 
-                Authorization loginForm = new Authorization();
-                loginForm.Show();
-                this.Close();
+                    if (result != null)
+                    {
+                        labelUsernameErr.Visible = true;
+                    }
+                    else
+                    {
+                        var document = new BsonDocument
+                        {
+                            { "username", username },
+                            { "fName", "" },
+                            { "lName", "" },
+                            { "registrationDate", DateTime.Now.ToString() },
+                            { "birthDate", "" },
+                            { "email", "" },
+                            { "photo", new BsonBinaryData(photoBytes) },
+                            { "userID", "" },
+                            { "activity", 0 },
+                            { "phone", "" },
+                            { "password", pass },
+                            { "role", "user" }
+                        };
+
+                        collection.InsertOne(document);
+
+                        Authorization loginForm = new Authorization();
+                        loginForm.Show();
+                        this.Close();
+                    }
+                }
             }
         }
 

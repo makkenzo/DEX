@@ -74,7 +74,7 @@ namespace DEX
             this.tbLogin.Font = new System.Drawing.Font("Roboto", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.tbLogin.ForeColor = System.Drawing.Color.Gray;
             this.tbLogin.Location = new System.Drawing.Point(108, 263);
-            this.tbLogin.MaxLength = 32;
+            this.tbLogin.MaxLength = 16;
             this.tbLogin.Name = "tbLogin";
             this.tbLogin.Size = new System.Drawing.Size(214, 23);
             this.tbLogin.TabIndex = 2;
@@ -89,6 +89,7 @@ namespace DEX
             this.tbPass.Font = new System.Drawing.Font("Roboto", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.tbPass.ForeColor = System.Drawing.Color.Gray;
             this.tbPass.Location = new System.Drawing.Point(108, 319);
+            this.tbPass.MaxLength = 32;
             this.tbPass.Name = "tbPass";
             this.tbPass.Size = new System.Drawing.Size(214, 23);
             this.tbPass.TabIndex = 3;

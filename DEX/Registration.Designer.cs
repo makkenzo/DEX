@@ -42,8 +42,8 @@ namespace DEX
             this.tbPass = new System.Windows.Forms.TextBox();
             this.tbLogin = new System.Windows.Forms.TextBox();
             this.button2 = new System.Windows.Forms.Button();
-            this.labelUsername = new System.Windows.Forms.Label();
-            this.label1 = new System.Windows.Forms.Label();
+            this.labelUsernameErr = new System.Windows.Forms.Label();
+            this.labelPassErr = new System.Windows.Forms.Label();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
@@ -160,6 +160,7 @@ namespace DEX
             this.tbPass.Font = new System.Drawing.Font("Roboto", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.tbPass.ForeColor = System.Drawing.Color.Gray;
             this.tbPass.Location = new System.Drawing.Point(98, 314);
+            this.tbPass.MaxLength = 32;
             this.tbPass.Name = "tbPass";
             this.tbPass.Size = new System.Drawing.Size(214, 23);
             this.tbPass.TabIndex = 13;
@@ -174,7 +175,7 @@ namespace DEX
             this.tbLogin.Font = new System.Drawing.Font("Roboto", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.tbLogin.ForeColor = System.Drawing.Color.Gray;
             this.tbLogin.Location = new System.Drawing.Point(98, 258);
-            this.tbLogin.MaxLength = 32;
+            this.tbLogin.MaxLength = 16;
             this.tbLogin.Name = "tbLogin";
             this.tbLogin.Size = new System.Drawing.Size(214, 23);
             this.tbLogin.TabIndex = 12;
@@ -199,29 +200,29 @@ namespace DEX
             this.button2.UseVisualStyleBackColor = false;
             this.button2.Click += new System.EventHandler(this.buttonLogin_Click);
             // 
-            // labelUsername
+            // labelUsernameErr
             // 
-            this.labelUsername.AutoSize = true;
-            this.labelUsername.Font = new System.Drawing.Font("Roboto", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.labelUsername.ForeColor = System.Drawing.Color.IndianRed;
-            this.labelUsername.Location = new System.Drawing.Point(161, 290);
-            this.labelUsername.Name = "labelUsername";
-            this.labelUsername.Size = new System.Drawing.Size(151, 17);
-            this.labelUsername.TabIndex = 19;
-            this.labelUsername.Text = "Error: Invalid username";
-            this.labelUsername.Visible = false;
+            this.labelUsernameErr.AutoSize = true;
+            this.labelUsernameErr.Font = new System.Drawing.Font("Roboto", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.labelUsernameErr.ForeColor = System.Drawing.Color.IndianRed;
+            this.labelUsernameErr.Location = new System.Drawing.Point(161, 290);
+            this.labelUsernameErr.Name = "labelUsernameErr";
+            this.labelUsernameErr.Size = new System.Drawing.Size(151, 17);
+            this.labelUsernameErr.TabIndex = 19;
+            this.labelUsernameErr.Text = "Error: Invalid username";
+            this.labelUsernameErr.Visible = false;
             // 
-            // label1
+            // labelPassErr
             // 
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Roboto", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label1.ForeColor = System.Drawing.Color.IndianRed;
-            this.label1.Location = new System.Drawing.Point(161, 346);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(151, 17);
-            this.label1.TabIndex = 20;
-            this.label1.Text = "Error: Invalid password";
-            this.label1.Visible = false;
+            this.labelPassErr.AutoSize = true;
+            this.labelPassErr.Font = new System.Drawing.Font("Roboto", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.labelPassErr.ForeColor = System.Drawing.Color.IndianRed;
+            this.labelPassErr.Location = new System.Drawing.Point(161, 346);
+            this.labelPassErr.Name = "labelPassErr";
+            this.labelPassErr.Size = new System.Drawing.Size(151, 17);
+            this.labelPassErr.TabIndex = 20;
+            this.labelPassErr.Text = "Error: Invalid password";
+            this.labelPassErr.Visible = false;
             // 
             // pictureBox1
             // 
@@ -240,8 +241,8 @@ namespace DEX
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(44)))), ((int)(((byte)(43)))), ((int)(((byte)(60)))));
             this.ClientSize = new System.Drawing.Size(349, 474);
             this.Controls.Add(this.pictureBox1);
-            this.Controls.Add(this.label1);
-            this.Controls.Add(this.labelUsername);
+            this.Controls.Add(this.labelPassErr);
+            this.Controls.Add(this.labelUsernameErr);
             this.Controls.Add(this.panel3);
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.linkLabel1);
@@ -278,8 +279,8 @@ namespace DEX
         private System.Windows.Forms.TextBox tbPass;
         private System.Windows.Forms.TextBox tbLogin;
         private System.Windows.Forms.Button button2;
-        private System.Windows.Forms.Label labelUsername;
-        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label labelUsernameErr;
+        private System.Windows.Forms.Label labelPassErr;
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.PictureBox pictureBox2;
         private System.Windows.Forms.Label label2;
