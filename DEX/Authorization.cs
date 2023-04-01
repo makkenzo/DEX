@@ -45,6 +45,8 @@ namespace DEX
             public string FName { get; set; }
             public string LName { get; set; }
             public byte[] Photo { get; set; }
+            public string RegistrationDate { get; set; }
+            public string BirthDate { get; set; }
         }
 
 
@@ -80,12 +82,16 @@ namespace DEX
                         credentials.FName = result.GetValue("fName").AsString;
                         credentials.LName = result.GetValue("lName").AsString;
                         credentials.Photo = result.GetValue("photo").AsBsonBinaryData;
+                        credentials.RegistrationDate = result.GetValue("registrationDate").AsString;
+                        credentials.BirthDate = result.GetValue("birthDate").AsString;
 
                         UserState state = new UserState();
                         state.Username = credentials.Username;
                         state.FName = credentials.FName;
                         state.LName = credentials.LName;
                         state.Photo = credentials.Photo.RawValue as byte[];
+                        state.RegistrationDate = credentials.RegistrationDate;
+                        state.BirthDate = credentials.BirthDate;
 
                         using (FileStream file = new FileStream("userstate.dat", FileMode.Create))
                         {

@@ -40,6 +40,8 @@ namespace DEX
                     credentials.FName = state.FName;
                     credentials.LName = state.LName;
                     credentials.Photo = new BsonBinaryData(state.Photo);
+                    credentials.RegistrationDate = state.RegistrationDate;
+                    credentials.BirthDate = state.BirthDate;
 
                     MenuUser menu = new MenuUser(credentials);
                     menu.Show();

@@ -30,7 +30,7 @@ namespace DEX
 
             if (username == "Введите логин" || pass == "Введите пароль")
             {
-                MessageBox.Show("Вы оставили пустым одно или несколько полей");
+                MessageBox.Show("Вы оставили пустым одно или несколько полей", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             else
             {

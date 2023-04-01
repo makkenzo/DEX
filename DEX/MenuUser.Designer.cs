@@ -54,11 +54,18 @@
             this.errorIcon = new System.Windows.Forms.PictureBox();
             this.doneIcon = new System.Windows.Forms.PictureBox();
             this.buttonSave = new System.Windows.Forms.Button();
+            this.buttonBirthDateEdit = new System.Windows.Forms.Button();
             this.buttonLNameEdit = new System.Windows.Forms.Button();
             this.buttonFNameEdit = new System.Windows.Forms.Button();
+            this.panel3 = new System.Windows.Forms.Panel();
+            this.panel6 = new System.Windows.Forms.Panel();
             this.panel5 = new System.Windows.Forms.Panel();
+            this.labelRegistrationDate = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
             this.labelLName = new System.Windows.Forms.Label();
             this.panel4 = new System.Windows.Forms.Panel();
+            this.tbRegistrationDate = new System.Windows.Forms.TextBox();
+            this.tbBirthDate = new System.Windows.Forms.TextBox();
             this.tbLName = new System.Windows.Forms.TextBox();
             this.labelFName = new System.Windows.Forms.Label();
             this.tbFName = new System.Windows.Forms.TextBox();
@@ -337,11 +344,18 @@
             this.panelProfile.Controls.Add(this.errorIcon);
             this.panelProfile.Controls.Add(this.doneIcon);
             this.panelProfile.Controls.Add(this.buttonSave);
+            this.panelProfile.Controls.Add(this.buttonBirthDateEdit);
             this.panelProfile.Controls.Add(this.buttonLNameEdit);
             this.panelProfile.Controls.Add(this.buttonFNameEdit);
+            this.panelProfile.Controls.Add(this.panel3);
+            this.panelProfile.Controls.Add(this.panel6);
             this.panelProfile.Controls.Add(this.panel5);
+            this.panelProfile.Controls.Add(this.labelRegistrationDate);
+            this.panelProfile.Controls.Add(this.label2);
             this.panelProfile.Controls.Add(this.labelLName);
             this.panelProfile.Controls.Add(this.panel4);
+            this.panelProfile.Controls.Add(this.tbRegistrationDate);
+            this.panelProfile.Controls.Add(this.tbBirthDate);
             this.panelProfile.Controls.Add(this.tbLName);
             this.panelProfile.Controls.Add(this.labelFName);
             this.panelProfile.Controls.Add(this.tbFName);
@@ -406,6 +420,22 @@
             this.buttonSave.UseVisualStyleBackColor = false;
             this.buttonSave.Click += new System.EventHandler(this.buttonSave_Click);
             // 
+            // buttonBirthDateEdit
+            // 
+            this.buttonBirthDateEdit.BackgroundImage = global::DEX.Properties.Resources.edit_tools__1_;
+            this.buttonBirthDateEdit.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.buttonBirthDateEdit.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.buttonBirthDateEdit.FlatAppearance.BorderColor = System.Drawing.Color.Black;
+            this.buttonBirthDateEdit.FlatAppearance.BorderSize = 0;
+            this.buttonBirthDateEdit.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
+            this.buttonBirthDateEdit.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonBirthDateEdit.Location = new System.Drawing.Point(340, 265);
+            this.buttonBirthDateEdit.Name = "buttonBirthDateEdit";
+            this.buttonBirthDateEdit.Size = new System.Drawing.Size(20, 20);
+            this.buttonBirthDateEdit.TabIndex = 17;
+            this.buttonBirthDateEdit.UseVisualStyleBackColor = true;
+            this.buttonBirthDateEdit.Click += new System.EventHandler(this.buttonBirthDateEdit_Click);
+            // 
             // buttonLNameEdit
             // 
             this.buttonLNameEdit.BackgroundImage = global::DEX.Properties.Resources.edit_tools__1_;
@@ -415,7 +445,7 @@
             this.buttonLNameEdit.FlatAppearance.BorderSize = 0;
             this.buttonLNameEdit.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
             this.buttonLNameEdit.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.buttonLNameEdit.Location = new System.Drawing.Point(340, 164);
+            this.buttonLNameEdit.Location = new System.Drawing.Point(340, 168);
             this.buttonLNameEdit.Name = "buttonLNameEdit";
             this.buttonLNameEdit.Size = new System.Drawing.Size(20, 20);
             this.buttonLNameEdit.TabIndex = 17;
@@ -437,13 +467,53 @@
             this.buttonFNameEdit.UseVisualStyleBackColor = true;
             this.buttonFNameEdit.Click += new System.EventHandler(this.buttonFNameEdit_Click);
             // 
+            // panel3
+            // 
+            this.panel3.BackColor = System.Drawing.Color.White;
+            this.panel3.Location = new System.Drawing.Point(366, 243);
+            this.panel3.Name = "panel3";
+            this.panel3.Size = new System.Drawing.Size(291, 1);
+            this.panel3.TabIndex = 16;
+            // 
+            // panel6
+            // 
+            this.panel6.BackColor = System.Drawing.Color.White;
+            this.panel6.Location = new System.Drawing.Point(366, 291);
+            this.panel6.Name = "panel6";
+            this.panel6.Size = new System.Drawing.Size(291, 1);
+            this.panel6.TabIndex = 16;
+            // 
             // panel5
             // 
             this.panel5.BackColor = System.Drawing.Color.White;
-            this.panel5.Location = new System.Drawing.Point(366, 190);
+            this.panel5.Location = new System.Drawing.Point(366, 194);
             this.panel5.Name = "panel5";
             this.panel5.Size = new System.Drawing.Size(291, 1);
             this.panel5.TabIndex = 16;
+            // 
+            // labelRegistrationDate
+            // 
+            this.labelRegistrationDate.AutoSize = true;
+            this.labelRegistrationDate.BackColor = System.Drawing.Color.Transparent;
+            this.labelRegistrationDate.Font = new System.Drawing.Font("Roboto", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.labelRegistrationDate.ForeColor = System.Drawing.SystemColors.Control;
+            this.labelRegistrationDate.Location = new System.Drawing.Point(663, 217);
+            this.labelRegistrationDate.Name = "labelRegistrationDate";
+            this.labelRegistrationDate.Size = new System.Drawing.Size(145, 19);
+            this.labelRegistrationDate.TabIndex = 15;
+            this.labelRegistrationDate.Text = "Дата регистрации";
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.BackColor = System.Drawing.Color.Transparent;
+            this.label2.Font = new System.Drawing.Font("Roboto", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.label2.ForeColor = System.Drawing.SystemColors.Control;
+            this.label2.Location = new System.Drawing.Point(663, 265);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(126, 19);
+            this.label2.TabIndex = 15;
+            this.label2.Text = "День рождения";
             // 
             // labelLName
             // 
@@ -451,7 +521,7 @@
             this.labelLName.BackColor = System.Drawing.Color.Transparent;
             this.labelLName.Font = new System.Drawing.Font("Roboto", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.labelLName.ForeColor = System.Drawing.SystemColors.Control;
-            this.labelLName.Location = new System.Drawing.Point(663, 164);
+            this.labelLName.Location = new System.Drawing.Point(663, 168);
             this.labelLName.Name = "labelLName";
             this.labelLName.Size = new System.Drawing.Size(78, 19);
             this.labelLName.TabIndex = 15;
@@ -465,6 +535,33 @@
             this.panel4.Size = new System.Drawing.Size(291, 1);
             this.panel4.TabIndex = 13;
             // 
+            // tbRegistrationDate
+            // 
+            this.tbRegistrationDate.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(44)))), ((int)(((byte)(43)))), ((int)(((byte)(60)))));
+            this.tbRegistrationDate.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.tbRegistrationDate.Enabled = false;
+            this.tbRegistrationDate.Font = new System.Drawing.Font("Roboto", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.tbRegistrationDate.ForeColor = System.Drawing.Color.Gray;
+            this.tbRegistrationDate.Location = new System.Drawing.Point(366, 215);
+            this.tbRegistrationDate.Name = "tbRegistrationDate";
+            this.tbRegistrationDate.Size = new System.Drawing.Size(291, 23);
+            this.tbRegistrationDate.TabIndex = 14;
+            // 
+            // tbBirthDate
+            // 
+            this.tbBirthDate.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(44)))), ((int)(((byte)(43)))), ((int)(((byte)(60)))));
+            this.tbBirthDate.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.tbBirthDate.Enabled = false;
+            this.tbBirthDate.Font = new System.Drawing.Font("Roboto", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.tbBirthDate.ForeColor = System.Drawing.Color.Gray;
+            this.tbBirthDate.Location = new System.Drawing.Point(366, 263);
+            this.tbBirthDate.Name = "tbBirthDate";
+            this.tbBirthDate.Size = new System.Drawing.Size(291, 23);
+            this.tbBirthDate.TabIndex = 14;
+            this.tbBirthDate.Text = "dd.mm.yyyy";
+            this.tbBirthDate.Click += new System.EventHandler(this.TextBox_Click);
+            this.tbBirthDate.TextChanged += new System.EventHandler(this.TextBox_TextChanged);
+            // 
             // tbLName
             // 
             this.tbLName.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(44)))), ((int)(((byte)(43)))), ((int)(((byte)(60)))));
@@ -472,13 +569,13 @@
             this.tbLName.Enabled = false;
             this.tbLName.Font = new System.Drawing.Font("Roboto", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.tbLName.ForeColor = System.Drawing.Color.Gray;
-            this.tbLName.Location = new System.Drawing.Point(366, 162);
+            this.tbLName.Location = new System.Drawing.Point(366, 166);
             this.tbLName.Name = "tbLName";
             this.tbLName.Size = new System.Drawing.Size(291, 23);
             this.tbLName.TabIndex = 14;
             this.tbLName.Text = "Введите фамилию";
-            this.tbLName.Click += new System.EventHandler(this.tbLName_Click);
-            this.tbLName.TextChanged += new System.EventHandler(this.tbLName_TextChanged);
+            this.tbLName.Click += new System.EventHandler(this.TextBox_Click);
+            this.tbLName.TextChanged += new System.EventHandler(this.TextBox_TextChanged);
             // 
             // labelFName
             // 
@@ -504,8 +601,8 @@
             this.tbFName.Size = new System.Drawing.Size(291, 23);
             this.tbFName.TabIndex = 11;
             this.tbFName.Text = "Введите имя";
-            this.tbFName.Click += new System.EventHandler(this.tbFName_Click);
-            this.tbFName.TextChanged += new System.EventHandler(this.tbFName_TextChanged);
+            this.tbFName.Click += new System.EventHandler(this.TextBox_Click);
+            this.tbFName.TextChanged += new System.EventHandler(this.TextBox_TextChanged);
             // 
             // labelUsername
             // 
@@ -594,5 +691,12 @@
         private System.Windows.Forms.PictureBox doneIcon;
         private System.Windows.Forms.PictureBox errorIcon;
         private System.Windows.Forms.Label labelUpdateSuccess;
+        private System.Windows.Forms.Panel panel3;
+        private System.Windows.Forms.Label labelRegistrationDate;
+        private System.Windows.Forms.TextBox tbRegistrationDate;
+        private System.Windows.Forms.Button buttonBirthDateEdit;
+        private System.Windows.Forms.Panel panel6;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.TextBox tbBirthDate;
     }
 }

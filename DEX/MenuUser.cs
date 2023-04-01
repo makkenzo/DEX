@@ -2,6 +2,7 @@
 using MongoDB.Driver;
 using System;
 using System.Drawing;
+using System.Globalization;
 using System.IO;
 using System.Runtime.InteropServices;
 using System.Runtime.Serialization.Formatters.Binary;
@@ -40,6 +41,9 @@ namespace DEX
 
             tbFName.Text = _userCredentials.FName;
             tbLName.Text = _userCredentials.LName;
+
+            tbRegistrationDate.Text = _userCredentials.RegistrationDate;
+            tbBirthDate.Text = _userCredentials.BirthDate;
 
             var binaryData = _userCredentials.Photo.AsBsonBinaryData;
             var bytes = binaryData.AsByteArray;
@@ -148,24 +152,16 @@ namespace DEX
             buttonSettingsLeft.Visible          = true;
         }
 
-        private void tbFName_TextChanged(object sender, EventArgs e)
+        private void TextBox_TextChanged(object sender, EventArgs e)
         {
-            tbFName.ForeColor = Color.White;
+            TextBox textBox = (TextBox)sender;
+            textBox.ForeColor = Color.White;
         }
 
-        private void tbLName_TextChanged(object sender, EventArgs e)
+        private void TextBox_Click(object sender, EventArgs e)
         {
-            tbLName.ForeColor = Color.White;
-        }
-
-        private void tbFName_Click(object sender, EventArgs e)
-        {
-            tbFName.SelectAll();
-        }
-
-        private void tbLName_Click(object sender, EventArgs e)
-        {
-            tbLName.SelectAll();
+            TextBox textBox = (TextBox)sender;
+            textBox.SelectAll();
         }
 
         private void buttonFNameEdit_Click(object sender, EventArgs e)
@@ -177,43 +173,69 @@ namespace DEX
         {
             tbLName.Enabled = true;
         }
+        private void buttonBirthDateEdit_Click(object sender, EventArgs e)
+        {
+            tbBirthDate.Enabled = true;
+        }
 
         private void buttonSave_Click(object sender, EventArgs e)
         {
-            var filter = Builders<BsonDocument>.Filter.Eq("username", _userCredentials.Username);
-            var update = Builders<BsonDocument>.Update
-                .Set("fName", tbFName.Text)
-                .Set("lName", tbLName.Text);
-            var collection = _database.GetCollection<BsonDocument>("Users");
-            var result = collection.UpdateOne(filter, update);
+            string inputDate = tbBirthDate.Text;
+            string format = "dd.MM.yyyy";
+            DateTime dateValue;
 
-            UserState state;
-            using (FileStream file = new FileStream("userstate.dat", FileMode.Open))
+            if (DateTime.TryParseExact(inputDate, format, CultureInfo.InvariantCulture, DateTimeStyles.None, out dateValue))
             {
-                BinaryFormatter formatter = new BinaryFormatter();
-                state = (UserState)formatter.Deserialize(file);
-            }
+                if (dateValue.Year >= 1900 && dateValue.Year <= 9999
+                    && dateValue.Month >= 1 && dateValue.Month <= 12
+                    && dateValue.Day >= 1 && dateValue.Day <= DateTime.DaysInMonth(dateValue.Year, dateValue.Month))
+                {
+                    var filter = Builders<BsonDocument>.Filter.Eq("username", _userCredentials.Username);
+                    var update = Builders<BsonDocument>.Update
+                        .Set("fName", tbFName.Text)
+                        .Set("lName", tbLName.Text)
+                        .Set("birthDate", tbBirthDate.Text);
+                    var collection = _database.GetCollection<BsonDocument>("Users");
+                    var result = collection.UpdateOne(filter, update);
 
-            state.FName = tbFName.Text;
-            state.LName = tbLName.Text;
+                    UserState state;
+                    using (FileStream file = new FileStream("userstate.dat", FileMode.Open))
+                    {
+                        BinaryFormatter formatter = new BinaryFormatter();
+                        state = (UserState)formatter.Deserialize(file);
+                    }
 
-            using (FileStream file = new FileStream("userstate.dat", FileMode.Create))
-            {
-                BinaryFormatter formatter = new BinaryFormatter();
-                formatter.Serialize(file, state);
-            }
+                    state.FName = tbFName.Text;
+                    state.LName = tbLName.Text;
+                    state.BirthDate = tbBirthDate.Text;
 
-            if (result.ModifiedCount == 1)
-            {
-                doneIcon.Visible = true;
-                errorIcon.Visible = false;
+                    using (FileStream file = new FileStream("userstate.dat", FileMode.Create))
+                    {
+                        BinaryFormatter formatter = new BinaryFormatter();
+                        formatter.Serialize(file, state);
+                    }
 
-                labelUpdateSuccess.Visible = true;
+                    if (result.ModifiedCount == 1)
+                    {
+                        doneIcon.Visible = true;
+                        errorIcon.Visible = false;
+
+                        labelUpdateSuccess.Visible = true;
+                    }
+                    else
+                    {
+                        doneIcon.Visible = false;
+                        errorIcon.Visible = true;
+                    }
+                }
+                else
+                {
+                    MessageBox.Show("Неверный день, месяц или год", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
             }
             else
             {
-                doneIcon.Visible = false;
-                errorIcon.Visible = true;
+                MessageBox.Show("Неверный формат даты", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
@@ -229,5 +251,6 @@ namespace DEX
             auth.Show();
             this.Close();
         }
+
     }
 }
