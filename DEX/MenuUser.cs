@@ -4,6 +4,7 @@ using System;
 using System.Drawing;
 using System.IO;
 using System.Runtime.InteropServices;
+using System.Runtime.Serialization.Formatters.Binary;
 using System.Windows.Forms;
 using static DEX.Authorization;
 
@@ -185,6 +186,22 @@ namespace DEX
                 .Set("lName", tbLName.Text);
             var collection = _database.GetCollection<BsonDocument>("Users");
             var result = collection.UpdateOne(filter, update);
+
+            UserState state;
+            using (FileStream file = new FileStream("userstate.dat", FileMode.Open))
+            {
+                BinaryFormatter formatter = new BinaryFormatter();
+                state = (UserState)formatter.Deserialize(file);
+            }
+
+            state.FName = tbFName.Text;
+            state.LName = tbLName.Text;
+
+            using (FileStream file = new FileStream("userstate.dat", FileMode.Create))
+            {
+                BinaryFormatter formatter = new BinaryFormatter();
+                formatter.Serialize(file, state);
+            }
 
             if (result.ModifiedCount == 1)
             {
