@@ -1,28 +1,18 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Configuration;
-using System.Data;
-using System.Drawing;
+﻿using MongoDB.Bson;
+using System;
 using System.IO;
-using System.Linq;
 using System.Runtime.InteropServices;
-using System.Text;
-using System.Threading.Tasks;
+using System.Runtime.Serialization.Formatters.Binary;
 using System.Windows.Forms;
-using MongoDB.Bson;
-using MongoDB.Driver;
+using static DEX.Authorization;
 
 namespace DEX
 {
     public partial class Begin : Form
     {
-        int pw;
-
         public Begin()
         {
             InitializeComponent();
-            pw = panel1.Width;
         }
 
         private void Form1_FormClosing(object sender, FormClosingEventArgs e)
@@ -36,9 +26,32 @@ namespace DEX
 
         private void button1_Click(object sender, EventArgs e)
         {
-            Authorization authForm = new Authorization();
-            authForm.Show();
-            this.Close();
+            string file = "userstate.dat";
+            if (File.Exists(file))
+            {
+                using (FileStream stream = new FileStream(file, FileMode.Open))
+                {
+                    BinaryFormatter formatter = new BinaryFormatter();
+                    UserState state = formatter.Deserialize(stream) as UserState;
+
+                    // Создание объекта UserCredentials из состояния авторизации пользователя
+                    UserCredentials credentials = new UserCredentials();
+                    credentials.Username = state.Username;
+                    credentials.FName = state.FName;
+                    credentials.LName = state.LName;
+                    credentials.Photo = new BsonBinaryData(state.Photo);
+
+                    MenuUser menu = new MenuUser(credentials);
+                    menu.Show();
+                    this.Close();
+                }
+            }
+            else
+            {
+                Authorization authForm = new Authorization();
+                authForm.Show();
+                this.Close();
+            }
         }
 
         private void button1_Click_1(object sender, EventArgs e)

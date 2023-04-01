@@ -2,8 +2,10 @@
 using MongoDB.Driver;
 using System;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Runtime.InteropServices;
+using System.Runtime.Serialization.Formatters.Binary;
 using System.Windows.Forms;
 
 namespace DEX
@@ -35,6 +37,16 @@ namespace DEX
             public string Activity { get; set; }
             public string Phone { get; set; }
         }
+
+        [Serializable]
+        public class UserState
+        {
+            public string Username { get; set; }
+            public string FName { get; set; }
+            public string LName { get; set; }
+            public byte[] Photo { get; set; }
+        }
+
 
         private void buttonLogin_Click(object sender, EventArgs e)
         {
@@ -68,6 +80,18 @@ namespace DEX
                         credentials.FName = result.GetValue("fName").AsString;
                         credentials.LName = result.GetValue("lName").AsString;
                         credentials.Photo = result.GetValue("photo").AsBsonBinaryData;
+
+                        UserState state = new UserState();
+                        state.Username = credentials.Username;
+                        state.FName = credentials.FName;
+                        state.LName = credentials.LName;
+                        state.Photo = credentials.Photo.RawValue as byte[];
+
+                        using (FileStream file = new FileStream("userstate.dat", FileMode.Create))
+                        {
+                            BinaryFormatter formatter = new BinaryFormatter();
+                            formatter.Serialize(file, state);
+                        }
 
                         MenuUser menu = new MenuUser(credentials);
                         menu.Show();

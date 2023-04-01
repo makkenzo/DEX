@@ -31,6 +31,8 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MenuUser));
             this.panel1 = new System.Windows.Forms.Panel();
             this.label1 = new System.Windows.Forms.Label();
+            this.pictureBox2 = new System.Windows.Forms.PictureBox();
+            this.button1 = new System.Windows.Forms.Button();
             this.panel2 = new System.Windows.Forms.Panel();
             this.buttonSettings = new System.Windows.Forms.Button();
             this.buttonLogOut = new System.Windows.Forms.Button();
@@ -40,37 +42,35 @@
             this.buttonRating = new System.Windows.Forms.Button();
             this.buttonBalance = new System.Windows.Forms.Button();
             this.buttonProfile = new System.Windows.Forms.Button();
+            this.buttonSettingsLeft = new System.Windows.Forms.Panel();
+            this.buttonCryptocurrenciesLeft = new System.Windows.Forms.Panel();
+            this.buttonHistoryLeft = new System.Windows.Forms.Panel();
+            this.buttonLotsLeft = new System.Windows.Forms.Panel();
+            this.buttonRatingLeft = new System.Windows.Forms.Panel();
+            this.buttonBalanceLeft = new System.Windows.Forms.Panel();
             this.buttonProfileLeft = new System.Windows.Forms.Panel();
             this.panelProfile = new System.Windows.Forms.Panel();
-            this.labelUsername = new System.Windows.Forms.Label();
-            this.panel4 = new System.Windows.Forms.Panel();
-            this.labelFName = new System.Windows.Forms.Label();
-            this.tbFName = new System.Windows.Forms.TextBox();
-            this.panel5 = new System.Windows.Forms.Panel();
-            this.labelLName = new System.Windows.Forms.Label();
-            this.tbLName = new System.Windows.Forms.TextBox();
-            this.buttonBalanceLeft = new System.Windows.Forms.Panel();
-            this.buttonRatingLeft = new System.Windows.Forms.Panel();
-            this.buttonLotsLeft = new System.Windows.Forms.Panel();
-            this.buttonHistoryLeft = new System.Windows.Forms.Panel();
-            this.buttonCryptocurrenciesLeft = new System.Windows.Forms.Panel();
-            this.buttonSettingsLeft = new System.Windows.Forms.Panel();
-            this.buttonSave = new System.Windows.Forms.Button();
+            this.labelUpdateSuccess = new System.Windows.Forms.Label();
             this.errorIcon = new System.Windows.Forms.PictureBox();
             this.doneIcon = new System.Windows.Forms.PictureBox();
+            this.buttonSave = new System.Windows.Forms.Button();
             this.buttonLNameEdit = new System.Windows.Forms.Button();
             this.buttonFNameEdit = new System.Windows.Forms.Button();
+            this.panel5 = new System.Windows.Forms.Panel();
+            this.labelLName = new System.Windows.Forms.Label();
+            this.panel4 = new System.Windows.Forms.Panel();
+            this.tbLName = new System.Windows.Forms.TextBox();
+            this.labelFName = new System.Windows.Forms.Label();
+            this.tbFName = new System.Windows.Forms.TextBox();
+            this.labelUsername = new System.Windows.Forms.Label();
             this.profileImg = new System.Windows.Forms.PictureBox();
-            this.pictureBox2 = new System.Windows.Forms.PictureBox();
-            this.button1 = new System.Windows.Forms.Button();
-            this.labelUpdateSuccess = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             this.panel2.SuspendLayout();
             this.panelProfile.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.errorIcon)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.doneIcon)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.profileImg)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             this.SuspendLayout();
             // 
             // panel1
@@ -97,6 +97,31 @@
             this.label1.Size = new System.Drawing.Size(438, 25);
             this.label1.TabIndex = 11;
             this.label1.Text = "Decentralized Cryptocurrency Application";
+            // 
+            // pictureBox2
+            // 
+            this.pictureBox2.Image = global::DEX.Properties.Resources.logo_color1;
+            this.pictureBox2.Location = new System.Drawing.Point(12, 1);
+            this.pictureBox2.Name = "pictureBox2";
+            this.pictureBox2.Size = new System.Drawing.Size(43, 44);
+            this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBox2.TabIndex = 10;
+            this.pictureBox2.TabStop = false;
+            // 
+            // button1
+            // 
+            this.button1.BackgroundImage = global::DEX.Properties.Resources.close_button__1_;
+            this.button1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+            this.button1.Dock = System.Windows.Forms.DockStyle.Right;
+            this.button1.FlatAppearance.BorderSize = 0;
+            this.button1.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Red;
+            this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button1.Location = new System.Drawing.Point(1239, 5);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(36, 36);
+            this.button1.TabIndex = 0;
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // panel2
             // 
@@ -152,6 +177,7 @@
             this.buttonLogOut.TabIndex = 9;
             this.buttonLogOut.Text = "Выйти из аккаунта";
             this.buttonLogOut.UseVisualStyleBackColor = true;
+            this.buttonLogOut.Click += new System.EventHandler(this.buttonLogOut_Click);
             // 
             // buttonCryptocurrencies
             // 
@@ -249,6 +275,54 @@
             this.buttonProfile.UseVisualStyleBackColor = true;
             this.buttonProfile.Click += new System.EventHandler(this.buttonProfile_Click);
             // 
+            // buttonSettingsLeft
+            // 
+            this.buttonSettingsLeft.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(156)))), ((int)(((byte)(136)))), ((int)(((byte)(255)))));
+            this.buttonSettingsLeft.Location = new System.Drawing.Point(0, 582);
+            this.buttonSettingsLeft.Name = "buttonSettingsLeft";
+            this.buttonSettingsLeft.Size = new System.Drawing.Size(8, 37);
+            this.buttonSettingsLeft.TabIndex = 7;
+            // 
+            // buttonCryptocurrenciesLeft
+            // 
+            this.buttonCryptocurrenciesLeft.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(156)))), ((int)(((byte)(136)))), ((int)(((byte)(255)))));
+            this.buttonCryptocurrenciesLeft.Location = new System.Drawing.Point(0, 215);
+            this.buttonCryptocurrenciesLeft.Name = "buttonCryptocurrenciesLeft";
+            this.buttonCryptocurrenciesLeft.Size = new System.Drawing.Size(8, 37);
+            this.buttonCryptocurrenciesLeft.TabIndex = 7;
+            // 
+            // buttonHistoryLeft
+            // 
+            this.buttonHistoryLeft.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(156)))), ((int)(((byte)(136)))), ((int)(((byte)(255)))));
+            this.buttonHistoryLeft.Location = new System.Drawing.Point(0, 172);
+            this.buttonHistoryLeft.Name = "buttonHistoryLeft";
+            this.buttonHistoryLeft.Size = new System.Drawing.Size(8, 37);
+            this.buttonHistoryLeft.TabIndex = 7;
+            // 
+            // buttonLotsLeft
+            // 
+            this.buttonLotsLeft.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(156)))), ((int)(((byte)(136)))), ((int)(((byte)(255)))));
+            this.buttonLotsLeft.Location = new System.Drawing.Point(0, 129);
+            this.buttonLotsLeft.Name = "buttonLotsLeft";
+            this.buttonLotsLeft.Size = new System.Drawing.Size(8, 37);
+            this.buttonLotsLeft.TabIndex = 7;
+            // 
+            // buttonRatingLeft
+            // 
+            this.buttonRatingLeft.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(156)))), ((int)(((byte)(136)))), ((int)(((byte)(255)))));
+            this.buttonRatingLeft.Location = new System.Drawing.Point(0, 86);
+            this.buttonRatingLeft.Name = "buttonRatingLeft";
+            this.buttonRatingLeft.Size = new System.Drawing.Size(8, 37);
+            this.buttonRatingLeft.TabIndex = 7;
+            // 
+            // buttonBalanceLeft
+            // 
+            this.buttonBalanceLeft.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(156)))), ((int)(((byte)(136)))), ((int)(((byte)(255)))));
+            this.buttonBalanceLeft.Location = new System.Drawing.Point(0, 43);
+            this.buttonBalanceLeft.Name = "buttonBalanceLeft";
+            this.buttonBalanceLeft.Size = new System.Drawing.Size(8, 37);
+            this.buttonBalanceLeft.TabIndex = 7;
+            // 
             // buttonProfileLeft
             // 
             this.buttonProfileLeft.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(156)))), ((int)(((byte)(136)))), ((int)(((byte)(255)))));
@@ -280,151 +354,18 @@
             this.panelProfile.TabIndex = 7;
             this.panelProfile.Visible = false;
             // 
-            // labelUsername
+            // labelUpdateSuccess
             // 
-            this.labelUsername.AutoSize = true;
-            this.labelUsername.Font = new System.Drawing.Font("Roboto", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.labelUsername.ForeColor = System.Drawing.Color.White;
-            this.labelUsername.Location = new System.Drawing.Point(446, 6);
-            this.labelUsername.Name = "labelUsername";
-            this.labelUsername.Size = new System.Drawing.Size(109, 27);
-            this.labelUsername.TabIndex = 1;
-            this.labelUsername.Text = "username";
-            // 
-            // panel4
-            // 
-            this.panel4.BackColor = System.Drawing.Color.White;
-            this.panel4.Location = new System.Drawing.Point(366, 147);
-            this.panel4.Name = "panel4";
-            this.panel4.Size = new System.Drawing.Size(291, 1);
-            this.panel4.TabIndex = 13;
-            // 
-            // labelFName
-            // 
-            this.labelFName.AutoSize = true;
-            this.labelFName.BackColor = System.Drawing.Color.Transparent;
-            this.labelFName.Font = new System.Drawing.Font("Roboto", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.labelFName.ForeColor = System.Drawing.SystemColors.Control;
-            this.labelFName.Location = new System.Drawing.Point(663, 121);
-            this.labelFName.Name = "labelFName";
-            this.labelFName.Size = new System.Drawing.Size(41, 19);
-            this.labelFName.TabIndex = 12;
-            this.labelFName.Text = "Имя";
-            // 
-            // tbFName
-            // 
-            this.tbFName.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(44)))), ((int)(((byte)(43)))), ((int)(((byte)(60)))));
-            this.tbFName.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.tbFName.Enabled = false;
-            this.tbFName.Font = new System.Drawing.Font("Roboto", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.tbFName.ForeColor = System.Drawing.Color.Gray;
-            this.tbFName.Location = new System.Drawing.Point(366, 119);
-            this.tbFName.Name = "tbFName";
-            this.tbFName.Size = new System.Drawing.Size(291, 23);
-            this.tbFName.TabIndex = 11;
-            this.tbFName.Text = "Введите имя";
-            this.tbFName.Click += new System.EventHandler(this.tbFName_Click);
-            this.tbFName.TextChanged += new System.EventHandler(this.tbFName_TextChanged);
-            // 
-            // panel5
-            // 
-            this.panel5.BackColor = System.Drawing.Color.White;
-            this.panel5.Location = new System.Drawing.Point(366, 190);
-            this.panel5.Name = "panel5";
-            this.panel5.Size = new System.Drawing.Size(291, 1);
-            this.panel5.TabIndex = 16;
-            // 
-            // labelLName
-            // 
-            this.labelLName.AutoSize = true;
-            this.labelLName.BackColor = System.Drawing.Color.Transparent;
-            this.labelLName.Font = new System.Drawing.Font("Roboto", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.labelLName.ForeColor = System.Drawing.SystemColors.Control;
-            this.labelLName.Location = new System.Drawing.Point(663, 164);
-            this.labelLName.Name = "labelLName";
-            this.labelLName.Size = new System.Drawing.Size(78, 19);
-            this.labelLName.TabIndex = 15;
-            this.labelLName.Text = "Фамилия";
-            // 
-            // tbLName
-            // 
-            this.tbLName.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(44)))), ((int)(((byte)(43)))), ((int)(((byte)(60)))));
-            this.tbLName.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.tbLName.Enabled = false;
-            this.tbLName.Font = new System.Drawing.Font("Roboto", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.tbLName.ForeColor = System.Drawing.Color.Gray;
-            this.tbLName.Location = new System.Drawing.Point(366, 162);
-            this.tbLName.Name = "tbLName";
-            this.tbLName.Size = new System.Drawing.Size(291, 23);
-            this.tbLName.TabIndex = 14;
-            this.tbLName.Text = "Введите фамилию";
-            this.tbLName.Click += new System.EventHandler(this.tbLName_Click);
-            this.tbLName.TextChanged += new System.EventHandler(this.tbLName_TextChanged);
-            // 
-            // buttonBalanceLeft
-            // 
-            this.buttonBalanceLeft.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(156)))), ((int)(((byte)(136)))), ((int)(((byte)(255)))));
-            this.buttonBalanceLeft.Location = new System.Drawing.Point(0, 43);
-            this.buttonBalanceLeft.Name = "buttonBalanceLeft";
-            this.buttonBalanceLeft.Size = new System.Drawing.Size(8, 37);
-            this.buttonBalanceLeft.TabIndex = 7;
-            // 
-            // buttonRatingLeft
-            // 
-            this.buttonRatingLeft.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(156)))), ((int)(((byte)(136)))), ((int)(((byte)(255)))));
-            this.buttonRatingLeft.Location = new System.Drawing.Point(0, 86);
-            this.buttonRatingLeft.Name = "buttonRatingLeft";
-            this.buttonRatingLeft.Size = new System.Drawing.Size(8, 37);
-            this.buttonRatingLeft.TabIndex = 7;
-            // 
-            // buttonLotsLeft
-            // 
-            this.buttonLotsLeft.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(156)))), ((int)(((byte)(136)))), ((int)(((byte)(255)))));
-            this.buttonLotsLeft.Location = new System.Drawing.Point(0, 129);
-            this.buttonLotsLeft.Name = "buttonLotsLeft";
-            this.buttonLotsLeft.Size = new System.Drawing.Size(8, 37);
-            this.buttonLotsLeft.TabIndex = 7;
-            // 
-            // buttonHistoryLeft
-            // 
-            this.buttonHistoryLeft.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(156)))), ((int)(((byte)(136)))), ((int)(((byte)(255)))));
-            this.buttonHistoryLeft.Location = new System.Drawing.Point(0, 172);
-            this.buttonHistoryLeft.Name = "buttonHistoryLeft";
-            this.buttonHistoryLeft.Size = new System.Drawing.Size(8, 37);
-            this.buttonHistoryLeft.TabIndex = 7;
-            // 
-            // buttonCryptocurrenciesLeft
-            // 
-            this.buttonCryptocurrenciesLeft.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(156)))), ((int)(((byte)(136)))), ((int)(((byte)(255)))));
-            this.buttonCryptocurrenciesLeft.Location = new System.Drawing.Point(0, 215);
-            this.buttonCryptocurrenciesLeft.Name = "buttonCryptocurrenciesLeft";
-            this.buttonCryptocurrenciesLeft.Size = new System.Drawing.Size(8, 37);
-            this.buttonCryptocurrenciesLeft.TabIndex = 7;
-            // 
-            // buttonSettingsLeft
-            // 
-            this.buttonSettingsLeft.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(156)))), ((int)(((byte)(136)))), ((int)(((byte)(255)))));
-            this.buttonSettingsLeft.Location = new System.Drawing.Point(0, 582);
-            this.buttonSettingsLeft.Name = "buttonSettingsLeft";
-            this.buttonSettingsLeft.Size = new System.Drawing.Size(8, 37);
-            this.buttonSettingsLeft.TabIndex = 7;
-            // 
-            // buttonSave
-            // 
-            this.buttonSave.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(44)))), ((int)(((byte)(43)))), ((int)(((byte)(60)))));
-            this.buttonSave.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(140)))), ((int)(((byte)(122)))), ((int)(((byte)(230)))));
-            this.buttonSave.FlatAppearance.BorderSize = 2;
-            this.buttonSave.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.buttonSave.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.buttonSave.Font = new System.Drawing.Font("Roboto", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.buttonSave.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(140)))), ((int)(((byte)(122)))), ((int)(((byte)(230)))));
-            this.buttonSave.Location = new System.Drawing.Point(881, 620);
-            this.buttonSave.Name = "buttonSave";
-            this.buttonSave.Size = new System.Drawing.Size(123, 42);
-            this.buttonSave.TabIndex = 18;
-            this.buttonSave.Text = "Сохранить";
-            this.buttonSave.UseVisualStyleBackColor = false;
-            this.buttonSave.Click += new System.EventHandler(this.buttonSave_Click);
+            this.labelUpdateSuccess.AutoSize = true;
+            this.labelUpdateSuccess.BackColor = System.Drawing.Color.Transparent;
+            this.labelUpdateSuccess.Font = new System.Drawing.Font("Roboto", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.labelUpdateSuccess.ForeColor = System.Drawing.SystemColors.Control;
+            this.labelUpdateSuccess.Location = new System.Drawing.Point(506, 632);
+            this.labelUpdateSuccess.Name = "labelUpdateSuccess";
+            this.labelUpdateSuccess.Size = new System.Drawing.Size(333, 19);
+            this.labelUpdateSuccess.TabIndex = 21;
+            this.labelUpdateSuccess.Text = "Рекомендуется перезапустить приложение";
+            this.labelUpdateSuccess.Visible = false;
             // 
             // errorIcon
             // 
@@ -447,6 +388,23 @@
             this.doneIcon.TabIndex = 19;
             this.doneIcon.TabStop = false;
             this.doneIcon.Visible = false;
+            // 
+            // buttonSave
+            // 
+            this.buttonSave.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(44)))), ((int)(((byte)(43)))), ((int)(((byte)(60)))));
+            this.buttonSave.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(140)))), ((int)(((byte)(122)))), ((int)(((byte)(230)))));
+            this.buttonSave.FlatAppearance.BorderSize = 2;
+            this.buttonSave.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.buttonSave.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonSave.Font = new System.Drawing.Font("Roboto", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.buttonSave.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(140)))), ((int)(((byte)(122)))), ((int)(((byte)(230)))));
+            this.buttonSave.Location = new System.Drawing.Point(881, 620);
+            this.buttonSave.Name = "buttonSave";
+            this.buttonSave.Size = new System.Drawing.Size(123, 42);
+            this.buttonSave.TabIndex = 18;
+            this.buttonSave.Text = "Сохранить";
+            this.buttonSave.UseVisualStyleBackColor = false;
+            this.buttonSave.Click += new System.EventHandler(this.buttonSave_Click);
             // 
             // buttonLNameEdit
             // 
@@ -479,6 +437,87 @@
             this.buttonFNameEdit.UseVisualStyleBackColor = true;
             this.buttonFNameEdit.Click += new System.EventHandler(this.buttonFNameEdit_Click);
             // 
+            // panel5
+            // 
+            this.panel5.BackColor = System.Drawing.Color.White;
+            this.panel5.Location = new System.Drawing.Point(366, 190);
+            this.panel5.Name = "panel5";
+            this.panel5.Size = new System.Drawing.Size(291, 1);
+            this.panel5.TabIndex = 16;
+            // 
+            // labelLName
+            // 
+            this.labelLName.AutoSize = true;
+            this.labelLName.BackColor = System.Drawing.Color.Transparent;
+            this.labelLName.Font = new System.Drawing.Font("Roboto", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.labelLName.ForeColor = System.Drawing.SystemColors.Control;
+            this.labelLName.Location = new System.Drawing.Point(663, 164);
+            this.labelLName.Name = "labelLName";
+            this.labelLName.Size = new System.Drawing.Size(78, 19);
+            this.labelLName.TabIndex = 15;
+            this.labelLName.Text = "Фамилия";
+            // 
+            // panel4
+            // 
+            this.panel4.BackColor = System.Drawing.Color.White;
+            this.panel4.Location = new System.Drawing.Point(366, 147);
+            this.panel4.Name = "panel4";
+            this.panel4.Size = new System.Drawing.Size(291, 1);
+            this.panel4.TabIndex = 13;
+            // 
+            // tbLName
+            // 
+            this.tbLName.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(44)))), ((int)(((byte)(43)))), ((int)(((byte)(60)))));
+            this.tbLName.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.tbLName.Enabled = false;
+            this.tbLName.Font = new System.Drawing.Font("Roboto", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.tbLName.ForeColor = System.Drawing.Color.Gray;
+            this.tbLName.Location = new System.Drawing.Point(366, 162);
+            this.tbLName.Name = "tbLName";
+            this.tbLName.Size = new System.Drawing.Size(291, 23);
+            this.tbLName.TabIndex = 14;
+            this.tbLName.Text = "Введите фамилию";
+            this.tbLName.Click += new System.EventHandler(this.tbLName_Click);
+            this.tbLName.TextChanged += new System.EventHandler(this.tbLName_TextChanged);
+            // 
+            // labelFName
+            // 
+            this.labelFName.AutoSize = true;
+            this.labelFName.BackColor = System.Drawing.Color.Transparent;
+            this.labelFName.Font = new System.Drawing.Font("Roboto", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.labelFName.ForeColor = System.Drawing.SystemColors.Control;
+            this.labelFName.Location = new System.Drawing.Point(663, 121);
+            this.labelFName.Name = "labelFName";
+            this.labelFName.Size = new System.Drawing.Size(41, 19);
+            this.labelFName.TabIndex = 12;
+            this.labelFName.Text = "Имя";
+            // 
+            // tbFName
+            // 
+            this.tbFName.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(44)))), ((int)(((byte)(43)))), ((int)(((byte)(60)))));
+            this.tbFName.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.tbFName.Enabled = false;
+            this.tbFName.Font = new System.Drawing.Font("Roboto", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.tbFName.ForeColor = System.Drawing.Color.Gray;
+            this.tbFName.Location = new System.Drawing.Point(366, 119);
+            this.tbFName.Name = "tbFName";
+            this.tbFName.Size = new System.Drawing.Size(291, 23);
+            this.tbFName.TabIndex = 11;
+            this.tbFName.Text = "Введите имя";
+            this.tbFName.Click += new System.EventHandler(this.tbFName_Click);
+            this.tbFName.TextChanged += new System.EventHandler(this.tbFName_TextChanged);
+            // 
+            // labelUsername
+            // 
+            this.labelUsername.AutoSize = true;
+            this.labelUsername.Font = new System.Drawing.Font("Roboto", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.labelUsername.ForeColor = System.Drawing.Color.White;
+            this.labelUsername.Location = new System.Drawing.Point(446, 6);
+            this.labelUsername.Name = "labelUsername";
+            this.labelUsername.Size = new System.Drawing.Size(109, 27);
+            this.labelUsername.TabIndex = 1;
+            this.labelUsername.Text = "username";
+            // 
             // profileImg
             // 
             this.profileImg.Location = new System.Drawing.Point(340, 6);
@@ -487,44 +526,6 @@
             this.profileImg.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.profileImg.TabIndex = 0;
             this.profileImg.TabStop = false;
-            // 
-            // pictureBox2
-            // 
-            this.pictureBox2.Image = global::DEX.Properties.Resources.logo_color1;
-            this.pictureBox2.Location = new System.Drawing.Point(12, 1);
-            this.pictureBox2.Name = "pictureBox2";
-            this.pictureBox2.Size = new System.Drawing.Size(43, 44);
-            this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pictureBox2.TabIndex = 10;
-            this.pictureBox2.TabStop = false;
-            // 
-            // button1
-            // 
-            this.button1.BackgroundImage = global::DEX.Properties.Resources.close_button__1_;
-            this.button1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
-            this.button1.Dock = System.Windows.Forms.DockStyle.Right;
-            this.button1.FlatAppearance.BorderSize = 0;
-            this.button1.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Red;
-            this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button1.Location = new System.Drawing.Point(1239, 5);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(36, 36);
-            this.button1.TabIndex = 0;
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
-            // 
-            // labelUpdateSuccess
-            // 
-            this.labelUpdateSuccess.AutoSize = true;
-            this.labelUpdateSuccess.BackColor = System.Drawing.Color.Transparent;
-            this.labelUpdateSuccess.Font = new System.Drawing.Font("Roboto", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.labelUpdateSuccess.ForeColor = System.Drawing.SystemColors.Control;
-            this.labelUpdateSuccess.Location = new System.Drawing.Point(506, 632);
-            this.labelUpdateSuccess.Name = "labelUpdateSuccess";
-            this.labelUpdateSuccess.Size = new System.Drawing.Size(333, 19);
-            this.labelUpdateSuccess.TabIndex = 21;
-            this.labelUpdateSuccess.Text = "Рекомендуется перезапустить приложение";
-            this.labelUpdateSuccess.Visible = false;
             // 
             // MenuUser
             // 
@@ -545,13 +546,13 @@
             this.Load += new System.EventHandler(this.MenuUser_Load);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
             this.panel2.ResumeLayout(false);
             this.panelProfile.ResumeLayout(false);
             this.panelProfile.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.errorIcon)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.doneIcon)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.profileImg)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
             this.ResumeLayout(false);
 
         }

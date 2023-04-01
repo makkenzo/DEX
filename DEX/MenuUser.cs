@@ -199,5 +199,18 @@ namespace DEX
                 errorIcon.Visible = true;
             }
         }
+
+        private void buttonLogOut_Click(object sender, EventArgs e)
+        {
+            string file = "userstate.dat";
+            if (File.Exists(file))
+            {
+                File.Delete(file);
+            }
+
+            Authorization auth = new Authorization();
+            auth.Show();
+            this.Close();
+        }
     }
 }
