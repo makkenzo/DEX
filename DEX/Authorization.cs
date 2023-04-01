@@ -10,11 +10,9 @@ namespace DEX
 {
     public partial class Authorization : Form
     {
-        int pw;
         public Authorization()
         {
             InitializeComponent();
-            pw = panel1.Width;
         }
 
         private void linkLabel1_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
@@ -43,13 +41,11 @@ namespace DEX
             labelErr.Visible = false;
 
             var database = DBManager.GetDatabase();
-
             var collection = database.GetCollection<BsonDocument>("Users");
 
             string user = tbLogin.Text;
 
             var filter = Builders<BsonDocument>.Filter.Eq("username", user);
-
             var result = collection.Find(filter).FirstOrDefault();
 
             if (result != null)
@@ -123,6 +119,11 @@ namespace DEX
         private void tbPass_Click(object sender, EventArgs e)
         {
             tbPass.SelectAll();
+        }
+
+        private void Authorization_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }

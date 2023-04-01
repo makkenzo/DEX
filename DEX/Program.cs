@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Configuration;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -19,9 +20,6 @@ namespace DEX
 
             Begin begin = new Begin();
             Application.Run(begin);
-
-            /*MenuUser menuUser = new MenuUser();
-            Application.Run(menuUser);*/
         }
     }
 }

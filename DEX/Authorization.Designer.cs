@@ -258,6 +258,7 @@ namespace DEX
             this.Name = "Authorization";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Authorization";
+            this.Load += new System.EventHandler(this.Authorization_Load);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
