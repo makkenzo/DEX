@@ -165,6 +165,7 @@
     <Compile Include="Begin.Designer.cs">
       <DependentUpon>Begin.cs</DependentUpon>
     </Compile>
+    <Compile Include="DBManager.cs" />
     <Compile Include="MenuAdmin.cs">
       <SubType>Form</SubType>
     </Compile>

@@ -1,16 +1,10 @@
-﻿using MongoDB.Driver;
-using MongoDB.Bson;
+﻿using MongoDB.Bson;
+using MongoDB.Driver;
 using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Configuration;
-using System.Data;
 using System.Drawing;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
 using System.Runtime.InteropServices;
+using System.Windows.Forms;
 
 namespace DEX
 {
@@ -34,10 +28,7 @@ namespace DEX
         {
             labelErr.Visible = false;
 
-            var settings = MongoClientSettings.FromConnectionString($"mongodb+srv://root:{ConfigurationManager.AppSettings.Get("MyPass")}@dexcluster.mx0indr.mongodb.net/?retryWrites=true&w=majority");
-            settings.ServerApi = new ServerApi(ServerApiVersion.V1);
-            var client = new MongoClient(settings);
-            var database = client.GetDatabase("DEXDB");
+            var database = DBManager.GetDatabase();
 
             var collection = database.GetCollection<BsonDocument>("Users");
 
