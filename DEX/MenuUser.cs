@@ -6,6 +6,7 @@ using System.Globalization;
 using System.IO;
 using System.Runtime.InteropServices;
 using System.Runtime.Serialization.Formatters.Binary;
+using System.Text.RegularExpressions;
 using System.Windows.Forms;
 using static DEX.Authorization;
 
@@ -16,6 +17,8 @@ namespace DEX
         private IMongoDatabase _database;
         private UserCredentials _userCredentials;
 
+        private byte[] imageBinaryData;
+
         public MenuUser(UserCredentials userCredentials)
         {
             InitializeComponent();
@@ -25,6 +28,8 @@ namespace DEX
 
         private void MenuUser_Load(object sender, EventArgs e)
         {
+            buttonImageEdit.BackColor = Color.FromArgb(128, Color.Black);
+
             panelProfile.Visible = true;
 
             buttonProfileLeft.Visible           = true;
@@ -44,6 +49,10 @@ namespace DEX
 
             tbRegistrationDate.Text = _userCredentials.RegistrationDate;
             tbBirthDate.Text = _userCredentials.BirthDate;
+
+            tbEmail.Text = _userCredentials.Email;
+            tbUserID.Text = _userCredentials.UserID;
+            tbPhone.Text = _userCredentials.Phone;
 
             var binaryData = _userCredentials.Photo.AsBsonBinaryData;
             var bytes = binaryData.AsByteArray;
@@ -178,6 +187,44 @@ namespace DEX
             tbBirthDate.Enabled = true;
         }
 
+        private void buttonEmailEdit_Click(object sender, EventArgs e)
+        {
+            tbEmail.Enabled = true;
+        }
+
+        private void buttonUserIDEdit_Click(object sender, EventArgs e)
+        {
+            tbUserID.Enabled = true;
+        }
+
+        private void buttonPhoneEdit_Click(object sender, EventArgs e)
+        {
+            tbPhone.Enabled = true;
+        }
+
+        private void buttonImageEdit_Click(object sender, EventArgs e)
+        {
+            OpenFileDialog openFileDialog = new OpenFileDialog();
+
+            if (openFileDialog.ShowDialog() == DialogResult.OK)
+            {
+                imageBinaryData = File.ReadAllBytes(openFileDialog.FileName);
+                profileImg.Image = byteArrayToImage(imageBinaryData);
+            }
+        }
+
+        private bool IsValidEmail(string email)
+        {
+            string pattern = @"^[^@\s]+@[^@\s]+\.[^@\s]+$";
+            return Regex.IsMatch(email, pattern);
+        }
+
+        private bool IsValidPhoneNumber(string phoneNumber)
+        {
+            Regex regex = new Regex(@"^\+\d{11}$");
+            return regex.IsMatch(phoneNumber);
+        }
+
         private void buttonSave_Click(object sender, EventArgs e)
         {
             string inputDate = tbBirthDate.Text;
@@ -190,11 +237,30 @@ namespace DEX
                     && dateValue.Month >= 1 && dateValue.Month <= 12
                     && dateValue.Day >= 1 && dateValue.Day <= DateTime.DaysInMonth(dateValue.Year, dateValue.Month))
                 {
+                    if (!IsValidEmail(tbEmail.Text))
+                    {
+                        MessageBox.Show("Введите корректный адрес почты.", "Invalid Input", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                        return;
+                    }
+                    if (tbUserID.Text.Length != 12)
+                    {
+                        MessageBox.Show("Неверный формат ИНН. Введите 12 символов.");
+                        return;
+                    }
+                    if (!IsValidPhoneNumber(tbPhone.Text))
+                    {
+                        MessageBox.Show("Номер телефона введен некорректно. Пожалуйста, введите номер в формате +xxxxxxxxxxx.");
+                        return;
+                    }
                     var filter = Builders<BsonDocument>.Filter.Eq("username", _userCredentials.Username);
                     var update = Builders<BsonDocument>.Update
                         .Set("fName", tbFName.Text)
                         .Set("lName", tbLName.Text)
-                        .Set("birthDate", tbBirthDate.Text);
+                        .Set("birthDate", tbBirthDate.Text)
+                        .Set("email", tbEmail.Text)
+                        .Set("userID", tbUserID.Text)
+                        .Set("phone", tbPhone.Text)
+                        .Set("photo", new BsonBinaryData(imageBinaryData));
                     var collection = _database.GetCollection<BsonDocument>("Users");
                     var result = collection.UpdateOne(filter, update);
 
@@ -208,6 +274,10 @@ namespace DEX
                     state.FName = tbFName.Text;
                     state.LName = tbLName.Text;
                     state.BirthDate = tbBirthDate.Text;
+                    state.Email = tbEmail.Text;
+                    state.UserID = tbUserID.Text;
+                    state.Phone = tbPhone.Text;
+                    state.Photo = imageBinaryData;
 
                     using (FileStream file = new FileStream("userstate.dat", FileMode.Create))
                     {
@@ -239,6 +309,13 @@ namespace DEX
             }
         }
 
+        private Image byteArrayToImage(byte[] byteArray)
+        {
+            MemoryStream memoryStream = new MemoryStream(byteArray);
+            Image image = Image.FromStream(memoryStream);
+            return image;
+        }
+
         private void buttonLogOut_Click(object sender, EventArgs e)
         {
             string file = "userstate.dat";
@@ -251,6 +328,5 @@ namespace DEX
             auth.Show();
             this.Close();
         }
-
     }
 }

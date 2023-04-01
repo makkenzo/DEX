@@ -50,27 +50,41 @@
             this.buttonBalanceLeft = new System.Windows.Forms.Panel();
             this.buttonProfileLeft = new System.Windows.Forms.Panel();
             this.panelProfile = new System.Windows.Forms.Panel();
+            this.buttonImageEdit = new System.Windows.Forms.Button();
             this.labelUpdateSuccess = new System.Windows.Forms.Label();
             this.errorIcon = new System.Windows.Forms.PictureBox();
             this.doneIcon = new System.Windows.Forms.PictureBox();
             this.buttonSave = new System.Windows.Forms.Button();
+            this.buttonPhoneEdit = new System.Windows.Forms.Button();
+            this.buttonUserIDEdit = new System.Windows.Forms.Button();
+            this.buttonEmailEdit = new System.Windows.Forms.Button();
             this.buttonBirthDateEdit = new System.Windows.Forms.Button();
             this.buttonLNameEdit = new System.Windows.Forms.Button();
             this.buttonFNameEdit = new System.Windows.Forms.Button();
             this.panel3 = new System.Windows.Forms.Panel();
+            this.panel9 = new System.Windows.Forms.Panel();
+            this.panel8 = new System.Windows.Forms.Panel();
+            this.panel7 = new System.Windows.Forms.Panel();
             this.panel6 = new System.Windows.Forms.Panel();
             this.panel5 = new System.Windows.Forms.Panel();
             this.labelRegistrationDate = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
+            this.labelPhone = new System.Windows.Forms.Label();
+            this.labelUserID = new System.Windows.Forms.Label();
+            this.labelEmail = new System.Windows.Forms.Label();
+            this.labelBirthDate = new System.Windows.Forms.Label();
             this.labelLName = new System.Windows.Forms.Label();
             this.panel4 = new System.Windows.Forms.Panel();
             this.tbRegistrationDate = new System.Windows.Forms.TextBox();
+            this.tbPhone = new System.Windows.Forms.TextBox();
+            this.tbUserID = new System.Windows.Forms.TextBox();
+            this.tbEmail = new System.Windows.Forms.TextBox();
             this.tbBirthDate = new System.Windows.Forms.TextBox();
             this.tbLName = new System.Windows.Forms.TextBox();
             this.labelFName = new System.Windows.Forms.Label();
             this.tbFName = new System.Windows.Forms.TextBox();
             this.labelUsername = new System.Windows.Forms.Label();
             this.profileImg = new System.Windows.Forms.PictureBox();
+            this.openFileDialog = new System.Windows.Forms.OpenFileDialog();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             this.panel2.SuspendLayout();
@@ -340,21 +354,34 @@
             // 
             // panelProfile
             // 
+            this.panelProfile.Controls.Add(this.buttonImageEdit);
             this.panelProfile.Controls.Add(this.labelUpdateSuccess);
             this.panelProfile.Controls.Add(this.errorIcon);
             this.panelProfile.Controls.Add(this.doneIcon);
             this.panelProfile.Controls.Add(this.buttonSave);
+            this.panelProfile.Controls.Add(this.buttonPhoneEdit);
+            this.panelProfile.Controls.Add(this.buttonUserIDEdit);
+            this.panelProfile.Controls.Add(this.buttonEmailEdit);
             this.panelProfile.Controls.Add(this.buttonBirthDateEdit);
             this.panelProfile.Controls.Add(this.buttonLNameEdit);
             this.panelProfile.Controls.Add(this.buttonFNameEdit);
             this.panelProfile.Controls.Add(this.panel3);
+            this.panelProfile.Controls.Add(this.panel9);
+            this.panelProfile.Controls.Add(this.panel8);
+            this.panelProfile.Controls.Add(this.panel7);
             this.panelProfile.Controls.Add(this.panel6);
             this.panelProfile.Controls.Add(this.panel5);
             this.panelProfile.Controls.Add(this.labelRegistrationDate);
-            this.panelProfile.Controls.Add(this.label2);
+            this.panelProfile.Controls.Add(this.labelPhone);
+            this.panelProfile.Controls.Add(this.labelUserID);
+            this.panelProfile.Controls.Add(this.labelEmail);
+            this.panelProfile.Controls.Add(this.labelBirthDate);
             this.panelProfile.Controls.Add(this.labelLName);
             this.panelProfile.Controls.Add(this.panel4);
             this.panelProfile.Controls.Add(this.tbRegistrationDate);
+            this.panelProfile.Controls.Add(this.tbPhone);
+            this.panelProfile.Controls.Add(this.tbUserID);
+            this.panelProfile.Controls.Add(this.tbEmail);
             this.panelProfile.Controls.Add(this.tbBirthDate);
             this.panelProfile.Controls.Add(this.tbLName);
             this.panelProfile.Controls.Add(this.labelFName);
@@ -368,13 +395,28 @@
             this.panelProfile.TabIndex = 7;
             this.panelProfile.Visible = false;
             // 
+            // buttonImageEdit
+            // 
+            this.buttonImageEdit.BackgroundImage = global::DEX.Properties.Resources.edit_tools__1_;
+            this.buttonImageEdit.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.buttonImageEdit.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.buttonImageEdit.FlatAppearance.BorderSize = 0;
+            this.buttonImageEdit.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
+            this.buttonImageEdit.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonImageEdit.Location = new System.Drawing.Point(414, 80);
+            this.buttonImageEdit.Name = "buttonImageEdit";
+            this.buttonImageEdit.Size = new System.Drawing.Size(20, 20);
+            this.buttonImageEdit.TabIndex = 22;
+            this.buttonImageEdit.UseVisualStyleBackColor = true;
+            this.buttonImageEdit.Click += new System.EventHandler(this.buttonImageEdit_Click);
+            // 
             // labelUpdateSuccess
             // 
             this.labelUpdateSuccess.AutoSize = true;
             this.labelUpdateSuccess.BackColor = System.Drawing.Color.Transparent;
             this.labelUpdateSuccess.Font = new System.Drawing.Font("Roboto", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.labelUpdateSuccess.ForeColor = System.Drawing.SystemColors.Control;
-            this.labelUpdateSuccess.Location = new System.Drawing.Point(506, 632);
+            this.labelUpdateSuccess.Location = new System.Drawing.Point(502, 631);
             this.labelUpdateSuccess.Name = "labelUpdateSuccess";
             this.labelUpdateSuccess.Size = new System.Drawing.Size(333, 19);
             this.labelUpdateSuccess.TabIndex = 21;
@@ -384,7 +426,7 @@
             // errorIcon
             // 
             this.errorIcon.Image = global::DEX.Properties.Resources.multiply;
-            this.errorIcon.Location = new System.Drawing.Point(845, 626);
+            this.errorIcon.Location = new System.Drawing.Point(841, 625);
             this.errorIcon.Name = "errorIcon";
             this.errorIcon.Size = new System.Drawing.Size(30, 30);
             this.errorIcon.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
@@ -395,7 +437,7 @@
             // doneIcon
             // 
             this.doneIcon.Image = global::DEX.Properties.Resources.right;
-            this.doneIcon.Location = new System.Drawing.Point(845, 626);
+            this.doneIcon.Location = new System.Drawing.Point(841, 625);
             this.doneIcon.Name = "doneIcon";
             this.doneIcon.Size = new System.Drawing.Size(30, 30);
             this.doneIcon.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
@@ -420,6 +462,54 @@
             this.buttonSave.UseVisualStyleBackColor = false;
             this.buttonSave.Click += new System.EventHandler(this.buttonSave_Click);
             // 
+            // buttonPhoneEdit
+            // 
+            this.buttonPhoneEdit.BackgroundImage = global::DEX.Properties.Resources.edit_tools__1_;
+            this.buttonPhoneEdit.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.buttonPhoneEdit.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.buttonPhoneEdit.FlatAppearance.BorderColor = System.Drawing.Color.Black;
+            this.buttonPhoneEdit.FlatAppearance.BorderSize = 0;
+            this.buttonPhoneEdit.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
+            this.buttonPhoneEdit.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonPhoneEdit.Location = new System.Drawing.Point(340, 569);
+            this.buttonPhoneEdit.Name = "buttonPhoneEdit";
+            this.buttonPhoneEdit.Size = new System.Drawing.Size(20, 20);
+            this.buttonPhoneEdit.TabIndex = 17;
+            this.buttonPhoneEdit.UseVisualStyleBackColor = true;
+            this.buttonPhoneEdit.Click += new System.EventHandler(this.buttonPhoneEdit_Click);
+            // 
+            // buttonUserIDEdit
+            // 
+            this.buttonUserIDEdit.BackgroundImage = global::DEX.Properties.Resources.edit_tools__1_;
+            this.buttonUserIDEdit.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.buttonUserIDEdit.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.buttonUserIDEdit.FlatAppearance.BorderColor = System.Drawing.Color.Black;
+            this.buttonUserIDEdit.FlatAppearance.BorderSize = 0;
+            this.buttonUserIDEdit.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
+            this.buttonUserIDEdit.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonUserIDEdit.Location = new System.Drawing.Point(340, 494);
+            this.buttonUserIDEdit.Name = "buttonUserIDEdit";
+            this.buttonUserIDEdit.Size = new System.Drawing.Size(20, 20);
+            this.buttonUserIDEdit.TabIndex = 17;
+            this.buttonUserIDEdit.UseVisualStyleBackColor = true;
+            this.buttonUserIDEdit.Click += new System.EventHandler(this.buttonUserIDEdit_Click);
+            // 
+            // buttonEmailEdit
+            // 
+            this.buttonEmailEdit.BackgroundImage = global::DEX.Properties.Resources.edit_tools__1_;
+            this.buttonEmailEdit.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.buttonEmailEdit.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.buttonEmailEdit.FlatAppearance.BorderColor = System.Drawing.Color.Black;
+            this.buttonEmailEdit.FlatAppearance.BorderSize = 0;
+            this.buttonEmailEdit.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
+            this.buttonEmailEdit.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonEmailEdit.Location = new System.Drawing.Point(340, 419);
+            this.buttonEmailEdit.Name = "buttonEmailEdit";
+            this.buttonEmailEdit.Size = new System.Drawing.Size(20, 20);
+            this.buttonEmailEdit.TabIndex = 17;
+            this.buttonEmailEdit.UseVisualStyleBackColor = true;
+            this.buttonEmailEdit.Click += new System.EventHandler(this.buttonEmailEdit_Click);
+            // 
             // buttonBirthDateEdit
             // 
             this.buttonBirthDateEdit.BackgroundImage = global::DEX.Properties.Resources.edit_tools__1_;
@@ -429,7 +519,7 @@
             this.buttonBirthDateEdit.FlatAppearance.BorderSize = 0;
             this.buttonBirthDateEdit.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
             this.buttonBirthDateEdit.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.buttonBirthDateEdit.Location = new System.Drawing.Point(340, 265);
+            this.buttonBirthDateEdit.Location = new System.Drawing.Point(340, 344);
             this.buttonBirthDateEdit.Name = "buttonBirthDateEdit";
             this.buttonBirthDateEdit.Size = new System.Drawing.Size(20, 20);
             this.buttonBirthDateEdit.TabIndex = 17;
@@ -445,7 +535,7 @@
             this.buttonLNameEdit.FlatAppearance.BorderSize = 0;
             this.buttonLNameEdit.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
             this.buttonLNameEdit.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.buttonLNameEdit.Location = new System.Drawing.Point(340, 168);
+            this.buttonLNameEdit.Location = new System.Drawing.Point(340, 195);
             this.buttonLNameEdit.Name = "buttonLNameEdit";
             this.buttonLNameEdit.Size = new System.Drawing.Size(20, 20);
             this.buttonLNameEdit.TabIndex = 17;
@@ -470,15 +560,39 @@
             // panel3
             // 
             this.panel3.BackColor = System.Drawing.Color.White;
-            this.panel3.Location = new System.Drawing.Point(366, 243);
+            this.panel3.Location = new System.Drawing.Point(366, 295);
             this.panel3.Name = "panel3";
             this.panel3.Size = new System.Drawing.Size(291, 1);
             this.panel3.TabIndex = 16;
             // 
+            // panel9
+            // 
+            this.panel9.BackColor = System.Drawing.Color.White;
+            this.panel9.Location = new System.Drawing.Point(366, 595);
+            this.panel9.Name = "panel9";
+            this.panel9.Size = new System.Drawing.Size(291, 1);
+            this.panel9.TabIndex = 16;
+            // 
+            // panel8
+            // 
+            this.panel8.BackColor = System.Drawing.Color.White;
+            this.panel8.Location = new System.Drawing.Point(366, 520);
+            this.panel8.Name = "panel8";
+            this.panel8.Size = new System.Drawing.Size(291, 1);
+            this.panel8.TabIndex = 16;
+            // 
+            // panel7
+            // 
+            this.panel7.BackColor = System.Drawing.Color.White;
+            this.panel7.Location = new System.Drawing.Point(366, 445);
+            this.panel7.Name = "panel7";
+            this.panel7.Size = new System.Drawing.Size(291, 1);
+            this.panel7.TabIndex = 16;
+            // 
             // panel6
             // 
             this.panel6.BackColor = System.Drawing.Color.White;
-            this.panel6.Location = new System.Drawing.Point(366, 291);
+            this.panel6.Location = new System.Drawing.Point(366, 370);
             this.panel6.Name = "panel6";
             this.panel6.Size = new System.Drawing.Size(291, 1);
             this.panel6.TabIndex = 16;
@@ -486,7 +600,7 @@
             // panel5
             // 
             this.panel5.BackColor = System.Drawing.Color.White;
-            this.panel5.Location = new System.Drawing.Point(366, 194);
+            this.panel5.Location = new System.Drawing.Point(366, 221);
             this.panel5.Name = "panel5";
             this.panel5.Size = new System.Drawing.Size(291, 1);
             this.panel5.TabIndex = 16;
@@ -497,23 +611,59 @@
             this.labelRegistrationDate.BackColor = System.Drawing.Color.Transparent;
             this.labelRegistrationDate.Font = new System.Drawing.Font("Roboto", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.labelRegistrationDate.ForeColor = System.Drawing.SystemColors.Control;
-            this.labelRegistrationDate.Location = new System.Drawing.Point(663, 217);
+            this.labelRegistrationDate.Location = new System.Drawing.Point(663, 271);
             this.labelRegistrationDate.Name = "labelRegistrationDate";
             this.labelRegistrationDate.Size = new System.Drawing.Size(145, 19);
             this.labelRegistrationDate.TabIndex = 15;
             this.labelRegistrationDate.Text = "Дата регистрации";
             // 
-            // label2
+            // labelPhone
             // 
-            this.label2.AutoSize = true;
-            this.label2.BackColor = System.Drawing.Color.Transparent;
-            this.label2.Font = new System.Drawing.Font("Roboto", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label2.ForeColor = System.Drawing.SystemColors.Control;
-            this.label2.Location = new System.Drawing.Point(663, 265);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(126, 19);
-            this.label2.TabIndex = 15;
-            this.label2.Text = "День рождения";
+            this.labelPhone.AutoSize = true;
+            this.labelPhone.BackColor = System.Drawing.Color.Transparent;
+            this.labelPhone.Font = new System.Drawing.Font("Roboto", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.labelPhone.ForeColor = System.Drawing.SystemColors.Control;
+            this.labelPhone.Location = new System.Drawing.Point(663, 571);
+            this.labelPhone.Name = "labelPhone";
+            this.labelPhone.Size = new System.Drawing.Size(73, 19);
+            this.labelPhone.TabIndex = 15;
+            this.labelPhone.Text = "Телефон";
+            // 
+            // labelUserID
+            // 
+            this.labelUserID.AutoSize = true;
+            this.labelUserID.BackColor = System.Drawing.Color.Transparent;
+            this.labelUserID.Font = new System.Drawing.Font("Roboto", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.labelUserID.ForeColor = System.Drawing.SystemColors.Control;
+            this.labelUserID.Location = new System.Drawing.Point(663, 496);
+            this.labelUserID.Name = "labelUserID";
+            this.labelUserID.Size = new System.Drawing.Size(42, 19);
+            this.labelUserID.TabIndex = 15;
+            this.labelUserID.Text = "ИНН";
+            // 
+            // labelEmail
+            // 
+            this.labelEmail.AutoSize = true;
+            this.labelEmail.BackColor = System.Drawing.Color.Transparent;
+            this.labelEmail.Font = new System.Drawing.Font("Roboto", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.labelEmail.ForeColor = System.Drawing.SystemColors.Control;
+            this.labelEmail.Location = new System.Drawing.Point(663, 421);
+            this.labelEmail.Name = "labelEmail";
+            this.labelEmail.Size = new System.Drawing.Size(53, 19);
+            this.labelEmail.TabIndex = 15;
+            this.labelEmail.Text = "E-mail";
+            // 
+            // labelBirthDate
+            // 
+            this.labelBirthDate.AutoSize = true;
+            this.labelBirthDate.BackColor = System.Drawing.Color.Transparent;
+            this.labelBirthDate.Font = new System.Drawing.Font("Roboto", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.labelBirthDate.ForeColor = System.Drawing.SystemColors.Control;
+            this.labelBirthDate.Location = new System.Drawing.Point(663, 346);
+            this.labelBirthDate.Name = "labelBirthDate";
+            this.labelBirthDate.Size = new System.Drawing.Size(126, 19);
+            this.labelBirthDate.TabIndex = 15;
+            this.labelBirthDate.Text = "День рождения";
             // 
             // labelLName
             // 
@@ -521,7 +671,7 @@
             this.labelLName.BackColor = System.Drawing.Color.Transparent;
             this.labelLName.Font = new System.Drawing.Font("Roboto", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.labelLName.ForeColor = System.Drawing.SystemColors.Control;
-            this.labelLName.Location = new System.Drawing.Point(663, 168);
+            this.labelLName.Location = new System.Drawing.Point(663, 196);
             this.labelLName.Name = "labelLName";
             this.labelLName.Size = new System.Drawing.Size(78, 19);
             this.labelLName.TabIndex = 15;
@@ -542,10 +692,55 @@
             this.tbRegistrationDate.Enabled = false;
             this.tbRegistrationDate.Font = new System.Drawing.Font("Roboto", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.tbRegistrationDate.ForeColor = System.Drawing.Color.Gray;
-            this.tbRegistrationDate.Location = new System.Drawing.Point(366, 215);
+            this.tbRegistrationDate.Location = new System.Drawing.Point(366, 267);
             this.tbRegistrationDate.Name = "tbRegistrationDate";
             this.tbRegistrationDate.Size = new System.Drawing.Size(291, 23);
             this.tbRegistrationDate.TabIndex = 14;
+            // 
+            // tbPhone
+            // 
+            this.tbPhone.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(44)))), ((int)(((byte)(43)))), ((int)(((byte)(60)))));
+            this.tbPhone.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.tbPhone.Enabled = false;
+            this.tbPhone.Font = new System.Drawing.Font("Roboto", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.tbPhone.ForeColor = System.Drawing.Color.Gray;
+            this.tbPhone.Location = new System.Drawing.Point(366, 567);
+            this.tbPhone.Name = "tbPhone";
+            this.tbPhone.Size = new System.Drawing.Size(291, 23);
+            this.tbPhone.TabIndex = 14;
+            this.tbPhone.Text = "+xxxxxxxxxxx";
+            this.tbPhone.Click += new System.EventHandler(this.TextBox_Click);
+            this.tbPhone.TextChanged += new System.EventHandler(this.TextBox_TextChanged);
+            // 
+            // tbUserID
+            // 
+            this.tbUserID.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(44)))), ((int)(((byte)(43)))), ((int)(((byte)(60)))));
+            this.tbUserID.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.tbUserID.Enabled = false;
+            this.tbUserID.Font = new System.Drawing.Font("Roboto", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.tbUserID.ForeColor = System.Drawing.Color.Gray;
+            this.tbUserID.Location = new System.Drawing.Point(366, 492);
+            this.tbUserID.Name = "tbUserID";
+            this.tbUserID.Size = new System.Drawing.Size(291, 23);
+            this.tbUserID.TabIndex = 14;
+            this.tbUserID.Text = "12-digit";
+            this.tbUserID.Click += new System.EventHandler(this.TextBox_Click);
+            this.tbUserID.TextChanged += new System.EventHandler(this.TextBox_TextChanged);
+            // 
+            // tbEmail
+            // 
+            this.tbEmail.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(44)))), ((int)(((byte)(43)))), ((int)(((byte)(60)))));
+            this.tbEmail.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.tbEmail.Enabled = false;
+            this.tbEmail.Font = new System.Drawing.Font("Roboto", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.tbEmail.ForeColor = System.Drawing.Color.Gray;
+            this.tbEmail.Location = new System.Drawing.Point(366, 417);
+            this.tbEmail.Name = "tbEmail";
+            this.tbEmail.Size = new System.Drawing.Size(291, 23);
+            this.tbEmail.TabIndex = 14;
+            this.tbEmail.Text = "sample@test.com";
+            this.tbEmail.Click += new System.EventHandler(this.TextBox_Click);
+            this.tbEmail.TextChanged += new System.EventHandler(this.TextBox_TextChanged);
             // 
             // tbBirthDate
             // 
@@ -554,7 +749,7 @@
             this.tbBirthDate.Enabled = false;
             this.tbBirthDate.Font = new System.Drawing.Font("Roboto", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.tbBirthDate.ForeColor = System.Drawing.Color.Gray;
-            this.tbBirthDate.Location = new System.Drawing.Point(366, 263);
+            this.tbBirthDate.Location = new System.Drawing.Point(366, 342);
             this.tbBirthDate.Name = "tbBirthDate";
             this.tbBirthDate.Size = new System.Drawing.Size(291, 23);
             this.tbBirthDate.TabIndex = 14;
@@ -569,7 +764,7 @@
             this.tbLName.Enabled = false;
             this.tbLName.Font = new System.Drawing.Font("Roboto", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.tbLName.ForeColor = System.Drawing.Color.Gray;
-            this.tbLName.Location = new System.Drawing.Point(366, 166);
+            this.tbLName.Location = new System.Drawing.Point(366, 193);
             this.tbLName.Name = "tbLName";
             this.tbLName.Size = new System.Drawing.Size(291, 23);
             this.tbLName.TabIndex = 14;
@@ -623,6 +818,11 @@
             this.profileImg.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.profileImg.TabIndex = 0;
             this.profileImg.TabStop = false;
+            // 
+            // openFileDialog
+            // 
+            this.openFileDialog.FileName = "openFileDialog1";
+            this.openFileDialog.Filter = "Image Files (*.bmp;*.jpg;*.jpeg,*.png)|*.BMP;*.JPG;*.JPEG;*.PNG";
             // 
             // MenuUser
             // 
@@ -696,7 +896,21 @@
         private System.Windows.Forms.TextBox tbRegistrationDate;
         private System.Windows.Forms.Button buttonBirthDateEdit;
         private System.Windows.Forms.Panel panel6;
-        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Label labelBirthDate;
         private System.Windows.Forms.TextBox tbBirthDate;
+        private System.Windows.Forms.Button buttonPhoneEdit;
+        private System.Windows.Forms.Button buttonUserIDEdit;
+        private System.Windows.Forms.Button buttonEmailEdit;
+        private System.Windows.Forms.Panel panel9;
+        private System.Windows.Forms.Panel panel8;
+        private System.Windows.Forms.Panel panel7;
+        private System.Windows.Forms.Label labelPhone;
+        private System.Windows.Forms.Label labelUserID;
+        private System.Windows.Forms.Label labelEmail;
+        private System.Windows.Forms.TextBox tbPhone;
+        private System.Windows.Forms.TextBox tbUserID;
+        private System.Windows.Forms.TextBox tbEmail;
+        private System.Windows.Forms.OpenFileDialog openFileDialog;
+        private System.Windows.Forms.Button buttonImageEdit;
     }
 }
