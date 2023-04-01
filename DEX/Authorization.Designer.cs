@@ -57,7 +57,7 @@ namespace DEX
             this.buttonLogin.FlatAppearance.BorderSize = 2;
             this.buttonLogin.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.buttonLogin.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.buttonLogin.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.buttonLogin.Font = new System.Drawing.Font("Roboto", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.buttonLogin.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(140)))), ((int)(((byte)(122)))), ((int)(((byte)(230)))));
             this.buttonLogin.Location = new System.Drawing.Point(126, 393);
             this.buttonLogin.Name = "buttonLogin";
@@ -71,12 +71,12 @@ namespace DEX
             // 
             this.tbLogin.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(44)))), ((int)(((byte)(43)))), ((int)(((byte)(60)))));
             this.tbLogin.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.tbLogin.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.tbLogin.Font = new System.Drawing.Font("Roboto", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.tbLogin.ForeColor = System.Drawing.Color.Gray;
             this.tbLogin.Location = new System.Drawing.Point(108, 263);
             this.tbLogin.MaxLength = 32;
             this.tbLogin.Name = "tbLogin";
-            this.tbLogin.Size = new System.Drawing.Size(214, 22);
+            this.tbLogin.Size = new System.Drawing.Size(214, 23);
             this.tbLogin.TabIndex = 2;
             this.tbLogin.Text = "Введите логин";
             this.tbLogin.Click += new System.EventHandler(this.tbLogin_Click);
@@ -86,11 +86,11 @@ namespace DEX
             // 
             this.tbPass.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(44)))), ((int)(((byte)(43)))), ((int)(((byte)(60)))));
             this.tbPass.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.tbPass.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.tbPass.Font = new System.Drawing.Font("Roboto", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.tbPass.ForeColor = System.Drawing.Color.Gray;
             this.tbPass.Location = new System.Drawing.Point(108, 319);
             this.tbPass.Name = "tbPass";
-            this.tbPass.Size = new System.Drawing.Size(214, 22);
+            this.tbPass.Size = new System.Drawing.Size(214, 23);
             this.tbPass.TabIndex = 3;
             this.tbPass.Text = "Введите пароль";
             this.tbPass.Click += new System.EventHandler(this.tbPass_Click);
@@ -100,11 +100,11 @@ namespace DEX
             // 
             this.label1.AutoSize = true;
             this.label1.BackColor = System.Drawing.Color.Transparent;
-            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.label1.Font = new System.Drawing.Font("Roboto", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.label1.ForeColor = System.Drawing.SystemColors.Control;
             this.label1.Location = new System.Drawing.Point(47, 264);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(55, 20);
+            this.label1.Size = new System.Drawing.Size(54, 19);
             this.label1.TabIndex = 4;
             this.label1.Text = "Логин";
             // 
@@ -112,11 +112,11 @@ namespace DEX
             // 
             this.label2.AutoSize = true;
             this.label2.BackColor = System.Drawing.Color.Transparent;
-            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.label2.Font = new System.Drawing.Font("Roboto", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.label2.ForeColor = System.Drawing.SystemColors.Control;
             this.label2.Location = new System.Drawing.Point(35, 320);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(67, 20);
+            this.label2.Size = new System.Drawing.Size(65, 19);
             this.label2.TabIndex = 5;
             this.label2.Text = "Пароль";
             // 

@@ -24,6 +24,20 @@ namespace DEX
             this.Close();
         }
 
+        public class UserCredentials
+        {
+            public string Username { get; set; }
+            public string FName { get; set; }
+            public string LName { get; set; }
+            public string RegistrationDate { get; set; }
+            public string BirthDate { get; set; }
+            public string Email { get; set; }
+            public BsonBinaryData Photo { get; set; }
+            public string UserID { get; set; }
+            public string Activity { get; set; }
+            public string Phone { get; set; }
+        }
+
         private void buttonLogin_Click(object sender, EventArgs e)
         {
             labelErr.Visible = false;
@@ -53,7 +67,13 @@ namespace DEX
                     }
                     else if (role == "user")
                     {
-                        MenuUser menu = new MenuUser();
+                        UserCredentials credentials = new UserCredentials();
+                        credentials.Username = user;
+                        credentials.FName = result.GetValue("fName").AsString;
+                        credentials.LName = result.GetValue("lName").AsString;
+                        credentials.Photo = result.GetValue("photo").AsBsonBinaryData;
+
+                        MenuUser menu = new MenuUser(credentials);
                         menu.Show();
                         this.Close();
                     }
@@ -104,6 +124,5 @@ namespace DEX
         {
             tbPass.SelectAll();
         }
-
     }
 }

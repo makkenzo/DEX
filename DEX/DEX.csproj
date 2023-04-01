@@ -230,6 +230,10 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="mongocrypt.dll" />
+    <None Include="Resources\multiply.png" />
+    <None Include="Resources\right.png" />
+    <None Include="Resources\edit-tools %281%29.png" />
+    <None Include="Resources\edit-tools.png" />
     <None Include="Resources\logo-color1.png" />
     <None Include="Resources\free-icon-user-8428787.png" />
     <None Include="Resources\browser.png" />
