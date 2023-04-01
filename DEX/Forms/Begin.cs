@@ -45,6 +45,7 @@ namespace DEX
                     credentials.Email = state.Email;
                     credentials.UserID = state.UserID;
                     credentials.Phone = state.Phone;
+                    credentials.Activity = state.Activity;
 
                     MenuUser menu = new MenuUser(credentials);
                     menu.Show();

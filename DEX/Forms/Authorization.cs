@@ -34,7 +34,7 @@ namespace DEX
             public string Email { get; set; }
             public BsonBinaryData Photo { get; set; }
             public string UserID { get; set; }
-            public string Activity { get; set; }
+            public int Activity { get; set; }
             public string Phone { get; set; }
         }
 
@@ -49,6 +49,7 @@ namespace DEX
             public string BirthDate { get; set; }
             public string Email { get; set; }
             public string UserID { get; set; }
+            public int Activity { get; set; }
             public string Phone { get; set; }
         }
 
@@ -90,6 +91,7 @@ namespace DEX
                         credentials.Email = result.GetValue("email").AsString;
                         credentials.UserID = result.GetValue("userID").AsString;
                         credentials.Phone = result.GetValue("phone").AsString;
+                        credentials.Activity = result.GetValue("activity").AsInt32;
 
                         UserState state = new UserState();
                         state.Username = credentials.Username;
@@ -101,6 +103,7 @@ namespace DEX
                         state.Email = credentials.Email;
                         state.UserID = credentials.UserID;
                         state.Phone = credentials.Phone;
+                        state.Activity = credentials.Activity;
 
                         using (FileStream file = new FileStream("userstate.dat", FileMode.Create))
                         {
@@ -158,11 +161,6 @@ namespace DEX
         private void tbPass_Click(object sender, EventArgs e)
         {
             tbPass.SelectAll();
-        }
-
-        private void Authorization_Load(object sender, EventArgs e)
-        {
-
         }
     }
 }

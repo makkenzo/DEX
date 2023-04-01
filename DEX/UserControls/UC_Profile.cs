@@ -1,44 +1,41 @@
 ﻿using MongoDB.Bson;
 using MongoDB.Driver;
 using System;
+using System.Collections.Generic;
+using System.ComponentModel;
+using System.Data;
 using System.Drawing;
+using System.Drawing.Imaging;
 using System.Globalization;
 using System.IO;
-using System.Runtime.InteropServices;
+using System.Linq;
 using System.Runtime.Serialization.Formatters.Binary;
+using System.Text;
 using System.Text.RegularExpressions;
+using System.Threading.Tasks;
 using System.Windows.Forms;
 using static DEX.Authorization;
 
-namespace DEX
+namespace DEX.UserControls
 {
-    public partial class MenuUser : Form
+    public partial class UC_Profile : UserControl
     {
         private IMongoDatabase _database;
         private UserCredentials _userCredentials;
 
         private byte[] imageBinaryData;
-
-        public MenuUser(UserCredentials userCredentials)
+        public UC_Profile(UserCredentials userCredentials)
         {
             InitializeComponent();
+
             _database = DBManager.GetDatabase();
             _userCredentials = userCredentials;
         }
 
-        private void MenuUser_Load(object sender, EventArgs e)
+        private void UC_Profile_Load(object sender, EventArgs e)
         {
-            buttonImageEdit.BackColor = Color.FromArgb(128, Color.Black);
-
-            panelProfile.Visible = true;
-
-            buttonProfileLeft.Visible           = true;
-            buttonBalanceLeft.Visible           = false;
-            buttonRatingLeft.Visible            = false;
-            buttonLotsLeft.Visible              = false;
-            buttonHistoryLeft.Visible           = false;
-            buttonCryptocurrenciesLeft.Visible  = false;
-            buttonSettingsLeft.Visible          = false;
+            doneIcon.Visible = false;
+            errorIcon.Visible = false;
 
             labelUpdateSuccess.Visible = false;
 
@@ -53,6 +50,7 @@ namespace DEX
             tbEmail.Text = _userCredentials.Email;
             tbUserID.Text = _userCredentials.UserID;
             tbPhone.Text = _userCredentials.Phone;
+            labelRating.Text = Convert.ToString(_userCredentials.Activity);
 
             var binaryData = _userCredentials.Photo.AsBsonBinaryData;
             var bytes = binaryData.AsByteArray;
@@ -62,115 +60,6 @@ namespace DEX
                 Image image = Image.FromStream(ms);
                 profileImg.Image = image;
             }
-        }
-
-        [DllImport("user32.DLL", EntryPoint = "ReleaseCapture")]
-        private extern static void ReleaseCapture();
-        [DllImport("user32.DLL", EntryPoint = "SendMessage")]
-        private extern static void SendMessage(System.IntPtr hWnd, int wMsg, int wParam, int lParam);
-
-        private void panel1_MouseDown(object sender, MouseEventArgs e)
-        {
-            ReleaseCapture();
-            SendMessage(this.Handle, 0x112, 0xf012, 0);
-        }
-
-        private void button1_Click(object sender, EventArgs e)
-        {
-            Application.Exit();
-        }
-
-        private void buttonProfile_Click(object sender, EventArgs e)
-        {
-            panelProfile.Visible = true;
-
-            buttonProfileLeft.Visible           = true;
-            buttonBalanceLeft.Visible           = false;
-            buttonRatingLeft.Visible            = false;
-            buttonLotsLeft.Visible              = false;
-            buttonHistoryLeft.Visible           = false;
-            buttonCryptocurrenciesLeft.Visible  = false;
-            buttonSettingsLeft.Visible          = false;
-
-            doneIcon.Visible = false;
-            errorIcon.Visible = false;
-        }
-        private void buttonBalance_Click(object sender, EventArgs e)
-        {
-            buttonProfileLeft.Visible           = false;
-            buttonBalanceLeft.Visible           = true;
-            buttonRatingLeft.Visible            = false;
-            buttonLotsLeft.Visible              = false;
-            buttonHistoryLeft.Visible           = false;
-            buttonCryptocurrenciesLeft.Visible  = false;
-            buttonSettingsLeft.Visible          = false;
-        }
-
-        private void buttonRating_Click(object sender, EventArgs e)
-        {
-            buttonProfileLeft.Visible           = false;
-            buttonBalanceLeft.Visible           = false;
-            buttonRatingLeft.Visible            = true;
-            buttonLotsLeft.Visible              = false;
-            buttonHistoryLeft.Visible           = false;
-            buttonCryptocurrenciesLeft.Visible  = false;
-            buttonSettingsLeft.Visible          = false;
-        }
-
-        private void buttonLots_Click(object sender, EventArgs e)
-        {
-            buttonProfileLeft.Visible           = false;
-            buttonBalanceLeft.Visible           = false;
-            buttonRatingLeft.Visible            = false;
-            buttonLotsLeft.Visible              = true;
-            buttonHistoryLeft.Visible           = false;
-            buttonCryptocurrenciesLeft.Visible  = false;
-            buttonSettingsLeft.Visible          = false;
-        }
-
-        private void buttonHistory_Click(object sender, EventArgs e)
-        {
-            buttonProfileLeft.Visible           = false;
-            buttonBalanceLeft.Visible           = false;
-            buttonRatingLeft.Visible            = false;
-            buttonLotsLeft.Visible              = false;
-            buttonHistoryLeft.Visible           = true;
-            buttonCryptocurrenciesLeft.Visible  = false;
-            buttonSettingsLeft.Visible          = false;
-        }
-
-        private void buttonCryptocurrencies_Click(object sender, EventArgs e)
-        {
-            buttonProfileLeft.Visible           = false;
-            buttonBalanceLeft.Visible           = false;
-            buttonRatingLeft.Visible            = false;
-            buttonLotsLeft.Visible              = false;
-            buttonHistoryLeft.Visible           = false;
-            buttonCryptocurrenciesLeft.Visible  = true;
-            buttonSettingsLeft.Visible          = false;
-        }
-
-        private void buttonSettings_Click(object sender, EventArgs e)
-        {
-            buttonProfileLeft.Visible           = false;
-            buttonBalanceLeft.Visible           = false;
-            buttonRatingLeft.Visible            = false;
-            buttonLotsLeft.Visible              = false;
-            buttonHistoryLeft.Visible           = false;
-            buttonCryptocurrenciesLeft.Visible  = false;
-            buttonSettingsLeft.Visible          = true;
-        }
-
-        private void TextBox_TextChanged(object sender, EventArgs e)
-        {
-            TextBox textBox = (TextBox)sender;
-            textBox.ForeColor = Color.White;
-        }
-
-        private void TextBox_Click(object sender, EventArgs e)
-        {
-            TextBox textBox = (TextBox)sender;
-            textBox.SelectAll();
         }
 
         private void buttonFNameEdit_Click(object sender, EventArgs e)
@@ -202,6 +91,13 @@ namespace DEX
             tbPhone.Enabled = true;
         }
 
+        private Image byteArrayToImage(byte[] byteArray)
+        {
+            MemoryStream memoryStream = new MemoryStream(byteArray);
+            Image image = Image.FromStream(memoryStream);
+            return image;
+        }
+
         private void buttonImageEdit_Click(object sender, EventArgs e)
         {
             OpenFileDialog openFileDialog = new OpenFileDialog();
@@ -209,8 +105,21 @@ namespace DEX
             if (openFileDialog.ShowDialog() == DialogResult.OK)
             {
                 imageBinaryData = File.ReadAllBytes(openFileDialog.FileName);
+                imageBinaryData = CropToSquare(imageBinaryData);
                 profileImg.Image = byteArrayToImage(imageBinaryData);
             }
+        }
+
+        private void TextBox_TextChanged(object sender, EventArgs e)
+        {
+            TextBox textBox = (TextBox)sender;
+            textBox.ForeColor = Color.White;
+        }
+
+        private void TextBox_Click(object sender, EventArgs e)
+        {
+            TextBox textBox = (TextBox)sender;
+            textBox.SelectAll();
         }
 
         private bool IsValidEmail(string email)
@@ -224,6 +133,32 @@ namespace DEX
             Regex regex = new Regex(@"^\+\d{11}$");
             return regex.IsMatch(phoneNumber);
         }
+
+        public static byte[] CropToSquare(byte[] imageBytes)
+        {
+            using (MemoryStream ms = new MemoryStream(imageBytes))
+            {
+                Image img = Image.FromStream(ms);
+                int size = Math.Min(img.Width, img.Height);
+                int x = (img.Width - size) / 2;
+                int y = (img.Height - size) / 2;
+
+                Rectangle cropArea = new Rectangle(x, y, size, size);
+
+                Bitmap bmp = new Bitmap(cropArea.Width, cropArea.Height);
+                using (Graphics g = Graphics.FromImage(bmp))
+                {
+                    g.DrawImage(img, new Rectangle(0, 0, bmp.Width, bmp.Height), cropArea, GraphicsUnit.Pixel);
+                }
+
+                using (MemoryStream ms2 = new MemoryStream())
+                {
+                    bmp.Save(ms2, ImageFormat.Jpeg); // можно изменить формат изображения, если необходимо
+                    return ms2.ToArray();
+                }
+            }
+        }
+
 
         private void buttonSave_Click(object sender, EventArgs e)
         {
@@ -259,10 +194,8 @@ namespace DEX
                         .Set("birthDate", tbBirthDate.Text)
                         .Set("email", tbEmail.Text)
                         .Set("userID", tbUserID.Text)
-                        .Set("phone", tbPhone.Text)
-                        .Set("photo", new BsonBinaryData(imageBinaryData));
+                        .Set("phone", tbPhone.Text);
                     var collection = _database.GetCollection<BsonDocument>("Users");
-                    var result = collection.UpdateOne(filter, update);
 
                     UserState state;
                     using (FileStream file = new FileStream("userstate.dat", FileMode.Open))
@@ -271,13 +204,21 @@ namespace DEX
                         state = (UserState)formatter.Deserialize(file);
                     }
 
+                    if (imageBinaryData != null && !imageBinaryData.SequenceEqual(state.Photo))
+                    {
+                        imageBinaryData = CropToSquare(imageBinaryData);
+                        update = update.Set("photo", new BsonBinaryData(imageBinaryData));
+                        state.Photo = imageBinaryData;
+                    }
+
+                    var result = collection.UpdateOne(filter, update);
+
                     state.FName = tbFName.Text;
                     state.LName = tbLName.Text;
                     state.BirthDate = tbBirthDate.Text;
                     state.Email = tbEmail.Text;
                     state.UserID = tbUserID.Text;
                     state.Phone = tbPhone.Text;
-                    state.Photo = imageBinaryData;
 
                     using (FileStream file = new FileStream("userstate.dat", FileMode.Create))
                     {
@@ -307,26 +248,6 @@ namespace DEX
             {
                 MessageBox.Show("Неверный формат даты", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
-        }
-
-        private Image byteArrayToImage(byte[] byteArray)
-        {
-            MemoryStream memoryStream = new MemoryStream(byteArray);
-            Image image = Image.FromStream(memoryStream);
-            return image;
-        }
-
-        private void buttonLogOut_Click(object sender, EventArgs e)
-        {
-            string file = "userstate.dat";
-            if (File.Exists(file))
-            {
-                File.Delete(file);
-            }
-
-            Authorization auth = new Authorization();
-            auth.Show();
-            this.Close();
         }
     }
 }
