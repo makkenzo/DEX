@@ -17,8 +17,8 @@ namespace DEX.UserControls
     {
         private IMongoDatabase _database;
         private UserCredentials _userCredentials;
-
         private byte[] imageBinaryData;
+        
         public UC_Profile(UserCredentials userCredentials)
         {
             InitializeComponent();
@@ -34,6 +34,7 @@ namespace DEX.UserControls
 
             labelUpdateSuccess.Visible = false;
 
+            /* filling the textboxes with the data from the database. */
             labelUsername.Text = _userCredentials.Username;
 
             tbFName.Text = _userCredentials.FName;
@@ -107,6 +108,13 @@ namespace DEX.UserControls
             }
         }
 
+        /// <summary>
+        /// It takes a byte array and converts it into an image
+        /// </summary>
+        /// <param name="byteArray">The byte array that you want to convert to an image.</param>
+        /// <returns>
+        /// The image is being returned.
+        /// </returns>
         private Image byteArrayToImage(byte[] byteArray)
         {
             MemoryStream memoryStream = new MemoryStream(byteArray);
@@ -114,6 +122,12 @@ namespace DEX.UserControls
             return image;
         }
 
+        /// <summary>
+        /// It opens a file dialog, reads the selected file into a byte array, crops the image to a
+        /// square, and then displays the image in a picture box
+        /// </summary>
+        /// <param name="sender">The control/object that raised the event.</param>
+        /// <param name="EventArgs">e</param>
         private void buttonImageEdit_Click(object sender, EventArgs e)
         {
             OpenFileDialog openFileDialog = new OpenFileDialog();
@@ -138,18 +152,42 @@ namespace DEX.UserControls
             textBox.SelectAll();
         }
 
+        /// <summary>
+        /// If the email address contains a character that is not an @ symbol, a space, or a period, and
+        /// if the email address contains an @ symbol, a period, and no spaces, then the email address
+        /// is valid
+        /// </summary>
+        /// <param name="email">The email address to validate.</param>
+        /// <returns>
+        /// The method is returning a boolean value.
+        /// </returns>
         private bool IsValidEmail(string email)
         {
             string pattern = @"^[^@\s]+@[^@\s]+\.[^@\s]+$";
             return Regex.IsMatch(email, pattern);
         }
 
+        /// <summary>
+        /// It checks if the phone number is in the format of +12345678901
+        /// </summary>
+        /// <param name="phoneNumber">The phone number to validate.</param>
+        /// <returns>
+        /// A boolean value.
+        /// </returns>
         private bool IsValidPhoneNumber(string phoneNumber)
         {
             Regex regex = new Regex(@"^\+\d{11}$");
             return regex.IsMatch(phoneNumber);
         }
 
+        /// <summary>
+        /// It takes a byte array of an image, crops it to a square, and returns a byte array of the
+        /// cropped image
+        /// </summary>
+        /// <param name="imageBytes">The image you want to crop.</param>
+        /// <returns>
+        /// The cropped image in byte array format.
+        /// </returns>
         public static byte[] CropToSquare(byte[] imageBytes)
         {
             using (MemoryStream ms = new MemoryStream(imageBytes))
@@ -207,6 +245,7 @@ namespace DEX.UserControls
                         MessageBox.Show("Номер телефона введен некорректно. Пожалуйста, введите номер в формате +xxxxxxxxxxx.");
                         return;
                     }
+                    /* Updating the user's information in the database. */
                     var filter = Builders<BsonDocument>.Filter.Eq("username", _userCredentials.Username);
                     var update = Builders<BsonDocument>.Update
                         .Set("fName", tbFName.Text)
@@ -218,6 +257,7 @@ namespace DEX.UserControls
                         .Set("password", tbPass.Text);
                     var collection = _database.GetCollection<BsonDocument>("Users");
 
+                    /* Saving the user's information to a file. */
                     UserState state;
                     using (FileStream file = new FileStream("userstate.dat", FileMode.Open))
                     {
