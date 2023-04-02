@@ -301,6 +301,8 @@
   <ItemGroup>
     <Content Include="logo-color.ico" />
     <Content Include="mongocrypt.dll" />
+    <None Include="Resources\hide.png" />
+    <None Include="Resources\show.png" />
     <None Include="Resources\multiply.png" />
     <None Include="Resources\right.png" />
     <None Include="Resources\edit-tools %281%29.png" />

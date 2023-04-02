@@ -36,6 +36,7 @@ namespace DEX
             public string UserID { get; set; }
             public int Activity { get; set; }
             public string Phone { get; set; }
+            public string Pass { get; set; }
         }
 
         [Serializable]
@@ -51,6 +52,7 @@ namespace DEX
             public string UserID { get; set; }
             public int Activity { get; set; }
             public string Phone { get; set; }
+            public string Pass { get; set; }
         }
 
 
@@ -83,6 +85,7 @@ namespace DEX
                     {
                         UserCredentials credentials = new UserCredentials();
                         credentials.Username = user;
+                        credentials.Pass = pass;
                         credentials.FName = result.GetValue("fName").AsString;
                         credentials.LName = result.GetValue("lName").AsString;
                         credentials.Photo = result.GetValue("photo").AsBsonBinaryData;
@@ -95,6 +98,7 @@ namespace DEX
 
                         UserState state = new UserState();
                         state.Username = credentials.Username;
+                        state.Pass = credentials.Pass;
                         state.FName = credentials.FName;
                         state.LName = credentials.LName;
                         state.Photo = credentials.Photo.RawValue as byte[];

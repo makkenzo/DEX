@@ -37,6 +37,7 @@ namespace DEX
                     // Создание объекта UserCredentials из состояния авторизации пользователя
                     UserCredentials credentials = new UserCredentials();
                     credentials.Username = state.Username;
+                    credentials.Pass = state.Pass;
                     credentials.FName = state.FName;
                     credentials.LName = state.LName;
                     credentials.Photo = new BsonBinaryData(state.Photo);

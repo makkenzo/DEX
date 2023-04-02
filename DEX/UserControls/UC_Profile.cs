@@ -47,6 +47,8 @@ namespace DEX.UserControls
             tbPhone.Text = _userCredentials.Phone;
             labelRating.Text = Convert.ToString(_userCredentials.Activity);
 
+            tbPass.Text = _userCredentials.Pass;
+
             var binaryData = _userCredentials.Photo.AsBsonBinaryData;
             var bytes = binaryData.AsByteArray;
 
@@ -84,6 +86,25 @@ namespace DEX.UserControls
         private void buttonPhoneEdit_Click(object sender, EventArgs e)
         {
             tbPhone.Enabled = true;
+        }
+
+        private void buttonPassEdit_Click(object sender, EventArgs e)
+        {
+            tbPass.Enabled = true;
+        }
+
+        private void buttonPassShowToggle_Click(object sender, EventArgs e)
+        {
+            if (tbPass.PasswordChar == '•')
+            {
+                tbPass.PasswordChar = '\0'; // показываем пароль
+                buttonPassShowToggle.BackgroundImage = Properties.Resources.hide; // изменяем изображение на "hide"
+            }
+            else
+            {
+                tbPass.PasswordChar = '•'; // скрываем пароль
+                buttonPassShowToggle.BackgroundImage = Properties.Resources.show; // изменяем изображение на "show"
+            }
         }
 
         private Image byteArrayToImage(byte[] byteArray)
@@ -154,7 +175,6 @@ namespace DEX.UserControls
             }
         }
 
-
         private void buttonSave_Click(object sender, EventArgs e)
         {
             string inputDate = tbBirthDate.Text;
@@ -177,6 +197,11 @@ namespace DEX.UserControls
                         MessageBox.Show("Неверный формат ИНН. Введите 12 символов.");
                         return;
                     }
+                    if (tbPass.Text.Length < 8)
+                    {
+                        MessageBox.Show("Неверный формат пароля. Введите минимум 8 символов.");
+                        return;
+                    }
                     if (!IsValidPhoneNumber(tbPhone.Text))
                     {
                         MessageBox.Show("Номер телефона введен некорректно. Пожалуйста, введите номер в формате +xxxxxxxxxxx.");
@@ -189,7 +214,8 @@ namespace DEX.UserControls
                         .Set("birthDate", tbBirthDate.Text)
                         .Set("email", tbEmail.Text)
                         .Set("userID", tbUserID.Text)
-                        .Set("phone", tbPhone.Text);
+                        .Set("phone", tbPhone.Text)
+                        .Set("password", tbPass.Text);
                     var collection = _database.GetCollection<BsonDocument>("Users");
 
                     UserState state;
@@ -214,6 +240,7 @@ namespace DEX.UserControls
                     state.Email = tbEmail.Text;
                     state.UserID = tbUserID.Text;
                     state.Phone = tbPhone.Text;
+                    state.Pass = tbPass.Text;
 
                     using (FileStream file = new FileStream("userstate.dat", FileMode.Create))
                     {
