@@ -170,7 +170,7 @@
             this.buttonCryptocurrencies.Font = new System.Drawing.Font("Roboto", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.buttonCryptocurrencies.ForeColor = System.Drawing.Color.White;
             this.buttonCryptocurrencies.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.buttonCryptocurrencies.Location = new System.Drawing.Point(8, 215);
+            this.buttonCryptocurrencies.Location = new System.Drawing.Point(8, 221);
             this.buttonCryptocurrencies.Name = "buttonCryptocurrencies";
             this.buttonCryptocurrencies.Size = new System.Drawing.Size(256, 37);
             this.buttonCryptocurrencies.TabIndex = 9;
@@ -186,7 +186,7 @@
             this.buttonHistory.Font = new System.Drawing.Font("Roboto", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.buttonHistory.ForeColor = System.Drawing.Color.White;
             this.buttonHistory.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.buttonHistory.Location = new System.Drawing.Point(8, 172);
+            this.buttonHistory.Location = new System.Drawing.Point(8, 178);
             this.buttonHistory.Name = "buttonHistory";
             this.buttonHistory.Size = new System.Drawing.Size(256, 37);
             this.buttonHistory.TabIndex = 9;
@@ -202,7 +202,7 @@
             this.buttonLots.Font = new System.Drawing.Font("Roboto", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.buttonLots.ForeColor = System.Drawing.Color.White;
             this.buttonLots.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.buttonLots.Location = new System.Drawing.Point(8, 129);
+            this.buttonLots.Location = new System.Drawing.Point(8, 135);
             this.buttonLots.Name = "buttonLots";
             this.buttonLots.Size = new System.Drawing.Size(256, 37);
             this.buttonLots.TabIndex = 9;
@@ -218,7 +218,7 @@
             this.buttonRating.Font = new System.Drawing.Font("Roboto", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.buttonRating.ForeColor = System.Drawing.Color.White;
             this.buttonRating.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.buttonRating.Location = new System.Drawing.Point(8, 86);
+            this.buttonRating.Location = new System.Drawing.Point(8, 92);
             this.buttonRating.Name = "buttonRating";
             this.buttonRating.Size = new System.Drawing.Size(256, 37);
             this.buttonRating.TabIndex = 9;
@@ -234,7 +234,7 @@
             this.buttonBalance.Font = new System.Drawing.Font("Roboto", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.buttonBalance.ForeColor = System.Drawing.Color.White;
             this.buttonBalance.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.buttonBalance.Location = new System.Drawing.Point(8, 43);
+            this.buttonBalance.Location = new System.Drawing.Point(8, 49);
             this.buttonBalance.Name = "buttonBalance";
             this.buttonBalance.Size = new System.Drawing.Size(256, 37);
             this.buttonBalance.TabIndex = 9;
@@ -250,7 +250,7 @@
             this.buttonProfile.Font = new System.Drawing.Font("Roboto", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.buttonProfile.ForeColor = System.Drawing.Color.White;
             this.buttonProfile.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.buttonProfile.Location = new System.Drawing.Point(8, 0);
+            this.buttonProfile.Location = new System.Drawing.Point(8, 6);
             this.buttonProfile.Name = "buttonProfile";
             this.buttonProfile.Size = new System.Drawing.Size(256, 37);
             this.buttonProfile.TabIndex = 8;
@@ -269,7 +269,7 @@
             // buttonCryptocurrenciesLeft
             // 
             this.buttonCryptocurrenciesLeft.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(156)))), ((int)(((byte)(136)))), ((int)(((byte)(255)))));
-            this.buttonCryptocurrenciesLeft.Location = new System.Drawing.Point(0, 215);
+            this.buttonCryptocurrenciesLeft.Location = new System.Drawing.Point(0, 221);
             this.buttonCryptocurrenciesLeft.Name = "buttonCryptocurrenciesLeft";
             this.buttonCryptocurrenciesLeft.Size = new System.Drawing.Size(8, 37);
             this.buttonCryptocurrenciesLeft.TabIndex = 7;
@@ -277,7 +277,7 @@
             // buttonHistoryLeft
             // 
             this.buttonHistoryLeft.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(156)))), ((int)(((byte)(136)))), ((int)(((byte)(255)))));
-            this.buttonHistoryLeft.Location = new System.Drawing.Point(0, 172);
+            this.buttonHistoryLeft.Location = new System.Drawing.Point(0, 178);
             this.buttonHistoryLeft.Name = "buttonHistoryLeft";
             this.buttonHistoryLeft.Size = new System.Drawing.Size(8, 37);
             this.buttonHistoryLeft.TabIndex = 7;
@@ -285,7 +285,7 @@
             // buttonLotsLeft
             // 
             this.buttonLotsLeft.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(156)))), ((int)(((byte)(136)))), ((int)(((byte)(255)))));
-            this.buttonLotsLeft.Location = new System.Drawing.Point(0, 129);
+            this.buttonLotsLeft.Location = new System.Drawing.Point(0, 135);
             this.buttonLotsLeft.Name = "buttonLotsLeft";
             this.buttonLotsLeft.Size = new System.Drawing.Size(8, 37);
             this.buttonLotsLeft.TabIndex = 7;
@@ -293,7 +293,7 @@
             // buttonRatingLeft
             // 
             this.buttonRatingLeft.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(156)))), ((int)(((byte)(136)))), ((int)(((byte)(255)))));
-            this.buttonRatingLeft.Location = new System.Drawing.Point(0, 86);
+            this.buttonRatingLeft.Location = new System.Drawing.Point(0, 92);
             this.buttonRatingLeft.Name = "buttonRatingLeft";
             this.buttonRatingLeft.Size = new System.Drawing.Size(8, 37);
             this.buttonRatingLeft.TabIndex = 7;
@@ -301,7 +301,7 @@
             // buttonBalanceLeft
             // 
             this.buttonBalanceLeft.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(156)))), ((int)(((byte)(136)))), ((int)(((byte)(255)))));
-            this.buttonBalanceLeft.Location = new System.Drawing.Point(0, 43);
+            this.buttonBalanceLeft.Location = new System.Drawing.Point(0, 49);
             this.buttonBalanceLeft.Name = "buttonBalanceLeft";
             this.buttonBalanceLeft.Size = new System.Drawing.Size(8, 37);
             this.buttonBalanceLeft.TabIndex = 7;
@@ -309,7 +309,7 @@
             // buttonProfileLeft
             // 
             this.buttonProfileLeft.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(156)))), ((int)(((byte)(136)))), ((int)(((byte)(255)))));
-            this.buttonProfileLeft.Location = new System.Drawing.Point(0, 0);
+            this.buttonProfileLeft.Location = new System.Drawing.Point(0, 6);
             this.buttonProfileLeft.Name = "buttonProfileLeft";
             this.buttonProfileLeft.Size = new System.Drawing.Size(8, 37);
             this.buttonProfileLeft.TabIndex = 7;

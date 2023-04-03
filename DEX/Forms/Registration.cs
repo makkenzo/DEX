@@ -16,8 +16,10 @@ namespace DEX
             InitializeComponent();
         }
 
-        private void buttonLogin_Click(object sender, EventArgs e)
+        private async void buttonLogin_Click(object sender, EventArgs e)
         {
+            this.Enabled = false;
+
             labelPassErr.Visible = false;
             labelUsernameErr.Visible = false;
 
@@ -43,7 +45,7 @@ namespace DEX
                     var photoBytes = File.ReadAllBytes("profile.jpg");
                     var filter = Builders<BsonDocument>.Filter.Eq("username", username);
 
-                    var result = collection.Find(filter).FirstOrDefault();
+                    var result = await collection.Find(filter).FirstOrDefaultAsync();
 
                     if (result != null)
                     {
@@ -64,10 +66,16 @@ namespace DEX
                             { "activity", 0 },
                             { "phone", "" },
                             { "password", pass },
+                            { "wallets", new BsonDocument
+                                {
+                                    { "eth", "" },
+                                    { "btc", "" }
+                                }
+                            },
                             { "role", "user" }
                         };
 
-                        collection.InsertOne(document);
+                        await collection.InsertOneAsync(document);
 
                         Authorization loginForm = new Authorization();
                         loginForm.Show();
@@ -75,7 +83,10 @@ namespace DEX
                     }
                 }
             }
+
+            this.Enabled = true;
         }
+
 
         private void button1_Click(object sender, EventArgs e)
         {

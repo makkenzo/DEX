@@ -81,7 +81,7 @@ namespace DEX
             buttonCryptocurrenciesLeft.Visible = false;
             buttonSettingsLeft.Visible = false;
 
-            UC_Balance uc = new UC_Balance();
+            UC_Balance uc = new UC_Balance(_userCredentials);
             addUserControl(uc);
         }
 

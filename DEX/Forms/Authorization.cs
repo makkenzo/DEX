@@ -56,8 +56,10 @@ namespace DEX
         }
 
 
-        private void buttonLogin_Click(object sender, EventArgs e)
+        private async void buttonLogin_Click(object sender, EventArgs e)
         {
+            this.Enabled = false;
+
             labelErr.Visible = false;
 
             var database = DBManager.GetDatabase();
@@ -66,7 +68,7 @@ namespace DEX
             string user = tbLogin.Text;
 
             var filter = Builders<BsonDocument>.Filter.Eq("username", user);
-            var result = collection.Find(filter).FirstOrDefault();
+            var result = await collection.Find(filter).FirstOrDefaultAsync();
 
             if (result != null)
             {
@@ -129,7 +131,10 @@ namespace DEX
             {
                 labelErr.Visible = true;
             }
+
+            this.Enabled = true;
         }
+
 
         [DllImport("user32.DLL", EntryPoint = "ReleaseCapture")]
         private extern static void ReleaseCapture();

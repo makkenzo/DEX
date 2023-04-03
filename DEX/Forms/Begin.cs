@@ -3,6 +3,7 @@ using System;
 using System.IO;
 using System.Runtime.InteropServices;
 using System.Runtime.Serialization.Formatters.Binary;
+using System.Threading.Tasks;
 using System.Windows.Forms;
 using static DEX.Authorization;
 
@@ -24,42 +25,69 @@ namespace DEX
             }
         }
 
-        private void button1_Click(object sender, EventArgs e)
+        private async void button1_Click(object sender, EventArgs e)
         {
-            string file = "userstate.dat";
-            if (File.Exists(file))
+            // Делаем форму неактивной
+            this.Enabled = false;
+
+            try
             {
-                using (FileStream stream = new FileStream(file, FileMode.Open))
+                string file = "userstate.dat";
+                if (File.Exists(file))
                 {
-                    BinaryFormatter formatter = new BinaryFormatter();
-                    UserState state = formatter.Deserialize(stream) as UserState;
+                    using (FileStream stream = new FileStream(file, FileMode.Open))
+                    {
+                        BinaryFormatter formatter = new BinaryFormatter();
+                        UserState state = formatter.Deserialize(stream) as UserState;
 
-                    // Создание объекта UserCredentials из состояния авторизации пользователя
-                    UserCredentials credentials = new UserCredentials();
-                    credentials.Username = state.Username;
-                    credentials.Pass = state.Pass;
-                    credentials.FName = state.FName;
-                    credentials.LName = state.LName;
-                    credentials.Photo = new BsonBinaryData(state.Photo);
-                    credentials.RegistrationDate = state.RegistrationDate;
-                    credentials.BirthDate = state.BirthDate;
-                    credentials.Email = state.Email;
-                    credentials.UserID = state.UserID;
-                    credentials.Phone = state.Phone;
-                    credentials.Activity = state.Activity;
+                        // Создание объекта UserCredentials из состояния авторизации пользователя
+                        UserCredentials credentials = new UserCredentials();
+                        credentials.Username = state.Username;
+                        credentials.Pass = state.Pass;
+                        credentials.FName = state.FName;
+                        credentials.LName = state.LName;
+                        credentials.Photo = new BsonBinaryData(state.Photo);
+                        credentials.RegistrationDate = state.RegistrationDate;
+                        credentials.BirthDate = state.BirthDate;
+                        credentials.Email = state.Email;
+                        credentials.UserID = state.UserID;
+                        credentials.Phone = state.Phone;
+                        credentials.Activity = state.Activity;
 
-                    MenuUser menu = new MenuUser(credentials);
-                    menu.Show();
+                        MenuUser menu = new MenuUser(credentials);
+                        menu.Show();
+                        this.Hide();
+                        await Task.Delay(10);
+                        this.Close();
+                    }
+                }
+                else
+                {
+                    Authorization authForm = new Authorization();
+                    authForm.Show();
+                    this.Hide();
+                    await Task.Delay(10);
                     this.Close();
                 }
+
+                // Ждем некоторое время, чтобы пользователь мог увидеть изменения на форме
+                await Task.Delay(10);
             }
-            else
+            catch (Exception ex)
             {
-                Authorization authForm = new Authorization();
-                authForm.Show();
+                // Обрабатываем ошибки, если нужно
+                MessageBox.Show(ex.Message);
+            }
+            finally
+            {
+                // Делаем форму активной снова
+                this.Enabled = true;
+
+                // Закрываем форму
                 this.Close();
             }
         }
+
 
         private void button1_Click_1(object sender, EventArgs e)
         {
