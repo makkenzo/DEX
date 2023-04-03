@@ -30,13 +30,13 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(UC_Balance));
             this.label1 = new System.Windows.Forms.Label();
-            this.panelWallets = new System.Windows.Forms.Panel();
+            this.panelEth = new System.Windows.Forms.Panel();
             this.btnEthEdit = new System.Windows.Forms.Button();
             this.imgEth = new System.Windows.Forms.PictureBox();
+            this.labelEthBalance = new System.Windows.Forms.Label();
             this.labelEthAddress = new System.Windows.Forms.Label();
             this.imgEthWallet = new System.Windows.Forms.PictureBox();
-            this.labelEthBalance = new System.Windows.Forms.Label();
-            this.panelWallets.SuspendLayout();
+            this.panelEth.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.imgEth)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.imgEthWallet)).BeginInit();
             this.SuspendLayout();
@@ -52,17 +52,17 @@
             this.label1.TabIndex = 1;
             this.label1.Text = "Реквизиты";
             // 
-            // panelWallets
+            // panelEth
             // 
-            this.panelWallets.Controls.Add(this.btnEthEdit);
-            this.panelWallets.Controls.Add(this.imgEth);
-            this.panelWallets.Controls.Add(this.labelEthBalance);
-            this.panelWallets.Controls.Add(this.labelEthAddress);
-            this.panelWallets.Controls.Add(this.imgEthWallet);
-            this.panelWallets.Location = new System.Drawing.Point(35, 75);
-            this.panelWallets.Name = "panelWallets";
-            this.panelWallets.Size = new System.Drawing.Size(296, 162);
-            this.panelWallets.TabIndex = 2;
+            this.panelEth.Controls.Add(this.btnEthEdit);
+            this.panelEth.Controls.Add(this.imgEth);
+            this.panelEth.Controls.Add(this.labelEthBalance);
+            this.panelEth.Controls.Add(this.labelEthAddress);
+            this.panelEth.Controls.Add(this.imgEthWallet);
+            this.panelEth.Location = new System.Drawing.Point(35, 75);
+            this.panelEth.Name = "panelEth";
+            this.panelEth.Size = new System.Drawing.Size(296, 162);
+            this.panelEth.TabIndex = 2;
             // 
             // btnEthEdit
             // 
@@ -92,6 +92,18 @@
             this.imgEth.TabIndex = 4;
             this.imgEth.TabStop = false;
             // 
+            // labelEthBalance
+            // 
+            this.labelEthBalance.AutoSize = true;
+            this.labelEthBalance.BackColor = System.Drawing.Color.Transparent;
+            this.labelEthBalance.Font = new System.Drawing.Font("Roboto", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.labelEthBalance.ForeColor = System.Drawing.Color.Black;
+            this.labelEthBalance.Location = new System.Drawing.Point(14, 87);
+            this.labelEthBalance.Name = "labelEthBalance";
+            this.labelEthBalance.Size = new System.Drawing.Size(95, 29);
+            this.labelEthBalance.TabIndex = 3;
+            this.labelEthBalance.Text = "Баланс";
+            // 
             // labelEthAddress
             // 
             this.labelEthAddress.AutoSize = true;
@@ -114,33 +126,21 @@
             this.imgEthWallet.TabIndex = 0;
             this.imgEthWallet.TabStop = false;
             // 
-            // labelEthBalance
-            // 
-            this.labelEthBalance.AutoSize = true;
-            this.labelEthBalance.BackColor = System.Drawing.Color.Transparent;
-            this.labelEthBalance.Font = new System.Drawing.Font("Roboto", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.labelEthBalance.ForeColor = System.Drawing.Color.Black;
-            this.labelEthBalance.Location = new System.Drawing.Point(14, 87);
-            this.labelEthBalance.Name = "labelEthBalance";
-            this.labelEthBalance.Size = new System.Drawing.Size(95, 29);
-            this.labelEthBalance.TabIndex = 3;
-            this.labelEthBalance.Text = "Баланс";
-            // 
             // UC_Balance
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoScroll = true;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(44)))), ((int)(((byte)(43)))), ((int)(((byte)(60)))));
-            this.Controls.Add(this.panelWallets);
+            this.Controls.Add(this.panelEth);
             this.Controls.Add(this.label1);
             this.Font = new System.Drawing.Font("Roboto", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.Name = "UC_Balance";
             this.Size = new System.Drawing.Size(1016, 674);
             this.Load += new System.EventHandler(this.UC_Balance_Load);
-            this.panelWallets.ResumeLayout(false);
-            this.panelWallets.PerformLayout();
+            this.panelEth.ResumeLayout(false);
+            this.panelEth.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.imgEth)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.imgEthWallet)).EndInit();
             this.ResumeLayout(false);
@@ -151,7 +151,7 @@
         #endregion
 
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Panel panelWallets;
+        private System.Windows.Forms.Panel panelEth;
         private System.Windows.Forms.PictureBox imgEthWallet;
         private System.Windows.Forms.Label labelEthAddress;
         private System.Windows.Forms.PictureBox imgEth;
