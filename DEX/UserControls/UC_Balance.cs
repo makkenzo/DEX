@@ -1,6 +1,7 @@
 ﻿using DEX.Forms;
 using MongoDB.Bson;
 using MongoDB.Driver;
+using System;
 using System.Drawing;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -12,7 +13,8 @@ namespace DEX.UserControls
     {
         private UserCredentials _userCredentials;
         private IMongoDatabase database = DBManager.GetDatabase();
-        private string etcValue;
+        private string etcAddress;
+        private double etcBalance;
 
         public UC_Balance(UserCredentials userCredentials)
         {
@@ -21,56 +23,55 @@ namespace DEX.UserControls
             _userCredentials = userCredentials;
         }
 
-        private async Task LoadUserDataAsync()
+        private async void UC_Balance_Load(object sender, EventArgs e)
         {
-            var filter = Builders<BsonDocument>.Filter.Eq("username", _userCredentials.Username);
-            var collection = database.GetCollection<BsonDocument>("Users");
+            labelEthAddress.Parent = imgEthWallet;
+            labelEthAddress.BackColor = Color.Transparent;
 
-            var cursor = await collection.FindAsync(filter);
-            var userDocument = await cursor.FirstOrDefaultAsync();
+            labelEthBalance.Parent = imgEthWallet;
+            labelEthBalance.BackColor = Color.Transparent;
 
-            if (userDocument.Contains("wallets"))
-            {
-                var walletsDocument = userDocument["wallets"].AsBsonDocument;
-                if (walletsDocument.Contains("eth") && !string.IsNullOrEmpty(walletsDocument["eth"].AsString))
-                {
-                    etcValue = walletsDocument["eth"].AsString;
-                    string etcValueShort = etcValue.Substring(0, 4) + "..." + etcValue.Substring(etcValue.Length - 6);
-
-                    labelEtc.Text = etcValueShort;
-                }
-                else
-                {
-                    labelEtc.Text = "Кошелька еще нет";
-                }
-            }
-            else
-            {
-                labelEtc.Text = "Кошелька еще нет";
-            }
-
-            this.Enabled = true;
-        }
-
-
-        private async void UC_Balance_Load(object sender, System.EventArgs e)
-        {
-            labelEtc.Parent = imgWallet;
-            labelEtc.BackColor = Color.Transparent;
-
-            imgEth.Parent = imgWallet;
+            imgEth.Parent = imgEthWallet;
 
             this.Enabled = false;
 
             await LoadUserDataAsync();
         }
 
-        private void btnEthEdit_Click(object sender, System.EventArgs e)
+        private async Task LoadUserDataAsync()
         {
-            EditWallet editWallet = new EditWallet(_userCredentials, etcValue);
+            var filter = Builders<BsonDocument>.Filter.Eq("username", _userCredentials.Username);
+            var collection = database.GetCollection<BsonDocument>("Users");
+
+            var userDocument = await collection.Find(filter).FirstOrDefaultAsync();
+
+            var walletsDocument = userDocument["wallets"].AsBsonDocument;
+            var ethWalletDocument = walletsDocument["eth"].AsBsonDocument;
+
+            if (ethWalletDocument.Contains("address") && !string.IsNullOrEmpty(ethWalletDocument["address"].AsString))
+            {
+                etcAddress = ethWalletDocument["address"].AsString;
+                string etcValueShort = etcAddress.Substring(0, 4) + "..." + etcAddress.Substring(etcAddress.Length - 6);
+
+                etcBalance = ethWalletDocument["balance"].AsDouble;
+
+                labelEthBalance.Text = Convert.ToString(etcBalance);
+                labelEthAddress.Text = etcValueShort;
+            }
+            else
+            {
+                labelEthAddress.Text = "Кошелька еще нет";
+            }
+
+            this.Enabled = true;
+        }
+
+        private void btnEthEdit_Click(object sender, EventArgs e)
+        {
+            EditWallet editWallet = new EditWallet(_userCredentials, etcAddress);
             editWallet.ShowDialog();
 
-            labelEtc.Text = editWallet.EtcValue.Substring(0, 4) + "..." + editWallet.EtcValue.Substring(etcValue.Length - 6);
+            labelEthAddress.Text = editWallet.EtcAddress.Substring(0, 4) + "..." + editWallet.EtcAddress.Substring(etcAddress.Length - 6);
         }
     }
 }

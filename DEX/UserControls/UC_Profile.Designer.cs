@@ -54,11 +54,11 @@
             this.label1 = new System.Windows.Forms.Label();
             this.labelRating = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.buttonImageEdit = new System.Windows.Forms.Button();
             this.panel10 = new System.Windows.Forms.Panel();
             this.errorIcon = new System.Windows.Forms.PictureBox();
             this.doneIcon = new System.Windows.Forms.PictureBox();
             this.profileImg = new System.Windows.Forms.PictureBox();
-            this.buttonImageEdit = new System.Windows.Forms.Button();
             this.buttonPassShowToggle = new System.Windows.Forms.Button();
             this.buttonPassEdit = new System.Windows.Forms.Button();
             this.buttonPhoneEdit = new System.Windows.Forms.Button();
@@ -68,9 +68,9 @@
             this.buttonBirthDateEdit = new System.Windows.Forms.Button();
             this.buttonLNameEdit = new System.Windows.Forms.Button();
             this.buttonFNameEdit = new System.Windows.Forms.Button();
+            this.label2 = new System.Windows.Forms.Label();
             this.panel2 = new System.Windows.Forms.Panel();
             this.labelPass = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
             this.panel10.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.errorIcon)).BeginInit();
@@ -421,6 +421,21 @@
             this.panel1.Size = new System.Drawing.Size(1016, 674);
             this.panel1.TabIndex = 59;
             // 
+            // buttonImageEdit
+            // 
+            this.buttonImageEdit.BackgroundImage = global::DEX.Properties.Resources.edit_tools__1_;
+            this.buttonImageEdit.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.buttonImageEdit.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.buttonImageEdit.FlatAppearance.BorderSize = 0;
+            this.buttonImageEdit.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
+            this.buttonImageEdit.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonImageEdit.Location = new System.Drawing.Point(378, 92);
+            this.buttonImageEdit.Name = "buttonImageEdit";
+            this.buttonImageEdit.Size = new System.Drawing.Size(20, 20);
+            this.buttonImageEdit.TabIndex = 55;
+            this.buttonImageEdit.UseVisualStyleBackColor = true;
+            this.buttonImageEdit.Click += new System.EventHandler(this.buttonImageEdit_Click);
+            // 
             // panel10
             // 
             this.panel10.Controls.Add(this.errorIcon);
@@ -462,21 +477,6 @@
             this.profileImg.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.profileImg.TabIndex = 23;
             this.profileImg.TabStop = false;
-            // 
-            // buttonImageEdit
-            // 
-            this.buttonImageEdit.BackgroundImage = global::DEX.Properties.Resources.edit_tools__1_;
-            this.buttonImageEdit.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.buttonImageEdit.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.buttonImageEdit.FlatAppearance.BorderSize = 0;
-            this.buttonImageEdit.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
-            this.buttonImageEdit.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.buttonImageEdit.Location = new System.Drawing.Point(378, 92);
-            this.buttonImageEdit.Name = "buttonImageEdit";
-            this.buttonImageEdit.Size = new System.Drawing.Size(20, 20);
-            this.buttonImageEdit.TabIndex = 55;
-            this.buttonImageEdit.UseVisualStyleBackColor = true;
-            this.buttonImageEdit.Click += new System.EventHandler(this.buttonImageEdit_Click);
             // 
             // buttonPassShowToggle
             // 
@@ -622,6 +622,18 @@
             this.buttonFNameEdit.UseVisualStyleBackColor = true;
             this.buttonFNameEdit.Click += new System.EventHandler(this.buttonFNameEdit_Click);
             // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.BackColor = System.Drawing.Color.Transparent;
+            this.label2.Font = new System.Drawing.Font("Roboto", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.label2.ForeColor = System.Drawing.SystemColors.Control;
+            this.label2.Location = new System.Drawing.Point(624, 131);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(41, 19);
+            this.label2.TabIndex = 33;
+            this.label2.Text = "Имя";
+            // 
             // panel2
             // 
             this.panel2.BackColor = System.Drawing.Color.White;
@@ -641,18 +653,6 @@
             this.labelPass.Size = new System.Drawing.Size(65, 19);
             this.labelPass.TabIndex = 37;
             this.labelPass.Text = "Пароль";
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.BackColor = System.Drawing.Color.Transparent;
-            this.label2.Font = new System.Drawing.Font("Roboto", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label2.ForeColor = System.Drawing.SystemColors.Control;
-            this.label2.Location = new System.Drawing.Point(624, 131);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(41, 19);
-            this.label2.TabIndex = 33;
-            this.label2.Text = "Имя";
             // 
             // UC_Profile
             // 

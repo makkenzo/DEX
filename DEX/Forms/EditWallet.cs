@@ -18,21 +18,21 @@ namespace DEX.Forms
     public partial class EditWallet : Form
     {
         private UserCredentials _userCredentials;
-        private string _etcValue;
+        private string _etcAddress;
 
-        public string EtcValue { get; set; }
+        public string EtcAddress { get; set; }
 
-        public EditWallet(UserCredentials userCredentials, string etcValue)
+        public EditWallet(UserCredentials userCredentials, string etcAddress)
         {
             InitializeComponent();
 
             _userCredentials = userCredentials;
-            _etcValue = etcValue;
+            _etcAddress = etcAddress;
         }
 
         private void EditWallet_Load(object sender, EventArgs e)
         {
-            tbAddress.Text = _etcValue;
+            tbAddress.Text = _etcAddress;
             tbAddress.ForeColor = Color.Gray;
         }
 
@@ -68,7 +68,7 @@ namespace DEX.Forms
 
             var database = DBManager.GetDatabase();
             var filter = Builders<BsonDocument>.Filter.Eq("username", _userCredentials.Username);
-            var update = Builders<BsonDocument>.Update.Set("wallets.eth", tbAddress.Text);
+            var update = Builders<BsonDocument>.Update.Set("wallets.eth.address", tbAddress.Text);
 
             var collection = database.GetCollection<BsonDocument>("Users");
 
@@ -78,7 +78,7 @@ namespace DEX.Forms
             {
                 await collection.UpdateOneAsync(filter, update);
 
-                this.EtcValue = tbAddress.Text;
+                this.EtcAddress = tbAddress.Text;
 
                 MessageBox.Show("Реквизиты успешно сохранены");
 

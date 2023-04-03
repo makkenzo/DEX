@@ -67,10 +67,22 @@ namespace DEX
                             { "phone", "" },
                             { "password", pass },
                             { "wallets", new BsonDocument
+                            {
                                 {
-                                    { "eth", "" },
-                                    { "btc", "" }
+                                    "eth", new BsonDocument
+                                    {
+                                        { "balance", 0.0 },
+                                        { "address", "" }
+                                    }
+                                },
+                                {
+                                    "btc", new BsonDocument
+                                    {
+                                        { "balance", 0.0 },
+                                        { "address", "" }
+                                    }
                                 }
+                            }
                             },
                             { "role", "user" }
                         };
