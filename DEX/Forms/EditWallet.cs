@@ -18,21 +18,43 @@ namespace DEX.Forms
         private string _address;
         private string _currency;
 
-        public string Address { get; set; }
+        private string _privateKey;
 
-        public EditWallet(UserCredentials userCredentials, string address, string currency)
+        public string Address { get; set; }
+        public string PrivateKey { get; set; }
+
+        public EditWallet(UserCredentials userCredentials, string address, string currency, string privateKey)
         {
             InitializeComponent();
 
             _userCredentials = userCredentials;
             _address = address;
             _currency = currency;
+            _privateKey = privateKey;
         }
 
         private void EditWallet_Load(object sender, EventArgs e)
         {
             tbAddress.Text = _address;
             tbAddress.ForeColor = Color.Gray;
+
+            tbPrivateKey.Text = _privateKey;
+
+            toolTip1.SetToolTip(tbPrivateKey, "Приватный ключ (privateKey) - это секретная информация, которая используется для подписи транзакций и доступа к вашему Ethereum кошельку.\n" +
+                                              "Никогда не делитесь своим приватным ключом с кем-либо и не храните его в открытом виде на своем компьютере.\n" +
+                                              "Если злоумышленник получит ваш приватный ключ, он сможет управлять вашими средствами на Ethereum.\n" +
+                                              "Обязательно сохраните свой приватный ключ в безопасном месте и не забудьте его.");
+
+            if (_privateKey == "")
+            {
+                if (_currency == "eth")
+                {
+                    return;
+                }
+                tbPrivateKey.Enabled = false;
+                label1.Enabled = false;
+                btnPrivateKeyShowToggle.Enabled = false;
+            }
         }
 
         [DllImport("user32.DLL", EntryPoint = "ReleaseCapture")]
@@ -55,6 +77,12 @@ namespace DEX.Forms
         {
             TextBox textBox = (TextBox)sender;
             textBox.ForeColor = Color.White;
+        }
+
+        private void TextBox_Click(object sender, EventArgs e)
+        {
+            TextBox textBox = (TextBox)sender;
+            textBox.SelectAll();
         }
 
         private async void buttonSave_Click(object sender, EventArgs e)
@@ -152,31 +180,66 @@ namespace DEX.Forms
                 }
             }
 
-            var database = DBManager.GetDatabase();
-            var filter = Builders<BsonDocument>.Filter.Eq("username", _userCredentials.Username);
-            var update = Builders<BsonDocument>.Update.Set($"wallets.{_currency}.address", tbAddress.Text);
-
-            var collection = database.GetCollection<BsonDocument>("Users");
-
-            this.Enabled = false;
-
-            try
+            if (_currency != "eth")
             {
-                await collection.UpdateOneAsync(filter, update);
+                var database = DBManager.GetDatabase();
+                var filter = Builders<BsonDocument>.Filter.Eq("username", _userCredentials.Username);
+                var update = Builders<BsonDocument>.Update.Set($"wallets.{_currency}.address", tbAddress.Text);
 
-                this.Address = tbAddress.Text;
+                var collection = database.GetCollection<BsonDocument>("Users");
 
-                MessageBox.Show("Реквизиты успешно сохранены");
+                this.Enabled = false;
 
-                this.DialogResult = DialogResult.OK;
+                try
+                {
+                    await collection.UpdateOneAsync(filter, update);
+
+                    this.Address = tbAddress.Text;
+
+                    MessageBox.Show("Реквизиты успешно сохранены");
+
+                    this.DialogResult = DialogResult.OK;
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show($"Ошибка при сохранении данных: {ex.Message}");
+                }
+                finally
+                {
+                    this.Enabled = true;
+                }
             }
-            catch (Exception ex)
+            else
             {
-                MessageBox.Show($"Ошибка при сохранении данных: {ex.Message}");
-            }
-            finally
-            {
-                this.Enabled = true;
+                var database = DBManager.GetDatabase();
+                var filter = Builders<BsonDocument>.Filter.Eq("username", _userCredentials.Username);
+                var update = Builders<BsonDocument>.Update
+                    .Set("wallets.eth.address", tbAddress.Text)
+                    .Set("wallets.eth.privateKey", tbPrivateKey.Text);
+
+                var collection = database.GetCollection<BsonDocument>("Users");
+
+                this.Enabled = false;
+
+                try
+                {
+                    await collection.UpdateOneAsync(filter, update);
+
+                    this.Address = tbAddress.Text;
+                    this.PrivateKey = tbPrivateKey.Text;
+
+                    MessageBox.Show("Реквизиты успешно сохранены");
+
+                    this.DialogResult = DialogResult.OK;
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show($"Ошибка при сохранении данных: {ex.Message}");
+                }
+                finally
+                {
+                    this.Enabled = true;
+                }
             }
         }
 
@@ -198,6 +261,21 @@ namespace DEX.Forms
                 var privateKey = ecKey.GetPrivateKey();
 
                 tbAddress.Text = address;
+                tbPrivateKey.Text = privateKey;
+            }
+        }
+
+        private void btnPrivateKeyShowToggle_Click(object sender, EventArgs e)
+        {
+            if (tbPrivateKey.PasswordChar == '•')
+            {
+                tbPrivateKey.PasswordChar = '\0'; // показываем пароль
+                btnPrivateKeyShowToggle.BackgroundImage = Properties.Resources.hide; // изменяем изображение на "hide"
+            }
+            else
+            {
+                tbPrivateKey.PasswordChar = '•'; // скрываем пароль
+                btnPrivateKeyShowToggle.BackgroundImage = Properties.Resources.show; // изменяем изображение на "show"
             }
         }
     }

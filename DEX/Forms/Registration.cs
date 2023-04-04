@@ -72,7 +72,8 @@ namespace DEX
                                     "eth", new BsonDocument
                                     {
                                         { "balance", 0.0 },
-                                        { "address", "" }
+                                        { "address", "" },
+                                        { "privateKey", "" }
                                     }
                                 },
                                 {

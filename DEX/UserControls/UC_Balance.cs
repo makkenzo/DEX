@@ -16,6 +16,7 @@ namespace DEX.UserControls
         private IMongoDatabase database = DBManager.GetDatabase();
 
         private string ethAddress, btcAddress, usdtAddress, usdcAddress, xrpAddress, ltcAddress, daiAddress, solAddress, busdAddress, adaAddress;
+        private string ethPrivateKey;
         private double ethBalance, btcBalance, usdtBalance, usdcBalance, xrpBalance, ltcBalance, daiBalance, solBalance, busdBalance, adaBalance;
 
         public UC_Balance(UserCredentials userCredentials)
@@ -85,6 +86,16 @@ namespace DEX.UserControls
                 addressLabel.Text = "Кошелек не найден";
                 addressLabel.Enabled = false;
             }
+
+            if (walletName == "eth")
+            {
+                var privateKeyDoc = walletDocument["privateKey"];
+                if (privateKeyDoc != null)
+                {
+                    ethPrivateKey = privateKeyDoc.AsString;
+                }
+            }
+
         }
 
         private void TogglePanels(bool state)
@@ -101,9 +112,9 @@ namespace DEX.UserControls
             panelAda.Enabled = state;
         }
 
-        private void EditAddress(string address, Label addressLabel, string currency)
+        private void EditAddress(string address, Label addressLabel, string currency, string privateKey)
         {
-            EditWallet editWallet = new EditWallet(_userCredentials, address, currency);
+            EditWallet editWallet = new EditWallet(_userCredentials, address, currency, privateKey);
             editWallet.ShowDialog();
 
             if (editWallet.DialogResult == DialogResult.OK)
@@ -117,52 +128,52 @@ namespace DEX.UserControls
 
         private void btnEthEdit_Click(object sender, EventArgs e)
         {
-            EditAddress(ethAddress, labelETHAddress, "eth");
+            EditAddress(ethAddress, labelETHAddress, "eth", ethPrivateKey);
         }
 
         private void btnBtcEdit_Click(object sender, EventArgs e)
         {
-            EditAddress(btcAddress, labelBTCAddress, "btc");
+            EditAddress(btcAddress, labelBTCAddress, "btc", "");
         }
 
         private void btnUSDTEdit_Click(object sender, EventArgs e)
         {
-            EditAddress(usdtAddress, labelUSDTAddress, "usdt");
+            EditAddress(usdtAddress, labelUSDTAddress, "usdt", "");
         }
 
         private void btnXRPEdit_Click(object sender, EventArgs e)
         {
-            EditAddress(xrpAddress, labelXRPAddress, "xrp");
+            EditAddress(xrpAddress, labelXRPAddress, "xrp", "");
         }
 
         private void btnLTCEdit_Click(object sender, EventArgs e)
         {
-            EditAddress(ltcAddress, labelLTCAddress, "ltc");
+            EditAddress(ltcAddress, labelLTCAddress, "ltc", "");
         }
 
         private void btnDAIEdit_Click(object sender, EventArgs e)
         {
-            EditAddress(daiAddress, labelDAIAddress, "dai");
+            EditAddress(daiAddress, labelDAIAddress, "dai", "");
         }
 
         private void btnUSDCEdit_Click(object sender, EventArgs e)
         {
-            EditAddress(usdcAddress, labelUSDCAddress, "usdc");
+            EditAddress(usdcAddress, labelUSDCAddress, "usdc", "");
         }
 
         private void btnADAEdit_Click(object sender, EventArgs e)
         {
-            EditAddress(adaAddress, labelADAAddress, "ada");
+            EditAddress(adaAddress, labelADAAddress, "ada", "");
         }
 
         private void btnBUSDEdit_Click(object sender, EventArgs e)
         {
-            EditAddress(busdAddress, labelBUSDAddress, "busd");
+            EditAddress(busdAddress, labelBUSDAddress, "busd", "");
         }
 
         private void btnSOLEdit_Click(object sender, EventArgs e)
         {
-            EditAddress(solAddress, labelSOLAddress, "sol");
+            EditAddress(solAddress, labelSOLAddress, "sol", "");
         }
     }
 }
