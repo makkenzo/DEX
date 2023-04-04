@@ -1,15 +1,9 @@
 ﻿using MongoDB.Bson;
 using MongoDB.Driver;
 using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
 using System.Drawing;
-using System.Linq;
 using System.Runtime.InteropServices;
-using System.Text;
 using System.Text.RegularExpressions;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using static DEX.Authorization;
 
@@ -64,6 +58,8 @@ namespace DEX.Forms
         {
             if (_currency == "eth")
             {
+                if (string.IsNullOrEmpty(tbAddress.Text))
+                    return;
                 if (!Regex.IsMatch(tbAddress.Text.Trim(), "^0x[a-fA-F0-9]{40}$"))
                 {
                     MessageBox.Show("Неправильный формат ETH-счета");
@@ -73,16 +69,82 @@ namespace DEX.Forms
             else if (_currency == "btc")
             {
                 if (string.IsNullOrEmpty(tbAddress.Text))
-                {
                     return;
-                }
                 if (tbAddress.Text.Length < 26 || tbAddress.Text.Length > 35)
-                {
                     return;
-                }
                 if (!Regex.IsMatch(tbAddress.Text.Trim(), "^[13][a-km-zA-HJ-NP-Z1-9]{25,34}$"))
                 {
                     MessageBox.Show("Неправильный формат BTC-счета");
+                    return;
+                }
+            }
+            else if (_currency == "usdt" || _currency == "usdc")
+            {
+                if (string.IsNullOrEmpty(tbAddress.Text))
+                    return;
+                if (!Regex.IsMatch(tbAddress.Text.Trim(), "^0x[0-9a-fA-F]{40}$"))
+                {
+                    MessageBox.Show("Неправильный формат USDT/USDC-счета");
+                    return;
+                }
+            }
+            else if (_currency == "xrp")
+            {
+                if (string.IsNullOrEmpty(tbAddress.Text))
+                    return;
+                if (!Regex.IsMatch(tbAddress.Text.Trim(), @"^r[0-9a-zA-Z]{33}$"))
+                {
+                    MessageBox.Show("Неправильный формат XRP-счета");
+                    return;
+                }
+            }
+            else if (_currency == "ltc")
+            {
+                if (string.IsNullOrEmpty(tbAddress.Text))
+                    return;
+                if (!Regex.IsMatch(tbAddress.Text.Trim(), "^[LM3][a-km-zA-HJ-NP-Z1-9]{26,33}$"))
+                {
+                    MessageBox.Show("Неправильный формат LTC-счета");
+                    return;
+                }
+            }
+            else if (_currency == "dai")
+            {
+                if (string.IsNullOrEmpty(tbAddress.Text))
+                    return;
+                if (!Regex.IsMatch(tbAddress.Text.Trim(), "^0x[0-9a-fA-F]{40}$"))
+                {
+                    MessageBox.Show("Неправильный формат DAI-счета");
+                    return;
+                }
+            }
+            else if (_currency == "sol")
+            {
+                if (string.IsNullOrEmpty(tbAddress.Text))
+                    return;
+                if (!Regex.IsMatch(tbAddress.Text.Trim(), "^[1-9a-zA-Z]{32,44}$"))
+                {
+                    MessageBox.Show("Неправильный формат SOL-счета");
+                    return;
+                }
+            }
+            else if (_currency == "busd")
+            {
+                if (string.IsNullOrEmpty(tbAddress.Text))
+                    return;
+                if (!Regex.IsMatch(tbAddress.Text.Trim(), "^0x[0-9a-fA-F]{40}$"))
+                {
+                    MessageBox.Show("Неправильный формат BUSD-счета");
+                    return;
+                }
+            }
+            else if (_currency == "ada")
+            {
+                if (string.IsNullOrEmpty(tbAddress.Text))
+                    return;
+                if (!Regex.IsMatch(tbAddress.Text, "^addr1[0-9a-zA-Z]{57}$"))
+                {
+                    MessageBox.Show("Неправильный формат ADA-счета");
                     return;
                 }
             }
@@ -113,6 +175,11 @@ namespace DEX.Forms
             {
                 this.Enabled = true;
             }
+        }
+
+        private void buttonGenerate_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

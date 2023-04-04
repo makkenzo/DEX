@@ -37,6 +37,7 @@
             this.label3 = new System.Windows.Forms.Label();
             this.tbAddress = new System.Windows.Forms.TextBox();
             this.buttonSave = new System.Windows.Forms.Button();
+            this.buttonGenerate = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             this.SuspendLayout();
@@ -118,7 +119,7 @@
             this.tbAddress.Font = new System.Drawing.Font("Roboto", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.tbAddress.ForeColor = System.Drawing.Color.Gray;
             this.tbAddress.Location = new System.Drawing.Point(151, 64);
-            this.tbAddress.MaxLength = 42;
+            this.tbAddress.MaxLength = 105;
             this.tbAddress.Name = "tbAddress";
             this.tbAddress.Size = new System.Drawing.Size(570, 23);
             this.tbAddress.TabIndex = 20;
@@ -142,6 +143,23 @@
             this.buttonSave.UseVisualStyleBackColor = false;
             this.buttonSave.Click += new System.EventHandler(this.buttonSave_Click);
             // 
+            // buttonGenerate
+            // 
+            this.buttonGenerate.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(44)))), ((int)(((byte)(43)))), ((int)(((byte)(60)))));
+            this.buttonGenerate.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(140)))), ((int)(((byte)(122)))), ((int)(((byte)(230)))));
+            this.buttonGenerate.FlatAppearance.BorderSize = 2;
+            this.buttonGenerate.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.buttonGenerate.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonGenerate.Font = new System.Drawing.Font("Roboto", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.buttonGenerate.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(140)))), ((int)(((byte)(122)))), ((int)(((byte)(230)))));
+            this.buttonGenerate.Location = new System.Drawing.Point(151, 112);
+            this.buttonGenerate.Name = "buttonGenerate";
+            this.buttonGenerate.Size = new System.Drawing.Size(154, 42);
+            this.buttonGenerate.TabIndex = 19;
+            this.buttonGenerate.Text = "Сгенерировать";
+            this.buttonGenerate.UseVisualStyleBackColor = false;
+            this.buttonGenerate.Click += new System.EventHandler(this.buttonGenerate_Click);
+            // 
             // EditWallet
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 19F);
@@ -151,12 +169,13 @@
             this.Controls.Add(this.panel3);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.tbAddress);
+            this.Controls.Add(this.buttonGenerate);
             this.Controls.Add(this.buttonSave);
             this.Controls.Add(this.panel1);
             this.Font = new System.Drawing.Font("Roboto", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "EditWallet";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "EditWallet";
@@ -179,5 +198,6 @@
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.TextBox tbAddress;
         private System.Windows.Forms.Button buttonSave;
+        private System.Windows.Forms.Button buttonGenerate;
     }
 }
