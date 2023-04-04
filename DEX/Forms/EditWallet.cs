@@ -2,12 +2,10 @@
 using MongoDB.Driver;
 using NBitcoin;
 using NBitcoin.Altcoins;
-using NBitcoin.DataEncoders;
 using Nethereum.Signer;
 using System;
 using System.Drawing;
 using System.Runtime.InteropServices;
-using System.Text;
 using System.Text.RegularExpressions;
 using System.Windows.Forms;
 using static DEX.Authorization;

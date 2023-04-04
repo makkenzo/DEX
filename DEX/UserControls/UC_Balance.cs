@@ -2,8 +2,6 @@
 using MongoDB.Bson;
 using MongoDB.Driver;
 using System;
-using System.Drawing;
-using System.Drawing.Drawing2D;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using static DEX.Authorization;
