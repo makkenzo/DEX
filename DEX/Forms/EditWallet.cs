@@ -1,5 +1,8 @@
 ﻿using MongoDB.Bson;
 using MongoDB.Driver;
+using NBitcoin;
+using Nethereum.Signer;
+using Nethereum.Util;
 using System;
 using System.Drawing;
 using System.Runtime.InteropServices;
@@ -179,7 +182,23 @@ namespace DEX.Forms
 
         private void buttonGenerate_Click(object sender, EventArgs e)
         {
+            if (_currency == "btc")
+            {
+                Network network = Network.Main; // указываем использовать основную Bitcoin-сеть
+                PubKey pubKey = new Key().PubKey; // генерируем публичный ключ
+                string address = pubKey.GetAddress(ScriptPubKeyType.Legacy, network).ToString(); // создаем Bitcoin-адрес
 
+                tbAddress.Text = address;
+            }
+            else if (_currency == "eth")
+            {
+                var ecKey = EthECKey.GenerateKey();
+                var address = ecKey.GetPublicAddress();
+
+                var privateKey = ecKey.GetPrivateKey();
+
+                tbAddress.Text = address;
+            }
         }
     }
 }
