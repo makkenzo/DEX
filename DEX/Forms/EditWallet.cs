@@ -2,10 +2,12 @@
 using MongoDB.Driver;
 using NBitcoin;
 using NBitcoin.Altcoins;
+using NBitcoin.DataEncoders;
 using Nethereum.Signer;
 using System;
 using System.Drawing;
 using System.Runtime.InteropServices;
+using System.Text;
 using System.Text.RegularExpressions;
 using System.Windows.Forms;
 using static DEX.Authorization;
@@ -90,8 +92,6 @@ namespace DEX.Forms
             {
                 if (string.IsNullOrEmpty(tbAddress.Text))
                     return;
-                if (tbAddress.Text.Length < 26 || tbAddress.Text.Length > 35)
-                    return;
                 if (!Regex.IsMatch(tbAddress.Text.Trim(), "^([13][a-km-zA-HJ-NP-Z1-9]{25,34}|bc1[ac-hj-np-z0-9]{11,71})$"))
                 {
                     MessageBox.Show("Неправильный формат BTC-счета", "Invalid input", MessageBoxButtons.OK, MessageBoxIcon.Error);
@@ -169,33 +169,38 @@ namespace DEX.Forms
                 }
             }
 
-            var database = DBManager.GetDatabase();
-            var filter = Builders<BsonDocument>.Filter.Eq("username", _userCredentials.Username);
-            var update = Builders<BsonDocument>.Update.Set($"wallets.{_currency}.address", tbAddress.Text)
-                .Set($"wallets.{_currency}.privateKey", tbPrivateKey.Text);
+            var result = MessageBox.Show($"Вы точно хотите обновить реквизиты {_currency.ToUpper()}-кошелька?", "Подтверждение обновления", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
 
-            var collection = database.GetCollection<BsonDocument>("Users");
-
-            this.Enabled = false;
-
-            try
+            if (result == DialogResult.Yes)
             {
-                await collection.UpdateOneAsync(filter, update);
+                var database = DBManager.GetDatabase();
+                var filter = Builders<BsonDocument>.Filter.Eq("username", _userCredentials.Username);
+                var update = Builders<BsonDocument>.Update.Set($"wallets.{_currency}.address", tbAddress.Text)
+                    .Set($"wallets.{_currency}.privateKey", tbPrivateKey.Text);
 
-                this.Address = tbAddress.Text;
-                this.PrivateKey = tbPrivateKey.Text;
+                var collection = database.GetCollection<BsonDocument>("Users");
 
-                MessageBox.Show("Реквизиты успешно сохранены");
+                this.Enabled = false;
 
-                this.DialogResult = DialogResult.OK;
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show($"Ошибка при сохранении данных: {ex.Message}");
-            }
-            finally
-            {
-                this.Enabled = true;
+                try
+                {
+                    await collection.UpdateOneAsync(filter, update);
+
+                    this.Address = tbAddress.Text;
+                    this.PrivateKey = tbPrivateKey.Text;
+
+                    MessageBox.Show("Реквизиты успешно сохранены");
+
+                    this.DialogResult = DialogResult.OK;
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show($"Ошибка при сохранении данных: {ex.Message}");
+                }
+                finally
+                {
+                    this.Enabled = true;
+                }
             }
         }
 
@@ -204,9 +209,12 @@ namespace DEX.Forms
             if (_currency == "btc")
             {
                 Network network = Network.Main;
-                PubKey pubKey = new Key().PubKey;
+
                 Key privateKey = new Key();
-                string privateKeyHex = privateKey.GetWif(network).ToString();
+
+                PubKey pubKey = new Key().PubKey;
+
+                string privateKeyHex = privateKey.GetBitcoinSecret(network).ToString();
                 string address = pubKey.GetAddress(ScriptPubKeyType.Legacy, network).ToString();
 
                 tbAddress.Text = address;
@@ -214,10 +222,10 @@ namespace DEX.Forms
             }
             else if (_currency == "eth" || _currency == "usdt" || _currency == "usdc")
             {
-                var ecKey = EthECKey.GenerateKey();
-                var address = ecKey.GetPublicAddress();
+                EthECKey ecKey = EthECKey.GenerateKey();
+                string address = ecKey.GetPublicAddress();
 
-                var privateKey = ecKey.GetPrivateKey();
+                string privateKey = ecKey.GetPrivateKey();
 
                 tbAddress.Text = address;
                 tbPrivateKey.Text = privateKey;
