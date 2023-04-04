@@ -423,7 +423,7 @@
             // 
             // buttonImageEdit
             // 
-            this.buttonImageEdit.BackgroundImage = global::DEX.Properties.Resources.edit_tools__1_;
+            this.buttonImageEdit.BackgroundImage = global::DEX.Properties.Resources.edit_tools;
             this.buttonImageEdit.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
             this.buttonImageEdit.Cursor = System.Windows.Forms.Cursors.Hand;
             this.buttonImageEdit.FlatAppearance.BorderSize = 0;
@@ -496,7 +496,7 @@
             // 
             // buttonPassEdit
             // 
-            this.buttonPassEdit.BackgroundImage = global::DEX.Properties.Resources.edit_tools__1_;
+            this.buttonPassEdit.BackgroundImage = global::DEX.Properties.Resources.edit_tools;
             this.buttonPassEdit.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
             this.buttonPassEdit.Cursor = System.Windows.Forms.Cursors.Hand;
             this.buttonPassEdit.FlatAppearance.BorderColor = System.Drawing.Color.Black;
@@ -512,7 +512,7 @@
             // 
             // buttonPhoneEdit
             // 
-            this.buttonPhoneEdit.BackgroundImage = global::DEX.Properties.Resources.edit_tools__1_;
+            this.buttonPhoneEdit.BackgroundImage = global::DEX.Properties.Resources.edit_tools;
             this.buttonPhoneEdit.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
             this.buttonPhoneEdit.Cursor = System.Windows.Forms.Cursors.Hand;
             this.buttonPhoneEdit.FlatAppearance.BorderColor = System.Drawing.Color.Black;
@@ -528,7 +528,7 @@
             // 
             // buttonUserIDEdit
             // 
-            this.buttonUserIDEdit.BackgroundImage = global::DEX.Properties.Resources.edit_tools__1_;
+            this.buttonUserIDEdit.BackgroundImage = global::DEX.Properties.Resources.edit_tools;
             this.buttonUserIDEdit.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
             this.buttonUserIDEdit.Cursor = System.Windows.Forms.Cursors.Hand;
             this.buttonUserIDEdit.FlatAppearance.BorderColor = System.Drawing.Color.Black;
@@ -544,7 +544,7 @@
             // 
             // buttonEmailEdit
             // 
-            this.buttonEmailEdit.BackgroundImage = global::DEX.Properties.Resources.edit_tools__1_;
+            this.buttonEmailEdit.BackgroundImage = global::DEX.Properties.Resources.edit_tools;
             this.buttonEmailEdit.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
             this.buttonEmailEdit.Cursor = System.Windows.Forms.Cursors.Hand;
             this.buttonEmailEdit.FlatAppearance.BorderColor = System.Drawing.Color.Black;
@@ -577,7 +577,7 @@
             // 
             // buttonBirthDateEdit
             // 
-            this.buttonBirthDateEdit.BackgroundImage = global::DEX.Properties.Resources.edit_tools__1_;
+            this.buttonBirthDateEdit.BackgroundImage = global::DEX.Properties.Resources.edit_tools;
             this.buttonBirthDateEdit.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
             this.buttonBirthDateEdit.Cursor = System.Windows.Forms.Cursors.Hand;
             this.buttonBirthDateEdit.FlatAppearance.BorderColor = System.Drawing.Color.Black;
@@ -593,7 +593,7 @@
             // 
             // buttonLNameEdit
             // 
-            this.buttonLNameEdit.BackgroundImage = global::DEX.Properties.Resources.edit_tools__1_;
+            this.buttonLNameEdit.BackgroundImage = global::DEX.Properties.Resources.edit_tools;
             this.buttonLNameEdit.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
             this.buttonLNameEdit.Cursor = System.Windows.Forms.Cursors.Hand;
             this.buttonLNameEdit.FlatAppearance.BorderColor = System.Drawing.Color.Black;
@@ -609,7 +609,7 @@
             // 
             // buttonFNameEdit
             // 
-            this.buttonFNameEdit.BackgroundImage = global::DEX.Properties.Resources.edit_tools__1_;
+            this.buttonFNameEdit.BackgroundImage = global::DEX.Properties.Resources.edit_tools;
             this.buttonFNameEdit.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
             this.buttonFNameEdit.Cursor = System.Windows.Forms.Cursors.Hand;
             this.buttonFNameEdit.FlatAppearance.BorderSize = 0;

@@ -81,6 +81,62 @@ namespace DEX
                                         { "balance", 0.0 },
                                         { "address", "" }
                                     }
+                                },
+                                {
+                                    "usdt", new BsonDocument
+                                    {
+                                        { "balance", 0.0 },
+                                        { "address", "" }
+                                    }
+                                },
+                                {
+                                    "usdc", new BsonDocument
+                                    {
+                                        { "balance", 0.0 },
+                                        { "address", "" }
+                                    }
+                                },
+                                {
+                                    "xrp", new BsonDocument
+                                    {
+                                        { "balance", 0.0 },
+                                        { "address", "" }
+                                    }
+                                },
+                                {
+                                    "ltc", new BsonDocument
+                                    {
+                                        { "balance", 0.0 },
+                                        { "address", "" }
+                                    }
+                                },
+                                {
+                                    "dai", new BsonDocument
+                                    {
+                                        { "balance", 0.0 },
+                                        { "address", "" }
+                                    }
+                                },
+                                {
+                                    "sol", new BsonDocument
+                                    {
+                                        { "balance", 0.0 },
+                                        { "address", "" }
+                                    }
+                                },
+                                {
+                                    "busd", new BsonDocument
+                                    {
+                                        { "balance", 0.0 },
+                                        { "address", "" }
+                                    }
+                                },
+                                {
+                                    "ada", new BsonDocument
+                                    {
+                                        { "balance", 0.0 },
+                                        { "address", "" }
+                                    }
                                 }
                             }
                             },

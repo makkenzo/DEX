@@ -18,21 +18,23 @@ namespace DEX.Forms
     public partial class EditWallet : Form
     {
         private UserCredentials _userCredentials;
-        private string _etcAddress;
+        private string _address;
+        private string _currency;
 
-        public string EtcAddress { get; set; }
+        public string Address { get; set; }
 
-        public EditWallet(UserCredentials userCredentials, string etcAddress)
+        public EditWallet(UserCredentials userCredentials, string address, string currency)
         {
             InitializeComponent();
 
             _userCredentials = userCredentials;
-            _etcAddress = etcAddress;
+            _address = address;
+            _currency = currency;
         }
 
         private void EditWallet_Load(object sender, EventArgs e)
         {
-            tbAddress.Text = _etcAddress;
+            tbAddress.Text = _address;
             tbAddress.ForeColor = Color.Gray;
         }
 
@@ -60,15 +62,34 @@ namespace DEX.Forms
 
         private async void buttonSave_Click(object sender, EventArgs e)
         {
-            if (!Regex.IsMatch(tbAddress.Text.Trim(), "^0x[a-fA-F0-9]{40}$"))
+            if (_currency == "eth")
             {
-                MessageBox.Show("Неправильный формат ETH-счета");
-                return;
+                if (!Regex.IsMatch(tbAddress.Text.Trim(), "^0x[a-fA-F0-9]{40}$"))
+                {
+                    MessageBox.Show("Неправильный формат ETH-счета");
+                    return;
+                }
+            }
+            else if (_currency == "btc")
+            {
+                if (string.IsNullOrEmpty(tbAddress.Text))
+                {
+                    return;
+                }
+                if (tbAddress.Text.Length < 26 || tbAddress.Text.Length > 35)
+                {
+                    return;
+                }
+                if (!Regex.IsMatch(tbAddress.Text.Trim(), "^[13][a-km-zA-HJ-NP-Z1-9]{25,34}$"))
+                {
+                    MessageBox.Show("Неправильный формат BTC-счета");
+                    return;
+                }
             }
 
             var database = DBManager.GetDatabase();
             var filter = Builders<BsonDocument>.Filter.Eq("username", _userCredentials.Username);
-            var update = Builders<BsonDocument>.Update.Set("wallets.eth.address", tbAddress.Text);
+            var update = Builders<BsonDocument>.Update.Set($"wallets.{_currency}.address", tbAddress.Text);
 
             var collection = database.GetCollection<BsonDocument>("Users");
 
@@ -78,7 +99,7 @@ namespace DEX.Forms
             {
                 await collection.UpdateOneAsync(filter, update);
 
-                this.EtcAddress = tbAddress.Text;
+                this.Address = tbAddress.Text;
 
                 MessageBox.Show("Реквизиты успешно сохранены");
 

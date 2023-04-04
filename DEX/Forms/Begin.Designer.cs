@@ -121,7 +121,7 @@ namespace DEX
             // 
             // button1
             // 
-            this.button1.BackgroundImage = global::DEX.Properties.Resources.close_button__1_;
+            this.button1.BackgroundImage = global::DEX.Properties.Resources.close_button;
             this.button1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
             this.button1.Dock = System.Windows.Forms.DockStyle.Right;
             this.button1.FlatAppearance.BorderSize = 0;
