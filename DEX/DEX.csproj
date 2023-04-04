@@ -74,6 +74,9 @@
     <Reference Include="NBitcoin, Version=7.0.25.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\NBitcoin.7.0.25\lib\net472\NBitcoin.dll</HintPath>
     </Reference>
+    <Reference Include="NBitcoin.Altcoins, Version=3.0.18.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\NBitcoin.Altcoins.3.0.18\lib\net472\NBitcoin.Altcoins.dll</HintPath>
+    </Reference>
     <Reference Include="Nethereum.Hex, Version=4.14.0.0, Culture=neutral, PublicKeyToken=8768a594786aba4e, processorArchitecture=MSIL">
       <HintPath>..\packages\Nethereum.Hex.4.14.0\lib\net461\Nethereum.Hex.dll</HintPath>
     </Reference>

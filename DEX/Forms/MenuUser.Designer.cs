@@ -135,7 +135,7 @@
             this.buttonSettings.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(49)))), ((int)(((byte)(69)))));
             this.buttonSettings.FlatAppearance.BorderSize = 0;
             this.buttonSettings.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.buttonSettings.Font = new System.Drawing.Font("Roboto", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.buttonSettings.Font = new System.Drawing.Font("Roboto", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.buttonSettings.ForeColor = System.Drawing.Color.White;
             this.buttonSettings.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.buttonSettings.Location = new System.Drawing.Point(8, 582);
@@ -151,7 +151,7 @@
             this.buttonLogOut.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(49)))), ((int)(((byte)(69)))));
             this.buttonLogOut.FlatAppearance.BorderSize = 0;
             this.buttonLogOut.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.buttonLogOut.Font = new System.Drawing.Font("Roboto", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.buttonLogOut.Font = new System.Drawing.Font("Roboto", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.buttonLogOut.ForeColor = System.Drawing.Color.White;
             this.buttonLogOut.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.buttonLogOut.Location = new System.Drawing.Point(8, 625);
@@ -167,7 +167,7 @@
             this.buttonCryptocurrencies.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(49)))), ((int)(((byte)(69)))));
             this.buttonCryptocurrencies.FlatAppearance.BorderSize = 0;
             this.buttonCryptocurrencies.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.buttonCryptocurrencies.Font = new System.Drawing.Font("Roboto", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.buttonCryptocurrencies.Font = new System.Drawing.Font("Roboto", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.buttonCryptocurrencies.ForeColor = System.Drawing.Color.White;
             this.buttonCryptocurrencies.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.buttonCryptocurrencies.Location = new System.Drawing.Point(8, 221);
@@ -183,7 +183,7 @@
             this.buttonHistory.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(49)))), ((int)(((byte)(69)))));
             this.buttonHistory.FlatAppearance.BorderSize = 0;
             this.buttonHistory.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.buttonHistory.Font = new System.Drawing.Font("Roboto", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.buttonHistory.Font = new System.Drawing.Font("Roboto", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.buttonHistory.ForeColor = System.Drawing.Color.White;
             this.buttonHistory.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.buttonHistory.Location = new System.Drawing.Point(8, 178);
@@ -199,7 +199,7 @@
             this.buttonLots.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(49)))), ((int)(((byte)(69)))));
             this.buttonLots.FlatAppearance.BorderSize = 0;
             this.buttonLots.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.buttonLots.Font = new System.Drawing.Font("Roboto", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.buttonLots.Font = new System.Drawing.Font("Roboto", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.buttonLots.ForeColor = System.Drawing.Color.White;
             this.buttonLots.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.buttonLots.Location = new System.Drawing.Point(8, 135);
@@ -215,7 +215,7 @@
             this.buttonRating.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(49)))), ((int)(((byte)(69)))));
             this.buttonRating.FlatAppearance.BorderSize = 0;
             this.buttonRating.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.buttonRating.Font = new System.Drawing.Font("Roboto", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.buttonRating.Font = new System.Drawing.Font("Roboto", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.buttonRating.ForeColor = System.Drawing.Color.White;
             this.buttonRating.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.buttonRating.Location = new System.Drawing.Point(8, 92);
@@ -231,14 +231,14 @@
             this.buttonBalance.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(49)))), ((int)(((byte)(69)))));
             this.buttonBalance.FlatAppearance.BorderSize = 0;
             this.buttonBalance.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.buttonBalance.Font = new System.Drawing.Font("Roboto", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.buttonBalance.Font = new System.Drawing.Font("Roboto", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.buttonBalance.ForeColor = System.Drawing.Color.White;
             this.buttonBalance.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.buttonBalance.Location = new System.Drawing.Point(8, 49);
             this.buttonBalance.Name = "buttonBalance";
             this.buttonBalance.Size = new System.Drawing.Size(256, 37);
             this.buttonBalance.TabIndex = 9;
-            this.buttonBalance.Text = "Баланс";
+            this.buttonBalance.Text = "Счета";
             this.buttonBalance.UseVisualStyleBackColor = true;
             this.buttonBalance.Click += new System.EventHandler(this.buttonBalance_Click);
             // 
@@ -247,7 +247,7 @@
             this.buttonProfile.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(49)))), ((int)(((byte)(69)))));
             this.buttonProfile.FlatAppearance.BorderSize = 0;
             this.buttonProfile.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.buttonProfile.Font = new System.Drawing.Font("Roboto", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.buttonProfile.Font = new System.Drawing.Font("Roboto", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.buttonProfile.ForeColor = System.Drawing.Color.White;
             this.buttonProfile.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.buttonProfile.Location = new System.Drawing.Point(8, 6);

@@ -80,63 +80,72 @@ namespace DEX
                                     "btc", new BsonDocument
                                     {
                                         { "balance", 0.0 },
-                                        { "address", "" }
+                                        { "address", "" },
+                                        { "privateKey", "" }
                                     }
                                 },
                                 {
                                     "usdt", new BsonDocument
                                     {
                                         { "balance", 0.0 },
-                                        { "address", "" }
+                                        { "address", "" },
+                                        { "privateKey", "" }
                                     }
                                 },
                                 {
                                     "usdc", new BsonDocument
                                     {
                                         { "balance", 0.0 },
-                                        { "address", "" }
+                                        { "address", "" },
+                                        { "privateKey", "" }
                                     }
                                 },
                                 {
                                     "xrp", new BsonDocument
                                     {
                                         { "balance", 0.0 },
-                                        { "address", "" }
+                                        { "address", "" },
+                                        { "privateKey", "" }
                                     }
                                 },
                                 {
                                     "ltc", new BsonDocument
                                     {
                                         { "balance", 0.0 },
-                                        { "address", "" }
+                                        { "address", "" },
+                                        { "privateKey", "" }
                                     }
                                 },
                                 {
                                     "dai", new BsonDocument
                                     {
                                         { "balance", 0.0 },
-                                        { "address", "" }
+                                        { "address", "" },
+                                        { "privateKey", "" }
                                     }
                                 },
                                 {
                                     "sol", new BsonDocument
                                     {
                                         { "balance", 0.0 },
-                                        { "address", "" }
+                                        { "address", "" },
+                                        { "privateKey", "" }
                                     }
                                 },
                                 {
                                     "busd", new BsonDocument
                                     {
                                         { "balance", 0.0 },
-                                        { "address", "" }
+                                        { "address", "" },
+                                        { "privateKey", "" }
                                     }
                                 },
                                 {
                                     "ada", new BsonDocument
                                     {
                                         { "balance", 0.0 },
-                                        { "address", "" }
+                                        { "address", "" },
+                                        { "privateKey", "" }
                                     }
                                 }
                             }
