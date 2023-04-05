@@ -2,7 +2,10 @@
 using MongoDB.Driver;
 using NBitcoin;
 using NBitcoin.Altcoins;
+using Nethereum.Hex.HexTypes;
 using Nethereum.Signer;
+using Nethereum.Util;
+using Nethereum.Web3.Accounts;
 using System;
 using System.Drawing;
 using System.Runtime.InteropServices;
@@ -240,7 +243,27 @@ namespace DEX.Forms
                 tbAddress.Text = address.ToString();
                 tbPrivateKey.Text = privateKeyHex.ToString();
             }
+            else if (_currency == "dai")
+            {
+                var ecKey = EthECKey.GenerateKey();
+                var privateKey = ecKey.GetPrivateKey();
+                var account = new Account(privateKey);
+
+                // Получение адреса кошелька DAI
+                var address = account.Address;
+                var hexAddress = new HexBigInteger(address);
+                var daiAddress = new AddressUtil().ConvertToChecksumAddress(hexAddress);
+
+                tbAddress.Text = daiAddress;
+                tbPrivateKey.Text = privateKey;
+            }
+            else if (_currency == "sol")
+            {
+                // TODO: SOL generator
+            }
         }
+
+
 
         private void btnPrivateKeyShowToggle_Click(object sender, EventArgs e)
         {
