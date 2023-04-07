@@ -53,6 +53,7 @@ namespace DEX
                         credentials.UserID = state.UserID;
                         credentials.Phone = state.Phone;
                         credentials.Activity = state.Activity;
+                        credentials.BalanceUSD = state.BalanceUSD;
 
                         MenuUser menu = new MenuUser(credentials);
                         menu.Show();

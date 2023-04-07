@@ -90,6 +90,8 @@
             this.labelADABalance = new System.Windows.Forms.Label();
             this.labelADAAddress = new System.Windows.Forms.Label();
             this.imgADAWallet = new System.Windows.Forms.PictureBox();
+            this.labelBalanceUSD = new System.Windows.Forms.Label();
+            this.btnTopUpBalance = new System.Windows.Forms.Button();
             this.panelEth.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.imgETH)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.imgETHWallet)).BeginInit();
@@ -874,12 +876,42 @@
             this.imgADAWallet.TabIndex = 0;
             this.imgADAWallet.TabStop = false;
             // 
+            // labelBalanceUSD
+            // 
+            this.labelBalanceUSD.AutoSize = true;
+            this.labelBalanceUSD.Font = new System.Drawing.Font("Roboto", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.labelBalanceUSD.ForeColor = System.Drawing.Color.White;
+            this.labelBalanceUSD.Location = new System.Drawing.Point(675, 16);
+            this.labelBalanceUSD.Name = "labelBalanceUSD";
+            this.labelBalanceUSD.Size = new System.Drawing.Size(92, 25);
+            this.labelBalanceUSD.TabIndex = 54;
+            this.labelBalanceUSD.Text = "Баланс: ";
+            // 
+            // btnTopUpBalance
+            // 
+            this.btnTopUpBalance.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(44)))), ((int)(((byte)(43)))), ((int)(((byte)(60)))));
+            this.btnTopUpBalance.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(140)))), ((int)(((byte)(122)))), ((int)(((byte)(230)))));
+            this.btnTopUpBalance.FlatAppearance.BorderSize = 2;
+            this.btnTopUpBalance.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.btnTopUpBalance.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnTopUpBalance.Font = new System.Drawing.Font("Roboto", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.btnTopUpBalance.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(140)))), ((int)(((byte)(122)))), ((int)(((byte)(230)))));
+            this.btnTopUpBalance.Location = new System.Drawing.Point(863, 12);
+            this.btnTopUpBalance.Name = "btnTopUpBalance";
+            this.btnTopUpBalance.Size = new System.Drawing.Size(107, 33);
+            this.btnTopUpBalance.TabIndex = 52;
+            this.btnTopUpBalance.Text = "Пополнить";
+            this.btnTopUpBalance.UseVisualStyleBackColor = false;
+            this.btnTopUpBalance.Click += new System.EventHandler(this.btnTopUpBalance_Click);
+            // 
             // UC_Balance
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoScroll = true;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(44)))), ((int)(((byte)(43)))), ((int)(((byte)(60)))));
+            this.Controls.Add(this.btnTopUpBalance);
+            this.Controls.Add(this.labelBalanceUSD);
             this.Controls.Add(this.panelAda);
             this.Controls.Add(this.panelBusd);
             this.Controls.Add(this.panelSol);
@@ -894,7 +926,7 @@
             this.Font = new System.Drawing.Font("Roboto", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.Margin = new System.Windows.Forms.Padding(0);
             this.Name = "UC_Balance";
-            this.Size = new System.Drawing.Size(1016, 674);
+            this.Size = new System.Drawing.Size(999, 674);
             this.Load += new System.EventHandler(this.UC_Balance_Load);
             this.panelEth.ResumeLayout(false);
             this.panelEth.PerformLayout();
@@ -1004,5 +1036,7 @@
         private System.Windows.Forms.Label labelADABalance;
         private System.Windows.Forms.Label labelADAAddress;
         private System.Windows.Forms.PictureBox imgADAWallet;
+        public System.Windows.Forms.Label labelBalanceUSD;
+        private System.Windows.Forms.Button btnTopUpBalance;
     }
 }

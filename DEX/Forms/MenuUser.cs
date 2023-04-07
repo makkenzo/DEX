@@ -1,4 +1,6 @@
 ﻿using DEX.UserControls;
+using MongoDB.Bson;
+using MongoDB.Driver;
 using System;
 using System.IO;
 using System.Runtime.InteropServices;
@@ -109,7 +111,7 @@ namespace DEX
             buttonCryptocurrenciesLeft.Visible = false;
             buttonSettingsLeft.Visible = false;
 
-            UC_Lots uc = new UC_Lots();
+            UC_Lots uc = new UC_Lots(_userCredentials);
             addUserControl(uc);
         }
 

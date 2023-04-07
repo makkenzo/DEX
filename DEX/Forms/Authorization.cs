@@ -37,6 +37,7 @@ namespace DEX
             public int Activity { get; set; }
             public string Phone { get; set; }
             public string Pass { get; set; }
+            public double BalanceUSD { get; set; }
         }
 
         [Serializable]
@@ -53,6 +54,7 @@ namespace DEX
             public int Activity { get; set; }
             public string Phone { get; set; }
             public string Pass { get; set; }
+            public double BalanceUSD { get; set; }
         }
 
 
@@ -97,6 +99,7 @@ namespace DEX
                         credentials.UserID = result.GetValue("userID").AsString;
                         credentials.Phone = result.GetValue("phone").AsString;
                         credentials.Activity = result.GetValue("activity").AsInt32;
+                        credentials.BalanceUSD = result.GetValue("balanceUSD").AsDouble;
 
                         UserState state = new UserState();
                         state.Username = credentials.Username;
@@ -110,6 +113,7 @@ namespace DEX
                         state.UserID = credentials.UserID;
                         state.Phone = credentials.Phone;
                         state.Activity = credentials.Activity;
+                        state.BalanceUSD = credentials.BalanceUSD;
 
                         using (FileStream file = new FileStream("userstate.dat", FileMode.Create))
                         {

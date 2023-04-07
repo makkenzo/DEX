@@ -150,6 +150,7 @@ namespace DEX
                                 }
                             }
                             },
+                            { "balance", 0.0 },
                             { "role", "user" }
                         };
 

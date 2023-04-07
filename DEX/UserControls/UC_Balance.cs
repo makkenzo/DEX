@@ -15,6 +15,13 @@ namespace DEX.UserControls
 
         private string ethAddress, btcAddress, usdtAddress, usdcAddress, xrpAddress, ltcAddress, daiAddress, solAddress, busdAddress, adaAddress;
         private double ethBalance, btcBalance, usdtBalance, usdcBalance, xrpBalance, ltcBalance, daiBalance, solBalance, busdBalance, adaBalance;
+
+        private void btnTopUpBalance_Click(object sender, EventArgs e)
+        {
+            TopUpBalance topUpBalance = new TopUpBalance(_userCredentials);
+            topUpBalance.ShowDialog();
+        }
+
         private string ethPrivateKey, btcPrivateKey, usdtPrivateKey, usdcPrivateKey, xrpPrivateKey, ltcPrivateKey, daiPrivateKey, solPrivateKey, busdPrivateKey, adaPrivateKey;
 
         public UC_Balance(UserCredentials userCredentials)
@@ -49,6 +56,10 @@ namespace DEX.UserControls
 
             var userDocument = await collection.Find(filter).FirstOrDefaultAsync();
             var walletsDocument = userDocument["wallets"].AsBsonDocument;
+
+            var balanceUSD = userDocument.GetValue("balanceUSD").AsDouble;
+
+            labelBalanceUSD.Text = $"Баланс: {Math.Round(balanceUSD, 2)}$";
 
             LoadWalletData("eth", walletsDocument, labelETHBalance, labelETHAddress, ref ethAddress, ref ethBalance, ref ethPrivateKey);
             LoadWalletData("btc", walletsDocument, labelBTCBalance, labelBTCAddress, ref btcAddress, ref btcBalance, ref btcPrivateKey);
@@ -104,6 +115,8 @@ namespace DEX.UserControls
             panelSol.Enabled = state;
             panelBusd.Enabled = state;
             panelAda.Enabled = state;
+
+            btnTopUpBalance.Enabled = state;
         }
 
         private void EditAddress(string address, Label addressLabel, string currency, string privateKey)
