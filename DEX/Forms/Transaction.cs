@@ -17,7 +17,7 @@ namespace DEX.Forms
 {
     public partial class Transaction : Form
     {
-        private string _id;
+        private ObjectId _id;
         private string _coin;
         private double _price;
         private double _amount;
@@ -26,10 +26,12 @@ namespace DEX.Forms
         private string _user;
         private string _lotDate;
         private UserCredentials _userCredentials;
+        private string _address;
 
-        public Transaction(string id, string coin, double price, double amount, double sum, string type, string user, string lotDate, UserCredentials userCredentials)
+        public Transaction(ObjectId id, string coin, double price, double amount, double sum, string type, string user, string lotDate, UserCredentials userCredentials, string address)
         {
             InitializeComponent();
+
             _id = id;
             _coin = coin;
             _price = price;
@@ -39,6 +41,19 @@ namespace DEX.Forms
             _user = user;
             _lotDate = lotDate;
             _userCredentials = userCredentials;
+            _address = address;
+        }
+
+        private void TextBox_TextChanged(object sender, EventArgs e)
+        {
+            TextBox textBox = (TextBox)sender;
+            textBox.ForeColor = Color.White;
+        }
+
+        private void TextBox_Click(object sender, EventArgs e)
+        {
+            TextBox textBox = (TextBox)sender;
+            textBox.SelectAll();
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -59,7 +74,7 @@ namespace DEX.Forms
 
         private void Transaction_Load(object sender, EventArgs e)
         {
-            tbId.Text = _id;
+            tbId.Text = _id.ToString();
             tbCoin.Text = _coin;
             tbPrice.Text = _price.ToString();
             tbAmount.Text = _amount.ToString();
@@ -67,6 +82,7 @@ namespace DEX.Forms
             tbType.Text = _lotType;
             tbUser.Text = _user;
             tbDate.Text = _lotDate;
+            tbAddress.Text = _address;
 
             if (_lotType == "Покупка")
                 btnDone.Text = "Продать";
@@ -81,20 +97,29 @@ namespace DEX.Forms
 
             var userDocument = await collection.Find(filter).FirstOrDefaultAsync();
 
-            var balanceUSD = userDocument.GetValue("balanceUSD").AsDouble;
-
             if (_lotType == "Продажа")
             {
+                var balanceUSD = userDocument.GetValue("balanceUSD").AsDouble;
+
                 if (balanceUSD >= _sum)
                 {
                     balanceUSD -= _sum;
 
+                    var sellerCoinWallet = userDocument.GetValue("wallets").AsBsonDocument.GetValue(_coin.ToLower()).AsBsonDocument;
+                    sellerCoinWallet["balance"] = sellerCoinWallet.GetValue("balance").AsDouble - _amount;
+
                     var update = Builders<BsonDocument>.Update
-                                .Set("balanceUSD", balanceUSD);
+                                .Set("balanceUSD", balanceUSD)
+                                .Set($"wallets.{_coin.ToLower()}", sellerCoinWallet);
 
                     await collection.UpdateOneAsync(filter, update);
 
                     MessageBox.Show("Транзакция успешно завершена.");
+
+                    var lots = database.GetCollection<BsonDocument>("Lots");
+                    var lotsFilter = Builders<BsonDocument>.Filter.Eq("_id", _id);
+
+                    await lots.DeleteOneAsync(lotsFilter);
 
                     this.DialogResult = DialogResult.OK;
                 }

@@ -23,22 +23,23 @@ namespace DEX.UserControls
 
         public class Lot
         {
-            public string Id { get; set; }
+            public ObjectId Id { get; set; }
             public string Coin { get; set; }
             public double Price { get; set; }
             public double Amount { get; set; }
             public double Sum { get; set; }
             public string Type { get; set; }
-            public string Seller { get; set; }
+            public string User { get; set; }
             public string LotDate { get; set; }
+            public string Wallet { get; set; }
         }
 
-        private void AddLabelsGroup(string id, string coin, double price, double amount, double sum, string type, string user, string lotDate)
+        private void AddLabelsGroup(ObjectId id, string coin, double price, double amount, double sum, string type, string user, string lotDate, string address)
         {
             // создаем новую группу лейблов и настраиваем ее контролы
             var newLabelsGroup = new GroupBox
             {
-                Text = id,
+                Text = id.ToString(),
                 Font = new Font("Roboto", 12f, FontStyle.Regular),
                 ForeColor = Color.White,
                 Size = new Size(970, 62)
@@ -94,7 +95,7 @@ namespace DEX.UserControls
 
             btnShow.Click += (sender, e) =>
             {
-                Transaction transaction = new Transaction(id, coin, price, amount, sum, type, user, lotDate, _userCredentials);
+                Transaction transaction = new Transaction(id, coin, price, amount, sum, type, user, lotDate, _userCredentials, address);
                 transaction.ShowDialog();
             };
 
@@ -103,6 +104,7 @@ namespace DEX.UserControls
 
         private void UC_Lots_Load(object sender, EventArgs e)
         {
+            btnCreate.Enabled = false;
             var collection = database.GetCollection<BsonDocument>("Lots");
 
             var filter = Builders<BsonDocument>.Filter.Empty;
@@ -118,19 +120,21 @@ namespace DEX.UserControls
                 var amount = lots[i].GetValue("amount").AsDouble;
                 var sum = lots[i].GetValue("sum").AsDouble;
                 var type = lots[i].GetValue("type").AsString;
-                var seller = lots[i].GetValue("seller").AsString;
+                var user = lots[i].GetValue("user").AsString;
                 var lotDate = lots[i].GetValue("date").ToUniversalTime();
+                var address = lots[i].GetValue("wallet").AsString;
 
                 var lot = new Lot
                 {
-                    Id = id.ToString(),
+                    Id = id,
                     Coin = coin,
                     Price = price,
                     Amount = amount,
                     Sum = sum,
                     Type = type,
-                    Seller = seller,
-                    LotDate = lotDate.ToString()
+                    User = user,
+                    LotDate = lotDate.ToString(),
+                    Wallet = address
                 };
 
                 lotsArr[i] = lot;
@@ -140,7 +144,20 @@ namespace DEX.UserControls
             {
                 var lot = lotsArr[i];
 
-                AddLabelsGroup(lot.Id, lot.Coin, lot.Price, lot.Amount, lot.Sum, lot.Type, lot.Seller, lot.LotDate);
+                AddLabelsGroup(lot.Id, lot.Coin, lot.Price, lot.Amount, lot.Sum, lot.Type, lot.User, lot.LotDate, lot.Wallet);
+            }
+
+            btnCreate.Enabled = true;
+        }
+
+        private void btnETHEdit_Click(object sender, EventArgs e)
+        {
+            NewTransaction newTransaction = new NewTransaction(_userCredentials);
+            newTransaction.ShowDialog();
+
+            if (newTransaction.DialogResult == DialogResult.OK)
+            {
+                
             }
         }
     }
