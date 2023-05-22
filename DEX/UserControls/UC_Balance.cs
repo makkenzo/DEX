@@ -35,7 +35,6 @@ namespace DEX.UserControls
         private async void UC_Balance_Load(object sender, EventArgs e)
         {
             imgETH.Parent = imgETHWallet;
-            imgETH.BackColor = Color.Transparent;
             imgBTC.Parent = imgBTCWallet;
             imgUSDT.Parent = imgUSDTWallet;
             imgLTC.Parent = imgLTCWallet;

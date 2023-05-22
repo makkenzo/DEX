@@ -154,17 +154,43 @@ namespace DEX.Forms
                 return;
             }
 
+            if (newLot.type == "Продажа" && !HasSufficientFunds(newLot.coin, newLot.amount))
+            {
+                MessageBox.Show($"Недостаточно средств на балансе {newLot.coin}.");
+                return;
+            }
+
             var database = DBManager.GetDatabase();
             var collection = database.GetCollection<Lot>("Lots");
 
             collection.InsertOne(newLot);
-
 
             MessageBox.Show("Лот был успешно добавлен.");
 
             DialogResult = DialogResult.OK;
 
             this.Close();
+        }
+
+        private bool HasSufficientFunds(string cryptoCurrency, double requestedAmount)
+        {
+            double walletBalance = GetBalance(cryptoCurrency);
+
+            return walletBalance >= requestedAmount;
+        }
+
+        private double GetBalance(string cryptoCurrency)
+        {
+            var database = DBManager.GetDatabase();
+            var collection = database.GetCollection<BsonDocument>("Users");
+
+            var filter = Builders<BsonDocument>.Filter.Eq("username", _userCredentials.Username);
+            var projection = Builders<BsonDocument>.Projection.Include("wallets." + cryptoCurrency.ToLower() + ".balance");
+            var result = collection.Find(filter).Project(projection).FirstOrDefault();
+
+            double walletBalance = result["wallets"][cryptoCurrency.ToLower()]["balance"].AsDouble;
+
+            return walletBalance;
         }
     }
 }
