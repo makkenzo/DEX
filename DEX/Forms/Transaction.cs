@@ -92,27 +92,39 @@ namespace DEX.Forms
         {
             var database = DBManager.GetDatabase();
 
-            var filter = Builders<BsonDocument>.Filter.Eq("username", _userCredentials.Username);
+            var filterTransactionUser = Builders<BsonDocument>.Filter.Eq("username", tbUser.Text);
+            var filterCurUser = Builders<BsonDocument>.Filter.Eq("username", _userCredentials.Username);
+
             var collection = database.GetCollection<BsonDocument>("Users");
 
-            var userDocument = await collection.Find(filter).FirstOrDefaultAsync();
+            var seller = await collection.Find(filterTransactionUser).FirstOrDefaultAsync();
+            var curUser = await collection.Find(filterCurUser).FirstOrDefaultAsync();
 
             if (_lotType == "Продажа")
             {
-                var balanceUSD = userDocument.GetValue("balanceUSD").AsDouble;
+                var curBalanceUSD = curUser.GetValue("balanceUSD").AsDouble;
+                var sellerBalanceUSD = seller.GetValue("balanceUSD").AsDouble;
 
-                if (balanceUSD >= _sum)
+                if (curBalanceUSD >= _sum)
                 {
-                    balanceUSD -= _sum;
+                    curBalanceUSD -= _sum;
 
-                    var sellerCoinWallet = userDocument.GetValue("wallets").AsBsonDocument.GetValue(_coin.ToLower()).AsBsonDocument;
+                    var buyerCoinWallet = curUser.GetValue("wallets").AsBsonDocument.GetValue(_coin.ToLower()).AsBsonDocument;
+                    var sellerCoinWallet = seller.GetValue("wallets").AsBsonDocument.GetValue(_coin.ToLower()).AsBsonDocument;
+
+                    buyerCoinWallet["balance"] = buyerCoinWallet.GetValue("balance").AsDouble + _amount;
                     sellerCoinWallet["balance"] = sellerCoinWallet.GetValue("balance").AsDouble - _amount;
 
-                    var update = Builders<BsonDocument>.Update
-                                .Set("balanceUSD", balanceUSD)
-                                .Set($"wallets.{_coin.ToLower()}", sellerCoinWallet);
+                    var updateCurUser = Builders<BsonDocument>.Update
+                        .Set("balanceUSD", curBalanceUSD -= _sum)
+                        .Set($"wallets.{_coin.ToLower()}.balance", buyerCoinWallet["balance"]);
 
-                    await collection.UpdateOneAsync(filter, update);
+                    var updateSeller = Builders<BsonDocument>.Update
+                        .Set("balanceUSD", sellerBalanceUSD += _sum)
+                        .Set($"wallets.{_coin.ToLower()}.balance", sellerCoinWallet["balance"]);
+
+                    await collection.UpdateOneAsync(filterCurUser, updateCurUser);
+                    await collection.UpdateOneAsync(filterTransactionUser, updateSeller);
 
                     MessageBox.Show("Транзакция успешно завершена.");
 

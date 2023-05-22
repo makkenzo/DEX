@@ -2,6 +2,7 @@
 using MongoDB.Bson;
 using MongoDB.Driver;
 using System;
+using System.Drawing;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using static DEX.Authorization;
@@ -34,6 +35,7 @@ namespace DEX.UserControls
         private async void UC_Balance_Load(object sender, EventArgs e)
         {
             imgETH.Parent = imgETHWallet;
+            imgETH.BackColor = Color.Transparent;
             imgBTC.Parent = imgBTCWallet;
             imgUSDT.Parent = imgUSDTWallet;
             imgLTC.Parent = imgLTCWallet;
