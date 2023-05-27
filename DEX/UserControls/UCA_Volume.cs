@@ -9,6 +9,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Windows.Forms.DataVisualization.Charting;
 
 namespace DEX.UserControls
 {
@@ -66,6 +67,27 @@ namespace DEX.UserControls
             dgvVolume.Columns["ID"].Width = 200;
             dgvVolume.Columns["Date"].Width = 150;
             dgvVolume.Columns["Amount"].Width = 150;
+
+            Series seriesVolume = new Series();
+            seriesVolume.ChartType = SeriesChartType.SplineArea;
+
+            foreach (DataGridViewRow row in dgvVolume.Rows)
+            {
+                if (!row.IsNewRow)
+                {
+                    string date = row.Cells["Date"].Value.ToString();
+                    double amount = Convert.ToDouble(row.Cells["Amount"].Value);
+
+                    seriesVolume.Points.AddXY(date, amount);
+                }
+            }
+
+            chartVolume.Titles.Add("Отношение даты к количеству");
+
+            chartVolume.ChartAreas[0].AxisX.Title = "Дата";
+            chartVolume.ChartAreas[0].AxisY.Title = "Значение";
+
+            chartVolume.Series.Add(seriesVolume);
         }
     }
 }

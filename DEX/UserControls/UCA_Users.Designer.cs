@@ -60,6 +60,7 @@ namespace DEX.UserControls
             this.dgvUsers.Location = new System.Drawing.Point(24, 22);
             this.dgvUsers.Name = "dgvUsers";
             this.dgvUsers.ReadOnly = true;
+            this.dgvUsers.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.CellSelect;
             this.dgvUsers.Size = new System.Drawing.Size(969, 575);
             this.dgvUsers.TabIndex = 0;
             // 

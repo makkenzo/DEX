@@ -29,9 +29,13 @@ namespace DEX.UserControls
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea1 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend1 = new System.Windows.Forms.DataVisualization.Charting.Legend();
             this.dgvVolume = new System.Windows.Forms.DataGridView();
+            this.chartVolume = new System.Windows.Forms.DataVisualization.Charting.Chart();
             ((System.ComponentModel.ISupportInitialize)(this.dgvVolume)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.chartVolume)).BeginInit();
             this.SuspendLayout();
             // 
             // dgvVolume
@@ -41,32 +45,47 @@ namespace DEX.UserControls
             | System.Windows.Forms.AnchorStyles.Right)));
             this.dgvVolume.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(134)))), ((int)(((byte)(124)))), ((int)(((byte)(187)))));
             this.dgvVolume.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(192)))), ((int)(((byte)(255)))));
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Roboto", 9.75F);
-            dataGridViewCellStyle2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.LightSlateGray;
-            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dgvVolume.DefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(192)))), ((int)(((byte)(255)))));
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Roboto", 9.75F);
+            dataGridViewCellStyle1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.Color.LightSlateGray;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dgvVolume.DefaultCellStyle = dataGridViewCellStyle1;
             this.dgvVolume.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(134)))), ((int)(((byte)(124)))), ((int)(((byte)(187)))));
             this.dgvVolume.Location = new System.Drawing.Point(17, 17);
             this.dgvVolume.Name = "dgvVolume";
             this.dgvVolume.ReadOnly = true;
-            this.dgvVolume.Size = new System.Drawing.Size(982, 641);
+            this.dgvVolume.Size = new System.Drawing.Size(982, 301);
             this.dgvVolume.TabIndex = 1;
+            // 
+            // chartVolume
+            // 
+            chartArea1.BackColor = System.Drawing.Color.White;
+            chartArea1.Name = "ChartArea1";
+            this.chartVolume.ChartAreas.Add(chartArea1);
+            legend1.Name = "Legend1";
+            this.chartVolume.Legends.Add(legend1);
+            this.chartVolume.Location = new System.Drawing.Point(17, 324);
+            this.chartVolume.Name = "chartVolume";
+            this.chartVolume.Size = new System.Drawing.Size(982, 331);
+            this.chartVolume.TabIndex = 2;
+            this.chartVolume.Text = "chart1";
             // 
             // UCA_Volume
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(44)))), ((int)(((byte)(43)))), ((int)(((byte)(60)))));
+            this.Controls.Add(this.chartVolume);
             this.Controls.Add(this.dgvVolume);
             this.Font = new System.Drawing.Font("Roboto", 9.75F);
             this.Name = "UCA_Volume";
             this.Size = new System.Drawing.Size(1016, 674);
             this.Load += new System.EventHandler(this.UCA_Volume_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dgvVolume)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.chartVolume)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -74,5 +93,6 @@ namespace DEX.UserControls
         #endregion
 
         private System.Windows.Forms.DataGridView dgvVolume;
+        private System.Windows.Forms.DataVisualization.Charting.Chart chartVolume;
     }
 }

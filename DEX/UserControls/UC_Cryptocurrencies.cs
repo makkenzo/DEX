@@ -1,5 +1,9 @@
-﻿using CoinAPI.REST.V1;
+﻿using MongoDB.Bson;
+using MongoDB.Driver;
 using RestSharp;
+using System;
+using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Windows.Forms;
 
 namespace DEX.UserControls
@@ -11,12 +15,35 @@ namespace DEX.UserControls
             InitializeComponent();
         }
 
-        private void UC_Cryptocurrencies_Load(object sender, System.EventArgs e)
+        private static readonly IMongoDatabase db = DBManager.GetDatabase();
+        private readonly IMongoCollection<BsonDocument> collection = db.GetCollection<BsonDocument>("Coins");
+
+        public class Coin
         {
-            var client = new RestClient("https://rest.coinapi.io/v1/exchangerate/BTC/USD");
-            var request = new RestRequest(Method.GET);
-            request.AddHeader("X-CoinAPI-Key", "70FE834F-D8EE-4DE5-A2A6-C4D5D0C33E23");
-            IRestResponse response = client.Execute(request);
+            public string CoinAbbr { get; set; }
+            public double Price { get; set; }
+        }
+
+        private async void UC_Cryptocurrencies_Load(object sender, System.EventArgs e)
+        {
+            var coins = await collection.Find(_ => true).ToListAsync();
+
+            var coinsList = new List<Coin>();
+
+            foreach (var coin in coins)
+            {
+                var coinModel = new Coin
+                {
+                    CoinAbbr = coin.GetValue("abbr").AsString,
+                    Price = coin.GetValue("price").AsDouble,
+                };
+
+                coinsList.Add(coinModel);
+            }
+
+            dgvCoins.DataSource = coinsList;
+
+            dgvCoins.Columns["Price"].Width = 150;
         }
     }
 }
