@@ -12,8 +12,8 @@ namespace DEX.UserControls
     public partial class UC_Lots : UserControl
     {
 
-        private IMongoDatabase database = DBManager.GetDatabase();
-        private UserCredentials _userCredentials;
+        private readonly IMongoDatabase database = DBManager.GetDatabase();
+        private readonly UserCredentials _userCredentials;
 
         public UC_Lots(UserCredentials userCredentials)
         {
@@ -95,8 +95,16 @@ namespace DEX.UserControls
 
             btnShow.Click += (sender, e) =>
             {
-                Transaction transaction = new Transaction(id, coin, price, amount, sum, type, user, lotDate, _userCredentials, address);
-                transaction.ShowDialog();
+                if (_userCredentials.Username == user)
+                {
+                    CancelTransaction cancelTransaction = new CancelTransaction(id);
+                    cancelTransaction.ShowDialog();
+                }
+                else
+                {
+                    Transaction transaction = new Transaction(id, coin, price, amount, sum, type, user, lotDate, _userCredentials, address);
+                    transaction.ShowDialog();
+                }
             };
 
             Controls.Add(newLabelsGroup); // добавляем новую группу лейблов на форму
@@ -157,7 +165,7 @@ namespace DEX.UserControls
 
             if (newTransaction.DialogResult == DialogResult.OK)
             {
-                
+                // TODO: Update lots
             }
         }
     }

@@ -62,7 +62,7 @@ namespace DEX.Forms
             this.tbAddress = new System.Windows.Forms.TextBox();
             this.panel10 = new System.Windows.Forms.Panel();
             this.label3 = new System.Windows.Forms.Label();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.tbPrivateKey = new System.Windows.Forms.TextBox();
             this.panel11 = new System.Windows.Forms.Panel();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
@@ -444,20 +444,20 @@ namespace DEX.Forms
             this.label3.TabIndex = 14;
             this.label3.Text = "Приватный ключ";
             // 
-            // textBox1
+            // tbPrivateKey
             // 
-            this.textBox1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(44)))), ((int)(((byte)(43)))), ((int)(((byte)(60)))));
-            this.textBox1.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.textBox1.Font = new System.Drawing.Font("Roboto", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.textBox1.ForeColor = System.Drawing.Color.Gray;
-            this.textBox1.Location = new System.Drawing.Point(255, 443);
-            this.textBox1.MaxLength = 105;
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(386, 23);
-            this.textBox1.TabIndex = 23;
-            this.textBox1.Text = "private key";
-            this.textBox1.Click += new System.EventHandler(this.TextBox_Click);
-            this.textBox1.TextChanged += new System.EventHandler(this.TextBox_TextChanged);
+            this.tbPrivateKey.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(44)))), ((int)(((byte)(43)))), ((int)(((byte)(60)))));
+            this.tbPrivateKey.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.tbPrivateKey.Font = new System.Drawing.Font("Roboto", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.tbPrivateKey.ForeColor = System.Drawing.Color.Gray;
+            this.tbPrivateKey.Location = new System.Drawing.Point(255, 443);
+            this.tbPrivateKey.MaxLength = 105;
+            this.tbPrivateKey.Name = "tbPrivateKey";
+            this.tbPrivateKey.Size = new System.Drawing.Size(386, 23);
+            this.tbPrivateKey.TabIndex = 23;
+            this.tbPrivateKey.Text = "private key";
+            this.tbPrivateKey.Click += new System.EventHandler(this.TextBox_Click);
+            this.tbPrivateKey.TextChanged += new System.EventHandler(this.TextBox_TextChanged);
             // 
             // panel11
             // 
@@ -484,7 +484,7 @@ namespace DEX.Forms
             this.Controls.Add(this.panel4);
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.panel3);
-            this.Controls.Add(this.textBox1);
+            this.Controls.Add(this.tbPrivateKey);
             this.Controls.Add(this.tbAddress);
             this.Controls.Add(this.tbDate);
             this.Controls.Add(this.tbUser);
@@ -555,7 +555,7 @@ namespace DEX.Forms
         private System.Windows.Forms.TextBox tbAddress;
         private System.Windows.Forms.Panel panel10;
         private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TextBox tbPrivateKey;
         private System.Windows.Forms.Panel panel11;
     }
 }

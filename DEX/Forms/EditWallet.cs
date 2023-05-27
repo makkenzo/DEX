@@ -177,7 +177,8 @@ namespace DEX.Forms
                 var database = DBManager.GetDatabase();
                 var filter = Builders<BsonDocument>.Filter.Eq("username", _userCredentials.Username);
                 var update = Builders<BsonDocument>.Update.Set($"wallets.{_currency}.address", tbAddress.Text)
-                    .Set($"wallets.{_currency}.privateKey", tbPrivateKey.Text);
+                                                          .Set($"wallets.{_currency}.privateKey", tbPrivateKey.Text)
+                                                          .Set($"wallets.{_currency}.balance", 0f);
 
                 var collection = database.GetCollection<BsonDocument>("Users");
 

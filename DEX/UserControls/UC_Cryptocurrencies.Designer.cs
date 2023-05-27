@@ -38,7 +38,7 @@
             this.label1.ForeColor = System.Drawing.Color.White;
             this.label1.Location = new System.Drawing.Point(333, 311);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(350, 52);
+            this.label1.Size = new System.Drawing.Size(351, 52);
             this.label1.TabIndex = 2;
             this.label1.Text = "Cryptocurrencies";
             // 
@@ -52,6 +52,7 @@
             this.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.Name = "UC_Cryptocurrencies";
             this.Size = new System.Drawing.Size(1016, 674);
+            this.Load += new System.EventHandler(this.UC_Cryptocurrencies_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 

@@ -11,8 +11,8 @@ namespace DEX.UserControls
 {
     public partial class UC_Balance : UserControl
     {
-        private UserCredentials _userCredentials;
-        private IMongoDatabase database = DBManager.GetDatabase();
+        private readonly UserCredentials _userCredentials;
+        private readonly IMongoDatabase database = DBManager.GetDatabase();
 
         private string ethAddress, btcAddress, usdtAddress, usdcAddress, xrpAddress, ltcAddress, daiAddress, solAddress, busdAddress, adaAddress;
         private double ethBalance, btcBalance, usdtBalance, usdcBalance, xrpBalance, ltcBalance, daiBalance, solBalance, busdBalance, adaBalance;
@@ -45,9 +45,16 @@ namespace DEX.UserControls
             imgBUSD.Parent = imgBUSDWallet;
             imgADA.Parent = imgADAWallet;
 
-            TogglePanels(false);
+            try
+            {
+                TogglePanels(false);
 
-            await LoadUserDataAsync();
+                await LoadUserDataAsync();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"{ex}");
+            }
         }
 
         private async Task LoadUserDataAsync()

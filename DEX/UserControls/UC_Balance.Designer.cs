@@ -926,7 +926,7 @@
             this.Font = new System.Drawing.Font("Roboto", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.Margin = new System.Windows.Forms.Padding(0);
             this.Name = "UC_Balance";
-            this.Size = new System.Drawing.Size(999, 674);
+            this.Size = new System.Drawing.Size(1016, 674);
             this.Load += new System.EventHandler(this.UC_Balance_Load);
             this.panelEth.ResumeLayout(false);
             this.panelEth.PerformLayout();

@@ -1,15 +1,8 @@
-﻿using DEX.UserControls;
-using MongoDB.Bson;
+﻿using MongoDB.Bson;
 using MongoDB.Driver;
 using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
 using System.Drawing;
-using System.Linq;
 using System.Runtime.InteropServices;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using static DEX.Authorization;
 
@@ -17,16 +10,16 @@ namespace DEX.Forms
 {
     public partial class Transaction : Form
     {
-        private ObjectId _id;
-        private string _coin;
-        private double _price;
-        private double _amount;
-        private double _sum;
-        private string _lotType;
-        private string _user;
-        private string _lotDate;
-        private UserCredentials _userCredentials;
-        private string _address;
+        private readonly ObjectId _id;
+        private readonly string _coin;
+        private readonly double _price;
+        private readonly double _amount;
+        private readonly double _sum;
+        private readonly string _lotType;
+        private readonly string _user;
+        private readonly string _lotDate;
+        private readonly UserCredentials _userCredentials;
+        private readonly string _address;
 
         public Transaction(ObjectId id, string coin, double price, double amount, double sum, string type, string user, string lotDate, UserCredentials userCredentials, string address)
         {
@@ -90,41 +83,52 @@ namespace DEX.Forms
 
         private async void btnDone_Click(object sender, EventArgs e)
         {
+            btnDone.Enabled = false;
+
             var database = DBManager.GetDatabase();
 
             var filterTransactionUser = Builders<BsonDocument>.Filter.Eq("username", tbUser.Text);
             var filterCurUser = Builders<BsonDocument>.Filter.Eq("username", _userCredentials.Username);
 
-            var collection = database.GetCollection<BsonDocument>("Users");
+            var users = database.GetCollection<BsonDocument>("Users");
+            var operations = database.GetCollection<BsonDocument>("Operations");
 
-            var seller = await collection.Find(filterTransactionUser).FirstOrDefaultAsync();
-            var curUser = await collection.Find(filterCurUser).FirstOrDefaultAsync();
+            var transactionUser = await users.Find(filterTransactionUser).FirstOrDefaultAsync();
+            var curUser = await users.Find(filterCurUser).FirstOrDefaultAsync();
+
+            var curUserBalanceUSD = curUser.GetValue("balanceUSD").AsDouble;
+            var sellerBalanceUSD = transactionUser.GetValue("balanceUSD").AsDouble;
+
+            var curUserCoinWallet = curUser.GetValue("wallets").AsBsonDocument.GetValue(_coin.ToLower()).AsBsonDocument;
+            var sellerCoinWallet = transactionUser.GetValue("wallets").AsBsonDocument.GetValue(_coin.ToLower()).AsBsonDocument;
+
+            var curUserPrivateKey = curUserCoinWallet.GetValue("privateKey").AsString;
 
             if (_lotType == "Продажа")
             {
-                var curBalanceUSD = curUser.GetValue("balanceUSD").AsDouble;
-                var sellerBalanceUSD = seller.GetValue("balanceUSD").AsDouble;
-
-                if (curBalanceUSD >= _sum)
+                if (curUserBalanceUSD >= _sum)
                 {
-                    curBalanceUSD -= _sum;
+                    curUserBalanceUSD -= _sum;
 
-                    var buyerCoinWallet = curUser.GetValue("wallets").AsBsonDocument.GetValue(_coin.ToLower()).AsBsonDocument;
-                    var sellerCoinWallet = seller.GetValue("wallets").AsBsonDocument.GetValue(_coin.ToLower()).AsBsonDocument;
+                    if (tbPrivateKey.Text != curUserPrivateKey)
+                    {
+                        MessageBox.Show("Неправильный приватный ключ", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        return;
+                    }
 
-                    buyerCoinWallet["balance"] = buyerCoinWallet.GetValue("balance").AsDouble + _amount;
+                    curUserCoinWallet["balance"] = curUserCoinWallet.GetValue("balance").AsDouble + _amount;
                     sellerCoinWallet["balance"] = sellerCoinWallet.GetValue("balance").AsDouble - _amount;
 
                     var updateCurUser = Builders<BsonDocument>.Update
-                        .Set("balanceUSD", curBalanceUSD -= _sum)
-                        .Set($"wallets.{_coin.ToLower()}.balance", buyerCoinWallet["balance"]);
+                        .Set("balanceUSD", curUserBalanceUSD -= _sum)
+                        .Set($"wallets.{_coin.ToLower()}.balance", curUserCoinWallet["balance"]);
 
                     var updateSeller = Builders<BsonDocument>.Update
                         .Set("balanceUSD", sellerBalanceUSD += _sum)
                         .Set($"wallets.{_coin.ToLower()}.balance", sellerCoinWallet["balance"]);
 
-                    await collection.UpdateOneAsync(filterCurUser, updateCurUser);
-                    await collection.UpdateOneAsync(filterTransactionUser, updateSeller);
+                    await users.UpdateOneAsync(filterCurUser, updateCurUser);
+                    await users.UpdateOneAsync(filterTransactionUser, updateSeller);
 
                     MessageBox.Show("Транзакция успешно завершена.");
 
@@ -133,9 +137,58 @@ namespace DEX.Forms
 
                     await lots.DeleteOneAsync(lotsFilter);
 
+                    var operationDoc = new BsonDocument
+                    {
+                        { "amount", _amount },
+                        { "buyerUsername", _userCredentials.Username },
+                        { "sellerUsername", transactionUser.GetValue("username").AsString },
+                        { "coinAbbr", _coin },
+                        { "price", _price },
+                        { "date", DateTime.Now },
+                        { "status", "done" },
+                        { "totalPrice", _amount * _price },
+                        { "commision", (_amount * _price) * 0.05 }
+                    };
+
+                    await operations.InsertOneAsync(operationDoc);
+
                     this.DialogResult = DialogResult.OK;
                 }
             }
+            else if (_lotType == "Покупка")
+            {
+                curUserBalanceUSD += _sum;
+
+                if (tbPrivateKey.Text != curUserPrivateKey)
+                {
+                    MessageBox.Show("Неправильный приватный ключ", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return;
+                }
+
+                curUserCoinWallet["balance"] = curUserCoinWallet.GetValue("balance").AsDouble - _amount;
+                sellerCoinWallet["balance"] = sellerCoinWallet.GetValue("balance").AsDouble + _amount;
+
+                var updateCurUser = Builders<BsonDocument>.Update
+                       .Set("balanceUSD", curUserBalanceUSD += _sum)
+                       .Set($"wallets.{_coin.ToLower()}.balance", curUserCoinWallet["balance"]);
+
+                var updateSeller = Builders<BsonDocument>.Update
+                    .Set("balanceUSD", sellerBalanceUSD -= _sum)
+                    .Set($"wallets.{_coin.ToLower()}.balance", sellerCoinWallet["balance"]);
+
+                await users.UpdateOneAsync(filterCurUser, updateCurUser);
+                await users.UpdateOneAsync(filterTransactionUser, updateSeller);
+
+                MessageBox.Show("Транзакция успешно завершена.");
+
+                var lots = database.GetCollection<BsonDocument>("Lots");
+                var lotsFilter = Builders<BsonDocument>.Filter.Eq("_id", _id);
+
+                await lots.DeleteOneAsync(lotsFilter);
+
+                this.DialogResult = DialogResult.OK;
+            }
+            btnDone.Enabled = true;
         }
     }
 }
