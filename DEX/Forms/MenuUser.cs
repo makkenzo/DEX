@@ -123,7 +123,7 @@ namespace DEX
             buttonCryptocurrenciesLeft.Visible = false;
             buttonSettingsLeft.Visible = false;
 
-            UC_Operations uc = new UC_Operations();
+            UC_Operations uc = new UC_Operations(_userCredentials);
             addUserControl(uc);
         }
 
