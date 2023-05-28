@@ -39,14 +39,12 @@
             this.buttonCryptocurrencies = new System.Windows.Forms.Button();
             this.buttonHistory = new System.Windows.Forms.Button();
             this.buttonLots = new System.Windows.Forms.Button();
-            this.buttonRating = new System.Windows.Forms.Button();
             this.buttonBalance = new System.Windows.Forms.Button();
             this.buttonProfile = new System.Windows.Forms.Button();
             this.buttonSettingsLeft = new System.Windows.Forms.Panel();
             this.buttonCryptocurrenciesLeft = new System.Windows.Forms.Panel();
             this.buttonHistoryLeft = new System.Windows.Forms.Panel();
             this.buttonLotsLeft = new System.Windows.Forms.Panel();
-            this.buttonRatingLeft = new System.Windows.Forms.Panel();
             this.buttonBalanceLeft = new System.Windows.Forms.Panel();
             this.buttonProfileLeft = new System.Windows.Forms.Panel();
             this.panelProfile = new System.Windows.Forms.Panel();
@@ -114,14 +112,12 @@
             this.panel2.Controls.Add(this.buttonCryptocurrencies);
             this.panel2.Controls.Add(this.buttonHistory);
             this.panel2.Controls.Add(this.buttonLots);
-            this.panel2.Controls.Add(this.buttonRating);
             this.panel2.Controls.Add(this.buttonBalance);
             this.panel2.Controls.Add(this.buttonProfile);
             this.panel2.Controls.Add(this.buttonSettingsLeft);
             this.panel2.Controls.Add(this.buttonCryptocurrenciesLeft);
             this.panel2.Controls.Add(this.buttonHistoryLeft);
             this.panel2.Controls.Add(this.buttonLotsLeft);
-            this.panel2.Controls.Add(this.buttonRatingLeft);
             this.panel2.Controls.Add(this.buttonBalanceLeft);
             this.panel2.Controls.Add(this.buttonProfileLeft);
             this.panel2.Dock = System.Windows.Forms.DockStyle.Left;
@@ -170,7 +166,7 @@
             this.buttonCryptocurrencies.Font = new System.Drawing.Font("Roboto", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.buttonCryptocurrencies.ForeColor = System.Drawing.Color.White;
             this.buttonCryptocurrencies.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.buttonCryptocurrencies.Location = new System.Drawing.Point(8, 221);
+            this.buttonCryptocurrencies.Location = new System.Drawing.Point(8, 178);
             this.buttonCryptocurrencies.Name = "buttonCryptocurrencies";
             this.buttonCryptocurrencies.Size = new System.Drawing.Size(256, 37);
             this.buttonCryptocurrencies.TabIndex = 9;
@@ -186,7 +182,7 @@
             this.buttonHistory.Font = new System.Drawing.Font("Roboto", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.buttonHistory.ForeColor = System.Drawing.Color.White;
             this.buttonHistory.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.buttonHistory.Location = new System.Drawing.Point(8, 178);
+            this.buttonHistory.Location = new System.Drawing.Point(8, 135);
             this.buttonHistory.Name = "buttonHistory";
             this.buttonHistory.Size = new System.Drawing.Size(256, 37);
             this.buttonHistory.TabIndex = 9;
@@ -202,29 +198,13 @@
             this.buttonLots.Font = new System.Drawing.Font("Roboto", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.buttonLots.ForeColor = System.Drawing.Color.White;
             this.buttonLots.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.buttonLots.Location = new System.Drawing.Point(8, 135);
+            this.buttonLots.Location = new System.Drawing.Point(8, 92);
             this.buttonLots.Name = "buttonLots";
             this.buttonLots.Size = new System.Drawing.Size(256, 37);
             this.buttonLots.TabIndex = 9;
             this.buttonLots.Text = "Лоты";
             this.buttonLots.UseVisualStyleBackColor = true;
             this.buttonLots.Click += new System.EventHandler(this.buttonLots_Click);
-            // 
-            // buttonRating
-            // 
-            this.buttonRating.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(49)))), ((int)(((byte)(69)))));
-            this.buttonRating.FlatAppearance.BorderSize = 0;
-            this.buttonRating.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.buttonRating.Font = new System.Drawing.Font("Roboto", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.buttonRating.ForeColor = System.Drawing.Color.White;
-            this.buttonRating.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.buttonRating.Location = new System.Drawing.Point(8, 92);
-            this.buttonRating.Name = "buttonRating";
-            this.buttonRating.Size = new System.Drawing.Size(256, 37);
-            this.buttonRating.TabIndex = 9;
-            this.buttonRating.Text = "Рейтинг";
-            this.buttonRating.UseVisualStyleBackColor = true;
-            this.buttonRating.Click += new System.EventHandler(this.buttonRating_Click);
             // 
             // buttonBalance
             // 
@@ -269,7 +249,7 @@
             // buttonCryptocurrenciesLeft
             // 
             this.buttonCryptocurrenciesLeft.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(156)))), ((int)(((byte)(136)))), ((int)(((byte)(255)))));
-            this.buttonCryptocurrenciesLeft.Location = new System.Drawing.Point(0, 221);
+            this.buttonCryptocurrenciesLeft.Location = new System.Drawing.Point(0, 178);
             this.buttonCryptocurrenciesLeft.Name = "buttonCryptocurrenciesLeft";
             this.buttonCryptocurrenciesLeft.Size = new System.Drawing.Size(8, 37);
             this.buttonCryptocurrenciesLeft.TabIndex = 7;
@@ -277,7 +257,7 @@
             // buttonHistoryLeft
             // 
             this.buttonHistoryLeft.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(156)))), ((int)(((byte)(136)))), ((int)(((byte)(255)))));
-            this.buttonHistoryLeft.Location = new System.Drawing.Point(0, 178);
+            this.buttonHistoryLeft.Location = new System.Drawing.Point(0, 135);
             this.buttonHistoryLeft.Name = "buttonHistoryLeft";
             this.buttonHistoryLeft.Size = new System.Drawing.Size(8, 37);
             this.buttonHistoryLeft.TabIndex = 7;
@@ -285,18 +265,10 @@
             // buttonLotsLeft
             // 
             this.buttonLotsLeft.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(156)))), ((int)(((byte)(136)))), ((int)(((byte)(255)))));
-            this.buttonLotsLeft.Location = new System.Drawing.Point(0, 135);
+            this.buttonLotsLeft.Location = new System.Drawing.Point(0, 92);
             this.buttonLotsLeft.Name = "buttonLotsLeft";
             this.buttonLotsLeft.Size = new System.Drawing.Size(8, 37);
             this.buttonLotsLeft.TabIndex = 7;
-            // 
-            // buttonRatingLeft
-            // 
-            this.buttonRatingLeft.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(156)))), ((int)(((byte)(136)))), ((int)(((byte)(255)))));
-            this.buttonRatingLeft.Location = new System.Drawing.Point(0, 92);
-            this.buttonRatingLeft.Name = "buttonRatingLeft";
-            this.buttonRatingLeft.Size = new System.Drawing.Size(8, 37);
-            this.buttonRatingLeft.TabIndex = 7;
             // 
             // buttonBalanceLeft
             // 
@@ -364,7 +336,6 @@
         private System.Windows.Forms.Button buttonProfile;
         private System.Windows.Forms.Button buttonHistory;
         private System.Windows.Forms.Button buttonLots;
-        private System.Windows.Forms.Button buttonRating;
         private System.Windows.Forms.Button buttonBalance;
         private System.Windows.Forms.Button buttonSettings;
         private System.Windows.Forms.Button buttonLogOut;
@@ -376,7 +347,6 @@
         private System.Windows.Forms.Panel buttonCryptocurrenciesLeft;
         private System.Windows.Forms.Panel buttonHistoryLeft;
         private System.Windows.Forms.Panel buttonLotsLeft;
-        private System.Windows.Forms.Panel buttonRatingLeft;
         private System.Windows.Forms.Panel buttonBalanceLeft;
         private System.Windows.Forms.OpenFileDialog openFileDialog;
     }

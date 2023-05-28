@@ -55,9 +55,10 @@
             this.dgvCoins.RowHeadersWidth = 60;
             this.dgvCoins.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing;
             this.dgvCoins.RowTemplate.DefaultCellStyle.Font = new System.Drawing.Font("Roboto", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.dgvCoins.RowTemplate.Height = 60;
+            this.dgvCoins.RowTemplate.Height = 62;
+            this.dgvCoins.ScrollBars = System.Windows.Forms.ScrollBars.None;
             this.dgvCoins.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvCoins.Size = new System.Drawing.Size(982, 641);
+            this.dgvCoins.Size = new System.Drawing.Size(312, 641);
             this.dgvCoins.TabIndex = 2;
             // 
             // UC_Cryptocurrencies

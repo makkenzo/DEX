@@ -27,7 +27,6 @@ namespace DEX
 
             buttonProfileLeft.Visible = true;
             buttonBalanceLeft.Visible = false;
-            buttonRatingLeft.Visible = false;
             buttonLotsLeft.Visible = false;
             buttonHistoryLeft.Visible = false;
             buttonCryptocurrenciesLeft.Visible = false;
@@ -62,7 +61,6 @@ namespace DEX
 
             buttonProfileLeft.Visible = true;
             buttonBalanceLeft.Visible = false;
-            buttonRatingLeft.Visible = false;
             buttonLotsLeft.Visible = false;
             buttonHistoryLeft.Visible = false;
             buttonCryptocurrenciesLeft.Visible = false;
@@ -75,7 +73,6 @@ namespace DEX
         {
             buttonProfileLeft.Visible = false;
             buttonBalanceLeft.Visible = true;
-            buttonRatingLeft.Visible = false;
             buttonLotsLeft.Visible = false;
             buttonHistoryLeft.Visible = false;
             buttonCryptocurrenciesLeft.Visible = false;
@@ -85,25 +82,10 @@ namespace DEX
             addUserControl(uc);
         }
 
-        private void buttonRating_Click(object sender, EventArgs e)
-        {
-            buttonProfileLeft.Visible = false;
-            buttonBalanceLeft.Visible = false;
-            buttonRatingLeft.Visible = true;
-            buttonLotsLeft.Visible = false;
-            buttonHistoryLeft.Visible = false;
-            buttonCryptocurrenciesLeft.Visible = false;
-            buttonSettingsLeft.Visible = false;
-
-            UC_Rating uc = new UC_Rating();
-            addUserControl(uc);
-        }
-
         private void buttonLots_Click(object sender, EventArgs e)
         {
             buttonProfileLeft.Visible = false;
             buttonBalanceLeft.Visible = false;
-            buttonRatingLeft.Visible = false;
             buttonLotsLeft.Visible = true;
             buttonHistoryLeft.Visible = false;
             buttonCryptocurrenciesLeft.Visible = false;
@@ -117,7 +99,6 @@ namespace DEX
         {
             buttonProfileLeft.Visible = false;
             buttonBalanceLeft.Visible = false;
-            buttonRatingLeft.Visible = false;
             buttonLotsLeft.Visible = false;
             buttonHistoryLeft.Visible = true;
             buttonCryptocurrenciesLeft.Visible = false;
@@ -131,7 +112,6 @@ namespace DEX
         {
             buttonProfileLeft.Visible = false;
             buttonBalanceLeft.Visible = false;
-            buttonRatingLeft.Visible = false;
             buttonLotsLeft.Visible = false;
             buttonHistoryLeft.Visible = false;
             buttonCryptocurrenciesLeft.Visible = true;
@@ -145,7 +125,6 @@ namespace DEX
         {
             buttonProfileLeft.Visible = false;
             buttonBalanceLeft.Visible = false;
-            buttonRatingLeft.Visible = false;
             buttonLotsLeft.Visible = false;
             buttonHistoryLeft.Visible = false;
             buttonCryptocurrenciesLeft.Visible = false;

@@ -527,12 +527,6 @@
     <Compile Include="UserControls\UC_Profile.Designer.cs">
       <DependentUpon>UC_Profile.cs</DependentUpon>
     </Compile>
-    <Compile Include="UserControls\UC_Rating.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="UserControls\UC_Rating.Designer.cs">
-      <DependentUpon>UC_Rating.cs</DependentUpon>
-    </Compile>
     <Compile Include="UserControls\UC_Settings.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -599,9 +593,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="UserControls\UC_Profile.resx">
       <DependentUpon>UC_Profile.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="UserControls\UC_Rating.resx">
-      <DependentUpon>UC_Rating.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UserControls\UC_Settings.resx">
       <DependentUpon>UC_Settings.cs</DependentUpon>
