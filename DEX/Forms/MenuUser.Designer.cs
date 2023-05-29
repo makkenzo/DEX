@@ -49,6 +49,7 @@
             this.buttonProfileLeft = new System.Windows.Forms.Panel();
             this.panelProfile = new System.Windows.Forms.Panel();
             this.openFileDialog = new System.Windows.Forms.OpenFileDialog();
+            this.linkLabelAbout = new System.Windows.Forms.LinkLabel();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             this.panel2.SuspendLayout();
@@ -57,6 +58,7 @@
             // panel1
             // 
             this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(140)))), ((int)(((byte)(122)))), ((int)(((byte)(230)))));
+            this.panel1.Controls.Add(this.linkLabelAbout);
             this.panel1.Controls.Add(this.label1);
             this.panel1.Controls.Add(this.pictureBox2);
             this.panel1.Controls.Add(this.button1);
@@ -302,6 +304,19 @@
             this.openFileDialog.FileName = "openFileDialog1";
             this.openFileDialog.Filter = "Image Files (*.bmp;*.jpg;*.jpeg,*.png)|*.BMP;*.JPG;*.JPEG;*.PNG";
             // 
+            // linkLabelAbout
+            // 
+            this.linkLabelAbout.AutoSize = true;
+            this.linkLabelAbout.Font = new System.Drawing.Font("Roboto", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.linkLabelAbout.LinkColor = System.Drawing.Color.White;
+            this.linkLabelAbout.Location = new System.Drawing.Point(505, 15);
+            this.linkLabelAbout.Name = "linkLabelAbout";
+            this.linkLabelAbout.Size = new System.Drawing.Size(103, 17);
+            this.linkLabelAbout.TabIndex = 12;
+            this.linkLabelAbout.TabStop = true;
+            this.linkLabelAbout.Text = "О приложении";
+            this.linkLabelAbout.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.linkLabel1_LinkClicked);
+            // 
             // MenuUser
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -349,5 +364,6 @@
         private System.Windows.Forms.Panel buttonLotsLeft;
         private System.Windows.Forms.Panel buttonBalanceLeft;
         private System.Windows.Forms.OpenFileDialog openFileDialog;
+        private System.Windows.Forms.LinkLabel linkLabelAbout;
     }
 }

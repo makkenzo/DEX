@@ -1,5 +1,6 @@
 ﻿using DEX.UserControls;
 using System;
+using System.Diagnostics;
 using System.IO;
 using System.Runtime.InteropServices;
 using System.Windows.Forms;
@@ -145,6 +146,11 @@ namespace DEX
             Authorization auth = new Authorization();
             auth.Show();
             this.Close();
+        }
+
+        private void linkLabel1_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            Process.Start("https://dex-info.netlify.app");
         }
     }
 }
